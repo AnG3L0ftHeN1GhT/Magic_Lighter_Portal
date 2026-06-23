@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         Vector2 input = moveAction.action.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);
         move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
-        // move = Vector3.ClampMagnitude(move, 1f);
+        move.y = 0f;
 
         // Jump using WasPressedThisFrame()
         if (groundedPlayer && jumpAction.action.WasPressedThisFrame())
