@@ -1,18 +1,24 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public float rayDistance;
+    public float pickupSpeed;
     public float rotateSpeed;
-    public Transform objectViwer;
+    public Transform objectViewer;
+    public UnityEvent OnView;
+    public UnityEvent OnFinishView;
     private Camera cam;
     private bool isViewing;
+    private bool canFinish;
     private Interactables currentInteract;
     private Vector3 originPosition;
     private Quaternion originRotation;
     public InputActionReference leftClick;
+    public InputActionReference rightClick;
     public InputActionReference look;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,10 +36,15 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(isViewing)
         {
-            if(currentInteract.item.grabbable && leftClick.action.IsPressed())
+            if(currentInteract.item.grabbable)
             {
                 RotateObject();
             }
+            if(canFinish && rightClick.action.WasPressedThisFrame())
+            {
+                FinishView();
+            }
+            return;
         }
         RaycastHit hit;
         Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
@@ -46,14 +57,22 @@ public class PlayerInteraction : MonoBehaviour
                 UIManager.instance.SetInteractionCursor(true);
                 if(leftClick.action.WasPressedThisFrame())
                 {
+                    if(interactable.isMoving)
+                    {
+                        return;
+                    }
+
+                    OnView.Invoke();
                     currentInteract = interactable;
                     isViewing = true;
+
+                    Invoke("CanFinish", 1f);
 
                     if(currentInteract.item.grabbable)
                     {
                         originPosition = currentInteract.transform.position;
                         originRotation = currentInteract.transform.rotation;
-                        StartCoroutine(Movingobject(currentInteract, objectViwer.position));
+                        StartCoroutine(MovingObject(currentInteract, objectViewer.position));
                     }
                 }
             }
@@ -68,16 +87,37 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    IEnumerator Movingobject(Interactables obj, Vector3 position)
+    void CanFinish()
     {
+        canFinish = true;
+        UIManager.instance.SetBackImage(true);
+    }
+
+    void FinishView()
+    {
+        canFinish = false;
+        isViewing = false;
+        UIManager.instance.SetBackImage(false);
+        if(currentInteract.item.grabbable)
+        {
+            currentInteract.transform.rotation = originRotation;
+            StartCoroutine(MovingObject(currentInteract, originPosition));
+        }
+        OnFinishView.Invoke();
+    }
+
+    IEnumerator MovingObject(Interactables obj, Vector3 position)
+    {
+        obj.isMoving = true;
         float timer = 0;
         while(timer < 1)
         {
-            obj.transform.position = Vector3.Lerp(obj.transform.position, position, Time.deltaTime * rotateSpeed);
+            obj.transform.position = Vector3.Lerp(obj.transform.position, position, Time.deltaTime * pickupSpeed);
             timer += Time.deltaTime;
             yield return null;
         }
         obj.transform.position = position;
+        obj.isMoving = false;
     }
 
     void RotateObject()

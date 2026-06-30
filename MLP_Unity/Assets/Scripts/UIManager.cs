@@ -4,6 +4,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public GameObject interactionCursor;
+    public GameObject backImage;
 
     private void Awake()
     {
@@ -24,5 +25,10 @@ public class UIManager : MonoBehaviour
     public void SetInteractionCursor(bool state)
     {
         interactionCursor.SetActive(state);
+    }
+
+    public void SetBackImage(bool state)
+    {
+        backImage.SetActive(state);
     }
 }
