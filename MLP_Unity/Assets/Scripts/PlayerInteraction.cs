@@ -20,7 +20,12 @@ public class PlayerInteraction : MonoBehaviour
     public InputActionReference leftClick;
     public InputActionReference rightClick;
     public InputActionReference look;
+    public InputActionAsset inputActions;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void OnEnable()
+    {
+        inputActions.FindActionMap("Player").Enable();
+    }
     void Start()
     {
         cam = Camera.main;
@@ -43,6 +48,7 @@ public class PlayerInteraction : MonoBehaviour
             if(canFinish && rightClick.action.WasPressedThisFrame())
             {
                 FinishView();
+                inputActions.FindActionMap("Player").Enable();
             }
             return;
         }
@@ -61,7 +67,8 @@ public class PlayerInteraction : MonoBehaviour
                     {
                         return;
                     }
-
+                    
+                    inputActions.FindActionMap("Player").Disable();
                     OnView.Invoke();
                     currentInteract = interactable;
                     isViewing = true;
