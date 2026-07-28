@@ -11,6 +11,7 @@ public class PlayerInteraction : MonoBehaviour
     public Transform objectViewer;
     public UnityEvent OnView;
     public UnityEvent OnFinishView;
+    public Item lighter;
     private Camera cam;
     private bool isViewing;
     private bool canFinish;
@@ -19,6 +20,7 @@ public class PlayerInteraction : MonoBehaviour
     private Quaternion originRotation;
     public InputActionReference leftClick;
     public InputActionReference rightClick;
+    public InputActionReference interactBttn;
     public InputActionReference look;
     public InputActionAsset inputActions;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,13 +41,22 @@ public class PlayerInteraction : MonoBehaviour
 
     void CheckInteractables()
     {
-        if(isViewing)
+        if (isViewing)
         {
-            if(currentInteract.item.grabbable)
+            if (currentInteract.item.grabbable)
             {
                 RotateObject();
             }
-            if(canFinish && rightClick.action.WasPressedThisFrame())
+            if (canFinish && currentInteract.item.stashable && interactBttn.action.WasPressedThisFrame())
+            {
+                FinishView();
+                inputActions.FindActionMap("Player").Enable();
+                if (currentInteract.item == lighter)
+                {
+                    LighterFunction.instance.SetLighter(1);
+                }
+            }
+            else if (canFinish && rightClick.action.WasPressedThisFrame())
             {
                 FinishView();
                 inputActions.FindActionMap("Player").Enable();
@@ -55,19 +66,19 @@ public class PlayerInteraction : MonoBehaviour
         RaycastHit hit;
         Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
 
-        if(Physics.Raycast(rayOrigin, cam.transform.forward, out hit, rayDistance))
+        if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, rayDistance))
         {
             Interactables interactable = hit.collider.GetComponent<Interactables>();
-            if(interactable != null)
+            if (interactable != null)
             {
                 UIManager.instance.SetInteractionCursor(true);
-                if(leftClick.action.WasPressedThisFrame())
+                if (leftClick.action.WasPressedThisFrame())
                 {
-                    if(interactable.isMoving)
+                    if (interactable.isMoving)
                     {
                         return;
                     }
-                    
+
                     inputActions.FindActionMap("Player").Disable();
                     OnView.Invoke();
                     currentInteract = interactable;
@@ -75,7 +86,7 @@ public class PlayerInteraction : MonoBehaviour
 
                     Invoke("CanFinish", 1f);
 
-                    if(currentInteract.item.grabbable)
+                    if (currentInteract.item.grabbable)
                     {
                         originPosition = currentInteract.transform.position;
                         originRotation = currentInteract.transform.rotation;
@@ -105,7 +116,7 @@ public class PlayerInteraction : MonoBehaviour
         canFinish = false;
         isViewing = false;
         UIManager.instance.SetBackImage(false);
-        if(currentInteract.item.grabbable)
+        if (currentInteract.item.grabbable)
         {
             currentInteract.transform.rotation = originRotation;
             StartCoroutine(MovingObject(currentInteract, originPosition));
@@ -117,7 +128,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         obj.isMoving = true;
         float timer = 0;
-        while(timer < 1)
+        while (timer < 1)
         {
             obj.transform.position = Vector3.Lerp(obj.transform.position, position, Time.deltaTime * pickupSpeed);
             timer += Time.deltaTime;

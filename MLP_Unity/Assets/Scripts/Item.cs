@@ -4,6 +4,7 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public bool grabbable;
+    public bool stashable;
     public AudioClip audioClip;
     public string text;
 }
