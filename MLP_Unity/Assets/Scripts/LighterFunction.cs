@@ -5,7 +5,6 @@ public class LighterFunction : MonoBehaviour
 {
     public static LighterFunction instance;
     private bool holdingLight;
-    public Transform lightHand;
     public int hasLighter;
     public GameObject lighter;
     public InputActionReference lightBttn;
@@ -26,11 +25,13 @@ public class LighterFunction : MonoBehaviour
         if ((hasLighter > 0) && lightBttn.action.WasPressedThisFrame())
         {
             holdingLight = !holdingLight;
+            handleLighter();
         }
-        if (holdingLight)
-        {
-            lighter.transform.position = lightHand.position;
-        }
+    }
+
+    private void handleLighter()
+    {
+        lighter.SetActive(holdingLight);
     }
 
     public void SetLighter(int l)
