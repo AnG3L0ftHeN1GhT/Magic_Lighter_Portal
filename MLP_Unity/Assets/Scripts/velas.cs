@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class velas : MonoBehaviour
 {
-    public string cor;
+    public string corCompare;
+
+    public string corInput;
+    public int positionInput;
+    public int positionCompare;
+
     
     void Start()
     {
@@ -13,21 +18,27 @@ public class velas : MonoBehaviour
     void Update()
     {
 
+        if (corCompare==corInput)
+        {
+            //variaveildispensavel = true
+            //instanciar particula, começa na posição dessa vela e termina na posição exata da ota
+
+        }
+
         //ligar velinhas
-        if (cor=="roxo")
+        if (corInput=="roxo")
         {
             //instanciar particula1
         }
-        else if (cor=="dourado")
+        else if (corInput=="dourado")
         {
             //instanciar particula2
         }
-        else if (cor=="verde")
+        else if (corInput=="verde")
         {
             //instanciar particula3
         }
 
-        //cor vai receber a cor atual do isqueiro, e ligar a vela
-        //1 = roxo 2 = dourado 3 = verde
+
     }
 }
