@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public GameObject standardFlame;
+    public GameObject goldenFlame;
+    //public GameObject StandardFlame;
+
+
     public float rayDistance;
     public float pickupSpeed;
     public float rotateSpeed;
@@ -79,6 +84,15 @@ public class PlayerInteraction : MonoBehaviour
                         return;
                     }
 
+                    currentInteract = interactable;
+
+                    if(currentInteract.item.papel)
+                    {
+                        MudarCorChama(goldenFlame);
+
+                        return;
+                    }
+
                     inputActions.FindActionMap("Player").Disable();
                     OnView.Invoke();
                     currentInteract = interactable;
@@ -144,5 +158,13 @@ public class PlayerInteraction : MonoBehaviour
         float y = Input.GetAxis("Mouse Y");
         currentInteract.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * x * rotateSpeed, Space.World);
         currentInteract.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * y * rotateSpeed, Space.World);
+    }
+
+    public void MudarCorChama(GameObject corDesejada)
+    {
+        standardFlame.SetActive(false);
+        goldenFlame.SetActive(false);
+
+        corDesejada.SetActive(true);
     }
 }
