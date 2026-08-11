@@ -441,7 +441,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 851193872}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 988755363}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: Sair
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &851193872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,6 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 988755362}
+  - component: {fileID: 988755363}
   m_Layer: 0
   m_Name: Menu Principal
   m_TagString: Untagged
@@ -514,6 +527,21 @@ Transform:
   - {fileID: 1333144551}
   m_Father: {fileID: 628754259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &988755363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988755361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2c46ad3d1e83445a0c5587a5caa51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
+  jogoPrincipal: gluh
+  creditos: "Cr\xE9ditos"
+  menuPrincipal: MenuPrincipal
 --- !u!1 &1198845352
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +888,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1333144553}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 988755363}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: Jogar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1333144553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,7 +1237,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1845458541}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 988755363}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: AbrirCreditios
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1845458541
 MonoBehaviour:
   m_ObjectHideFlags: 0
