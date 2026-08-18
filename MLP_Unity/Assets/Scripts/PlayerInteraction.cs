@@ -109,7 +109,7 @@ public class PlayerInteraction : MonoBehaviour
 
                     if(currentInteract.item.papel)
                     {
-                        MudarCorChama(1);
+                        MudarCorChama(activeFlame);
 
                         return;
                     }
