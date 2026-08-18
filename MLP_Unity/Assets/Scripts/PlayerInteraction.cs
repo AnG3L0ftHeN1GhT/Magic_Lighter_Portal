@@ -47,7 +47,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         inputActions.FindActionMap("Player").Enable();
     }
-
     void Start()
     {
         cam = Camera.main;
@@ -56,7 +55,6 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         CheckInteractables();
-        CheckGrabInput();
     }
 
     void CheckInteractables()
@@ -107,7 +105,7 @@ public class PlayerInteraction : MonoBehaviour
 
                     currentInteract = interactable;
 
-                    if (currentInteract.item.papel)
+                    if(currentInteract.item.papel)
                     {
                         MudarCorChama(goldenFlame);
 
@@ -297,9 +295,32 @@ public class PlayerInteraction : MonoBehaviour
 
     public void MudarCorChama(GameObject corDesejada)
     {
-        standardFlame.SetActive(false);
-        goldenFlame.SetActive(false);
+        
+        if(corDesejada == 0)
+        {
+            standardFlame.SetActive(true);
+            goldenFlame.SetActive(false);
+            purpleFlame.SetActive(false);
+            greenFlame.SetActive(false);
+        } else if(corDesejada == 1)
+        {
+            standardFlame.SetActive(false);
+            goldenFlame.SetActive(true);
+            purpleFlame.SetActive(false);
+            greenFlame.SetActive(false);
+        } else if(corDesejada == 2)
+        {
+            standardFlame.SetActive(false);
+            goldenFlame.SetActive(false);
+            purpleFlame.SetActive(true);
+            greenFlame.SetActive(false);
+        } else if(corDesejada == 3)
+        {
+            standardFlame.SetActive(false);
+            goldenFlame.SetActive(false);
+            purpleFlame.SetActive(false);
+            greenFlame.SetActive(true);
+        }
 
-        corDesejada.SetActive(true);
     }
 }
