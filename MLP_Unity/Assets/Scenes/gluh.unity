@@ -600,8 +600,8 @@ GameObject:
   - component: {fileID: 721173460}
   - component: {fileID: 721173459}
   - component: {fileID: 721173458}
-  - component: {fileID: 721173461}
   - component: {fileID: 721173462}
+  - component: {fileID: 721173463}
   m_Layer: 0
   m_Name: vela v2
   m_TagString: Untagged
@@ -696,18 +696,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &721173461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721173457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7929d7fecf35a5c45a73130730e80c27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::velas
 --- !u!95 &721173462
 Animator:
   serializedVersion: 7
@@ -730,6 +718,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &721173463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721173457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6999a82c02b9344be0c5024af374c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::velas
+  corLocal: 0
+  corInput: 0
+  corChecker: 
+  velaid: 
+  roxo1: 0
+  roxo2: 0
+  verde1: 0
+  verde2: 0
+  gold1: 0
+  gold2: 0
 --- !u!1001 &742082249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1161,8 +1171,8 @@ GameObject:
   - component: {fileID: 895792026}
   - component: {fileID: 895792025}
   - component: {fileID: 895792024}
-  - component: {fileID: 895792027}
   - component: {fileID: 895792028}
+  - component: {fileID: 895792029}
   m_Layer: 0
   m_Name: vela g2
   m_TagString: Untagged
@@ -1257,18 +1267,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &895792027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895792023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7929d7fecf35a5c45a73130730e80c27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::velas
 --- !u!95 &895792028
 Animator:
   serializedVersion: 7
@@ -1291,6 +1289,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &895792029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895792023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6999a82c02b9344be0c5024af374c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::velas
+  corLocal: 0
+  corInput: 0
+  corChecker: 
+  velaid: 
+  roxo1: 0
+  roxo2: 0
+  verde1: 0
+  verde2: 0
+  gold1: 0
+  gold2: 0
 --- !u!1 &910338864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,8 +1541,8 @@ GameObject:
   - component: {fileID: 1130814445}
   - component: {fileID: 1130814444}
   - component: {fileID: 1130814443}
-  - component: {fileID: 1130814446}
   - component: {fileID: 1130814447}
+  - component: {fileID: 1130814448}
   m_Layer: 0
   m_Name: vela g1
   m_TagString: Untagged
@@ -1617,18 +1637,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1130814446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130814442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7929d7fecf35a5c45a73130730e80c27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::velas
 --- !u!95 &1130814447
 Animator:
   serializedVersion: 7
@@ -1651,6 +1659,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1130814448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130814442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6999a82c02b9344be0c5024af374c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::velas
+  corLocal: 0
+  corInput: 0
+  corChecker: 
+  velaid: 
+  roxo1: 0
+  roxo2: 0
+  verde1: 0
+  verde2: 0
+  gold1: 0
+  gold2: 0
 --- !u!1 &1180772662
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,12 +2342,12 @@ MonoBehaviour:
   bgldorado: {fileID: 3536975998499497278, guid: 383c8d9f757f07649af09ced067b9e87, type: 3}
   bglroxo: {fileID: 3922153546853820364, guid: 6a5be361c8ccc3044a9aad93288f5c48, type: 3}
   bglverde: {fileID: 4069885943915481453, guid: 3eeaacacc2f903a4187ca22d05d4f95f, type: 3}
-  vr1: {fileID: 1605377267}
-  vr2: {fileID: 1535672824}
-  vv1: {fileID: 2069676079}
-  vv2: {fileID: 721173461}
-  vg1: {fileID: 1130814446}
-  vg2: {fileID: 895792027}
+  vr1: {fileID: 0}
+  vr2: {fileID: 0}
+  vv1: {fileID: 0}
+  vv2: {fileID: 0}
+  vg1: {fileID: 0}
+  vg2: {fileID: 0}
   raioRoxoChecker: 0
   raioVerdeChecker: 0
   raioDoradoChecker: 0
@@ -2461,8 +2491,8 @@ GameObject:
   - component: {fileID: 1535672821}
   - component: {fileID: 1535672820}
   - component: {fileID: 1535672823}
-  - component: {fileID: 1535672824}
   - component: {fileID: 1535672825}
+  - component: {fileID: 1535672826}
   m_Layer: 0
   m_Name: vela r2
   m_TagString: Untagged
@@ -2571,18 +2601,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactables
   item: {fileID: 0}
   isMoving: 0
---- !u!114 &1535672824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535672819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7929d7fecf35a5c45a73130730e80c27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::velas
 --- !u!95 &1535672825
 Animator:
   serializedVersion: 7
@@ -2605,6 +2623,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1535672826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535672819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6999a82c02b9344be0c5024af374c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::velas
+  corLocal: 0
+  corInput: 0
+  corChecker: 
+  velaid: 
+  roxo1: 0
+  roxo2: 0
+  verde1: 0
+  verde2: 0
+  gold1: 0
+  gold2: 0
 --- !u!1 &1560612117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: 525ff6a1b18961144a5b30417a43cc6c, type: 3}
@@ -2643,8 +2683,8 @@ GameObject:
   - component: {fileID: 1605377266}
   - component: {fileID: 1605377265}
   - component: {fileID: 1605377264}
-  - component: {fileID: 1605377267}
   - component: {fileID: 1605377268}
+  - component: {fileID: 1605377269}
   m_Layer: 0
   m_Name: vela r1
   m_TagString: Untagged
@@ -2739,18 +2779,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1605377267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605377263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7929d7fecf35a5c45a73130730e80c27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::velas
 --- !u!95 &1605377268
 Animator:
   serializedVersion: 7
@@ -2773,6 +2801,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1605377269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605377263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6999a82c02b9344be0c5024af374c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::velas
+  corLocal: 0
+  corInput: 0
+  corChecker: 
+  velaid: 
+  roxo1: 0
+  roxo2: 0
+  verde1: 0
+  verde2: 0
+  gold1: 0
+  gold2: 0
 --- !u!1 &1645266650
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,8 +3574,8 @@ GameObject:
   - component: {fileID: 2069676078}
   - component: {fileID: 2069676077}
   - component: {fileID: 2069676076}
-  - component: {fileID: 2069676079}
   - component: {fileID: 2069676080}
+  - component: {fileID: 2069676081}
   m_Layer: 0
   m_Name: vela v1
   m_TagString: Untagged
@@ -3620,18 +3670,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2069676079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069676075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7929d7fecf35a5c45a73130730e80c27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::velas
 --- !u!95 &2069676080
 Animator:
   serializedVersion: 7
@@ -3654,6 +3692,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2069676081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069676075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6999a82c02b9344be0c5024af374c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::velas
+  corLocal: 0
+  corInput: 0
+  corChecker: 
+  velaid: 
+  roxo1: 0
+  roxo2: 0
+  verde1: 0
+  verde2: 0
+  gold1: 0
+  gold2: 0
 --- !u!1 &2126006740 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -208595431880416365, guid: 525ff6a1b18961144a5b30417a43cc6c, type: 3}
@@ -3692,11 +3752,11 @@ SceneRoots:
   - {fileID: 1434059913}
   - {fileID: 446543485}
   - {fileID: 1605377266}
+  - {fileID: 1535672822}
+  - {fileID: 2069676078}
   - {fileID: 721173460}
   - {fileID: 895792026}
-  - {fileID: 2069676078}
   - {fileID: 1130814445}
-  - {fileID: 1535672822}
   - {fileID: 1211299036}
   - {fileID: 910338868}
   - {fileID: 1180772666}
