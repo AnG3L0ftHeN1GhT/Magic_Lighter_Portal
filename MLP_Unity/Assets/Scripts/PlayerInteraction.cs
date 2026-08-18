@@ -47,7 +47,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         inputActions.FindActionMap("Player").Enable();
     }
-
     void Start()
     {
         cam = Camera.main;
@@ -56,7 +55,6 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         CheckInteractables();
-        CheckGrabInput();
     }
 
     void CheckInteractables()
@@ -107,7 +105,7 @@ public class PlayerInteraction : MonoBehaviour
 
                     currentInteract = interactable;
 
-                    if (currentInteract.item.papel)
+                    if(currentInteract.item.papel)
                     {
                         MudarCorChama(goldenFlame);
 

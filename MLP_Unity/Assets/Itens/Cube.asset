@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c5fe72cc3325d438151dd3f2327fba, type: 3}
   m_Name: Cube
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  grabbable: 1
+  grabbable: 0
+  stashable: 1
+  vela: 0
+  papel: 0
   audioClip: {fileID: 0}
   text: 
