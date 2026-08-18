@@ -560,6 +560,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""24816d74-d633-4117-ba36-a88a2a8dbf20"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e1d7d516-677a-42de-b08b-09aa225d8068"",
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
