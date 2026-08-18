@@ -9,7 +9,6 @@ public class PlayerInteraction : MonoBehaviour
     public GameObject goldenFlame;
     //public GameObject StandardFlame;
 
-
     public float rayDistance;
     public float pickupSpeed;
     public float rotateSpeed;
@@ -28,7 +27,22 @@ public class PlayerInteraction : MonoBehaviour
     public InputActionReference interactBttn;
     public InputActionReference look;
     public InputActionAsset inputActions;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [Header("Grab To Hand")]
+    [Tooltip("Transform que representa a mão do player. O item carregado será filho deste transform.")]
+    public Transform handPosition;
+
+    [Tooltip("Ação do Input System vinculada à tecla de pegar/largar (configurada no Input Actions Asset, ex: Z).")]
+    public InputActionReference grabKey;
+
+    [Tooltip("Velocidade com que o objeto se ajusta até a mão ao ser pego.")]
+    public float handMoveSpeed = 8f;
+
+    private Interactables carriedItem;
+    private Rigidbody carriedRigidbody;
+    private Collider carriedCollider;
+    private Coroutine handRoutine;
+
     void OnEnable()
     {
         inputActions.FindActionMap("Player").Enable();
@@ -38,7 +52,6 @@ public class PlayerInteraction : MonoBehaviour
         cam = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckInteractables();
@@ -84,6 +97,12 @@ public class PlayerInteraction : MonoBehaviour
                         return;
                     }
 
+                    // Não permite abrir o modo de visualização em um item que já está na mão
+                    if (interactable == carriedItem)
+                    {
+                        return;
+                    }
+
                     currentInteract = interactable;
 
                     if(currentInteract.item.papel)
@@ -117,6 +136,120 @@ public class PlayerInteraction : MonoBehaviour
         {
             UIManager.instance.SetInteractionCursor(false);
         }
+    }
+
+    // Controla o pegar/largar de itens na mão, de forma independente do modo de visualização.
+    void CheckGrabInput()
+    {
+        // Enquanto estiver no modo de visualização (segurando o objeto na frente da câmera), não mexe na mão.
+        if (isViewing)
+        {
+            return;
+        }
+
+        // Já está carregando algo: a mesma tecla larga o item.
+        if (carriedItem != null)
+        {
+            if (grabKey.action.WasPressedThisFrame())
+            {
+                DropItem();
+            }
+            return;
+        }
+
+        RaycastHit hit;
+        Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
+
+        if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, rayDistance))
+        {
+            Interactables interactable = hit.collider.GetComponent<Interactables>();
+
+            if (interactable != null && !interactable.isMoving && interactable.item.grabbable)
+            {
+                if (grabKey.action.WasPressedThisFrame())
+                {
+                    GrabItem(interactable);
+                }
+            }
+        }
+    }
+
+    void GrabItem(Interactables interactable)
+    {
+        carriedItem = interactable;
+        carriedRigidbody = interactable.GetComponent<Rigidbody>();
+        carriedCollider = interactable.GetComponent<Collider>();
+
+        if (carriedRigidbody != null)
+        {
+            carriedRigidbody.isKinematic = true;
+            carriedRigidbody.useGravity = false;
+        }
+
+        // Desativa o collider enquanto está na mão para não colidir com o próprio player.
+        if (carriedCollider != null)
+        {
+            carriedCollider.enabled = false;
+        }
+
+        interactable.transform.SetParent(handPosition);
+
+        if (handRoutine != null)
+        {
+            StopCoroutine(handRoutine);
+        }
+        handRoutine = StartCoroutine(MoveToHand(interactable.transform));
+    }
+
+    void DropItem()
+    {
+        if (carriedItem == null)
+        {
+            return;
+        }
+
+        if (handRoutine != null)
+        {
+            StopCoroutine(handRoutine);
+            handRoutine = null;
+        }
+
+        carriedItem.transform.SetParent(null);
+
+        if (carriedCollider != null)
+        {
+            carriedCollider.enabled = true;
+        }
+
+        if (carriedRigidbody != null)
+        {
+            carriedRigidbody.isKinematic = false;
+            carriedRigidbody.useGravity = true;
+        }
+
+        carriedItem = null;
+        carriedRigidbody = null;
+        carriedCollider = null;
+    }
+
+    // Suaviza o encaixe do objeto na posição/rotação da mão, mas mantém o parent
+    // já definido em GrabItem, então o item acompanha o player normalmente após o encaixe.
+    IEnumerator MoveToHand(Transform obj)
+    {
+        Vector3 startPos = obj.localPosition;
+        Quaternion startRot = obj.localRotation;
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime * handMoveSpeed;
+            obj.localPosition = Vector3.Lerp(startPos, Vector3.zero, t);
+            obj.localRotation = Quaternion.Slerp(startRot, Quaternion.identity, t);
+            yield return null;
+        }
+
+        obj.localPosition = Vector3.zero;
+        obj.localRotation = Quaternion.identity;
     }
 
     void CanFinish()
@@ -162,9 +295,32 @@ public class PlayerInteraction : MonoBehaviour
 
     public void MudarCorChama(GameObject corDesejada)
     {
-        standardFlame.SetActive(false);
-        goldenFlame.SetActive(false);
+        
+        if(corDesejada == 0)
+        {
+            standardFlame.SetActive(true);
+            goldenFlame.SetActive(false);
+            purpleFlame.SetActive(false);
+            greenFlame.SetActive(false);
+        } else if(corDesejada == 1)
+        {
+            standardFlame.SetActive(false);
+            goldenFlame.SetActive(true);
+            purpleFlame.SetActive(false);
+            greenFlame.SetActive(false);
+        } else if(corDesejada == 2)
+        {
+            standardFlame.SetActive(false);
+            goldenFlame.SetActive(false);
+            purpleFlame.SetActive(true);
+            greenFlame.SetActive(false);
+        } else if(corDesejada == 3)
+        {
+            standardFlame.SetActive(false);
+            goldenFlame.SetActive(false);
+            purpleFlame.SetActive(false);
+            greenFlame.SetActive(true);
+        }
 
-        corDesejada.SetActive(true);
     }
 }
