@@ -107,10 +107,10 @@ public class PlayerInteraction : MonoBehaviour
 
                     currentInteract = interactable;
 
-                    if(currentInteract.item.papelDeOuro)
+                    if(currentInteract.item.papel)
                     {
-                        activeFlame = 1;
                         MudarCorChama(activeFlame);
+
                         return;
                     }
 
