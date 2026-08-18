@@ -1318,7 +1318,7 @@ GameObject:
   - component: {fileID: 878946116}
   - component: {fileID: 878946115}
   m_Layer: 0
-  m_Name: er
+  m_Name: ZonaDeSussuros
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4257,3 +4257,4 @@ SceneRoots:
   - {fileID: 259375209}
   - {fileID: 2082182127}
   - {fileID: 843385002}
+  - {fileID: 878946117}
