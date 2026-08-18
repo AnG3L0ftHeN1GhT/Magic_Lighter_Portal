@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffdc61f417dd5d74eab26e5aff1f6135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactables
-  item: {fileID: 11400000, guid: 2352bbaf37ea6b042916b75639d1ac75, type: 2}
+  item: {fileID: 11400000, guid: 1771d6a7e9d9e474bb233bae6831b7fb, type: 2}
   isMoving: 0
 --- !u!65 &48633210
 BoxCollider:
@@ -1030,6 +1030,10 @@ PrefabInstance:
     - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: greenFluid
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: activeFlame
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: goldenFlame
