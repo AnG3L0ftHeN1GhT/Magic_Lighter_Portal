@@ -952,7 +952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: hasLighter
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 861495298209355536, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: m_Name
@@ -1004,7 +1004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6603510170235960985, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7044318767260776078, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: m_LocalScale.x

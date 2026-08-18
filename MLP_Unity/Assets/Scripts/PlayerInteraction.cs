@@ -9,6 +9,7 @@ public class PlayerInteraction : MonoBehaviour
     public GameObject goldenFlame;
     public GameObject purpleFlame;
     public GameObject greenFlame;
+    public int activeFlame;
 
     public float rayDistance;
     public float pickupSpeed;
@@ -108,7 +109,7 @@ public class PlayerInteraction : MonoBehaviour
 
                     if(currentInteract.item.papel)
                     {
-                        MudarCorChama(goldenFlame);
+                        MudarCorChama(1);
 
                         return;
                     }
@@ -294,13 +295,34 @@ public class PlayerInteraction : MonoBehaviour
         currentInteract.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * y * rotateSpeed, Space.World);
     }
 
-    public void MudarCorChama(GameObject corDesejada)
+    public void MudarCorChama(int corDesejada)
     {
-        standardFlame.SetActive(false);
-        goldenFlame.SetActive(false);
-        purpleFlame.SetActive(false);
-        greenFlame.SetActive(false);
+        
+        if(corDesejada == 0)
+        {
+            standardFlame.SetActive(true);
+            goldenFlame.SetActive(false);
+            purpleFlame.SetActive(false);
+            greenFlame.SetActive(false);
+        } else if(corDesejada == 1)
+        {
+            standardFlame.SetActive(false);
+            goldenFlame.SetActive(true);
+            purpleFlame.SetActive(false);
+            greenFlame.SetActive(false);
+        } else if(corDesejada == 2)
+        {
+            standardFlame.SetActive(false);
+            goldenFlame.SetActive(false);
+            purpleFlame.SetActive(true);
+            greenFlame.SetActive(false);
+        } else if(corDesejada == 3)
+        {
+            standardFlame.SetActive(false);
+            goldenFlame.SetActive(false);
+            purpleFlame.SetActive(false);
+            greenFlame.SetActive(true);
+        }
 
-        corDesejada.SetActive(true);
     }
 }
