@@ -48,16 +48,5 @@ public class CandleManager : MonoBehaviour
             portalInvocado = true;
         }    
     }
-    void OnTriggerEnter(Collider goldenbeam)
-    {   
-        if(goldenbeam.gameObject.CompareTag("raiodorado")){
-        if (vg1.gold1==true&&vg2.gold2==true&&doradoInvocado==false)
-        {         
-        }
-        else
-        {
-            Destroy(goldenbeam);
-        }
-        }
-        }
+
 }
