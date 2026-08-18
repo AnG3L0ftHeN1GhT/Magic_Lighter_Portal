@@ -7,7 +7,8 @@ public class PlayerInteraction : MonoBehaviour
 {
     public GameObject standardFlame;
     public GameObject goldenFlame;
-    //public GameObject StandardFlame;
+    public GameObject purpleFlame;
+    public GameObject greenFlame;
 
     public float rayDistance;
     public float pickupSpeed;
@@ -297,6 +298,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         standardFlame.SetActive(false);
         goldenFlame.SetActive(false);
+        purpleFlame.SetActive(false);
+        greenFlame.SetActive(false);
 
         corDesejada.SetActive(true);
     }

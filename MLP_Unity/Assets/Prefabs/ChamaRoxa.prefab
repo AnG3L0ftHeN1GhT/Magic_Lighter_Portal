@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1232162748334348575}
   - component: {fileID: 6602882767235112786}
   m_Layer: 0
-  m_Name: ChamaDourada
+  m_Name: ChamaRoxa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1308,16 +1308,16 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.86911577, b: 0.3066038, a: 0}
-        key1: {r: 1, g: 0.76478124, b: 0, a: 1}
-        key2: {r: 1, g: 0.81539816, b: 0, a: 0.8951613}
-        key3: {r: 1, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 0, b: 0.7468281, a: 0}
+        key1: {r: 0.40215144, g: 0, b: 0.6037736, a: 1}
+        key2: {r: 0.36658812, g: 0, b: 1, a: 0.8951613}
+        key3: {r: 0.36658812, g: 0, b: 1, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 28913
+        ctime1: 20432
         ctime2: 65535
         ctime3: 65535
         ctime4: 0
@@ -1326,7 +1326,7 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 15227
-        atime2: 30069
+        atime2: 32382
         atime3: 65535
         atime4: 0
         atime5: 0
@@ -3821,7 +3821,7 @@ ParticleSystem:
   LightsModule:
     enabled: 1
     ratio: 1
-    light: {fileID: 7454499035167030656, guid: da1c7d39d5c58f34baa71bd60b653195, type: 3}
+    light: {fileID: 7454499035167030656, guid: e933f7c11a3593246b7331c6bad5ddbd, type: 3}
     randomDistribution: 1
     color: 1
     range: 1
