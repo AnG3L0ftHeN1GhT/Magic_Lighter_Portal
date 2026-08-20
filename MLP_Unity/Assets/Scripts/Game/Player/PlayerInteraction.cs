@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -30,25 +31,11 @@ public class PlayerInteraction : MonoBehaviour
     public InputActionReference look;
     public InputActionAsset inputActions;
 
-    [Header("Grab To Hand")]
-    [Tooltip("Transform que representa a mão do player. O item carregado será filho deste transform.")]
-    public Transform handPosition;
-
-    [Tooltip("Ação do Input System vinculada à tecla de pegar/largar (configurada no Input Actions Asset, ex: Z).")]
-    public InputActionReference grabKey;
-
-    [Tooltip("Velocidade com que o objeto se ajusta até a mão ao ser pego.")]
-    public float handMoveSpeed = 8f;
-
-    private Interactables carriedItem;
-    private Rigidbody carriedRigidbody;
-    private Collider carriedCollider;
-    private Coroutine handRoutine;
-
     void OnEnable()
     {
         inputActions.FindActionMap("Player").Enable();
     }
+
     void Start()
     {
         cam = Camera.main;
@@ -67,10 +54,12 @@ public class PlayerInteraction : MonoBehaviour
             {
                 RotateObject();
             }
+
             if (canFinish && currentInteract.item.stashable && interactBttn.action.WasPressedThisFrame())
             {
                 FinishView();
                 inputActions.FindActionMap("Player").Enable();
+
                 if (currentInteract.item == lighter)
                 {
                     LighterFunction.instance.SetLighter(1);
@@ -81,17 +70,21 @@ public class PlayerInteraction : MonoBehaviour
                 FinishView();
                 inputActions.FindActionMap("Player").Enable();
             }
+
             return;
         }
+
         RaycastHit hit;
         Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
 
         if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, rayDistance))
         {
             Interactables interactable = hit.collider.GetComponent<Interactables>();
+
             if (interactable != null)
             {
                 UIManager.instance.SetInteractionCursor(true);
+
                 if (leftClick.action.WasPressedThisFrame())
                 {
                     if (interactable.isMoving)
@@ -99,19 +92,18 @@ public class PlayerInteraction : MonoBehaviour
                         return;
                     }
 
-                    // Não permite abrir o modo de visualização em um item que já está na mão
-                    if (interactable == carriedItem)
-                    {
-                        return;
-                    }
-
                     currentInteract = interactable;
 
-                    if(currentInteract.item.papel)
+                    if (currentInteract.item.papel)
                     {
                         MudarCorChama(activeFlame);
 
                         return;
+                    }
+
+                    if (currentInteract.item.piramide)
+                    {
+                        SceneManager.LoadScene("Pyramid Screen");
                     }
 
                     inputActions.FindActionMap("Player").Disable();
@@ -140,120 +132,6 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    // Controla o pegar/largar de itens na mão, de forma independente do modo de visualização.
-    void CheckGrabInput()
-    {
-        // Enquanto estiver no modo de visualização (segurando o objeto na frente da câmera), não mexe na mão.
-        if (isViewing)
-        {
-            return;
-        }
-
-        // Já está carregando algo: a mesma tecla larga o item.
-        if (carriedItem != null)
-        {
-            if (grabKey.action.WasPressedThisFrame())
-            {
-                DropItem();
-            }
-            return;
-        }
-
-        RaycastHit hit;
-        Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
-
-        if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, rayDistance))
-        {
-            Interactables interactable = hit.collider.GetComponent<Interactables>();
-
-            if (interactable != null && !interactable.isMoving && interactable.item.grabbable)
-            {
-                if (grabKey.action.WasPressedThisFrame())
-                {
-                    GrabItem(interactable);
-                }
-            }
-        }
-    }
-
-    void GrabItem(Interactables interactable)
-    {
-        carriedItem = interactable;
-        carriedRigidbody = interactable.GetComponent<Rigidbody>();
-        carriedCollider = interactable.GetComponent<Collider>();
-
-        if (carriedRigidbody != null)
-        {
-            carriedRigidbody.isKinematic = true;
-            carriedRigidbody.useGravity = false;
-        }
-
-        // Desativa o collider enquanto está na mão para não colidir com o próprio player.
-        if (carriedCollider != null)
-        {
-            carriedCollider.enabled = false;
-        }
-
-        interactable.transform.SetParent(handPosition);
-
-        if (handRoutine != null)
-        {
-            StopCoroutine(handRoutine);
-        }
-        handRoutine = StartCoroutine(MoveToHand(interactable.transform));
-    }
-
-    void DropItem()
-    {
-        if (carriedItem == null)
-        {
-            return;
-        }
-
-        if (handRoutine != null)
-        {
-            StopCoroutine(handRoutine);
-            handRoutine = null;
-        }
-
-        carriedItem.transform.SetParent(null);
-
-        if (carriedCollider != null)
-        {
-            carriedCollider.enabled = true;
-        }
-
-        if (carriedRigidbody != null)
-        {
-            carriedRigidbody.isKinematic = false;
-            carriedRigidbody.useGravity = true;
-        }
-
-        carriedItem = null;
-        carriedRigidbody = null;
-        carriedCollider = null;
-    }
-
-    // Suaviza o encaixe do objeto na posição/rotação da mão, mas mantém o parent
-    // já definido em GrabItem, então o item acompanha o player normalmente após o encaixe.
-    IEnumerator MoveToHand(Transform obj)
-    {
-        Vector3 startPos = obj.localPosition;
-        Quaternion startRot = obj.localRotation;
-        float t = 0f;
-
-        while (t < 1f)
-        {
-            t += Time.deltaTime * handMoveSpeed;
-            obj.localPosition = Vector3.Lerp(startPos, Vector3.zero, t);
-            obj.localRotation = Quaternion.Slerp(startRot, Quaternion.identity, t);
-            yield return null;
-        }
-
-        obj.localPosition = Vector3.zero;
-        obj.localRotation = Quaternion.identity;
-    }
-
     void CanFinish()
     {
         canFinish = true;
@@ -265,11 +143,13 @@ public class PlayerInteraction : MonoBehaviour
         canFinish = false;
         isViewing = false;
         UIManager.instance.SetBackImage(false);
+
         if (currentInteract.item.grabbable)
         {
             currentInteract.transform.rotation = originRotation;
             StartCoroutine(MovingObject(currentInteract, originPosition));
         }
+
         OnFinishView.Invoke();
     }
 
@@ -277,12 +157,14 @@ public class PlayerInteraction : MonoBehaviour
     {
         obj.isMoving = true;
         float timer = 0;
+
         while (timer < 1)
         {
             obj.transform.position = Vector3.Lerp(obj.transform.position, position, Time.deltaTime * pickupSpeed);
             timer += Time.deltaTime;
             yield return null;
         }
+
         obj.transform.position = position;
         obj.isMoving = false;
     }
@@ -291,38 +173,40 @@ public class PlayerInteraction : MonoBehaviour
     {
         float x = Input.GetAxis("Mouse X");
         float y = Input.GetAxis("Mouse Y");
+
         currentInteract.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * x * rotateSpeed, Space.World);
         currentInteract.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * y * rotateSpeed, Space.World);
     }
 
     public void MudarCorChama(int corDesejada)
     {
-        
-        if(corDesejada == 0)
+        if (corDesejada == 0)
         {
             standardFlame.SetActive(true);
             goldenFlame.SetActive(false);
             purpleFlame.SetActive(false);
             greenFlame.SetActive(false);
-        } else if(corDesejada == 1)
+        }
+        else if (corDesejada == 1)
         {
             standardFlame.SetActive(false);
             goldenFlame.SetActive(true);
             purpleFlame.SetActive(false);
             greenFlame.SetActive(false);
-        } else if(corDesejada == 2)
+        }
+        else if (corDesejada == 2)
         {
             standardFlame.SetActive(false);
             goldenFlame.SetActive(false);
             purpleFlame.SetActive(true);
             greenFlame.SetActive(false);
-        } else if(corDesejada == 3)
+        }
+        else if (corDesejada == 3)
         {
             standardFlame.SetActive(false);
             goldenFlame.SetActive(false);
             purpleFlame.SetActive(false);
             greenFlame.SetActive(true);
         }
-
     }
 }

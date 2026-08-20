@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Cube
   m_EditorClassIdentifier: Assembly-CSharp::Item
   grabbable: 0
-  stashable: 1
+  stashable: 0
   vela: 0
   papel: 0
+  piramide: 1
   audioClip: {fileID: 0}
   text: 
