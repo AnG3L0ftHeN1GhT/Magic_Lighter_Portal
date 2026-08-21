@@ -93,13 +93,6 @@ public class PlayerInteraction : MonoBehaviour
 
                     currentInteract = interactable;
 
-                    if (currentInteract.item.papel)
-                    {
-                        MudarCorChama(activeFlame);
-
-                        return;
-                    }
-
                     if (currentInteract.item.piramide)
                     {
                         SceneManager.LoadScene("Pyramid Screen");
