@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -20,8 +21,8 @@ public class PlayerController : MonoBehaviour
     [Header("Input Actions")]
     public InputActionReference moveAction;
     public InputActionReference jumpAction;
-    public InputActionReference lookAction;   // Vector2 -> <Mouse>/delta
-    public InputActionReference clickAction;  // Button  -> <Mouse>/leftButton
+    public InputActionReference lookAction;
+    public InputActionReference clickAction;
 
     [Header("Mouse Look")]
     public float mouseSensitivity = 0.1f;
@@ -34,6 +35,13 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         cameraTransform = Camera.main.transform;
+
+        if (SceneManager.GetActiveScene().name == "Pyramid Screen")
+        {
+            cursorLocked = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     private void OnEnable()
@@ -58,22 +66,30 @@ public class PlayerController : MonoBehaviour
 
     private void OnClickPerformed(InputAction.CallbackContext ctx)
     {
+        if (SceneManager.GetActiveScene().name == "Pyramid Screen")
+        {
+            return;
+        }
+
         if (!cursorLocked)
         {
             SetCursorLocked(true);
         }
     }
 
-    void Update()
+    private void Update()
     {
-        if (cursorLocked && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (SceneManager.GetActiveScene().name != "Pyramid Screen")
         {
-            SetCursorLocked(false);
-        }
+            if (cursorLocked && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                SetCursorLocked(false);
+            }
 
-        if (cursorLocked)
-        {
-            HandleMouseLook();
+            if (cursorLocked)
+            {
+                HandleMouseLook();
+            }
         }
 
         groundedPlayer = controller.isGrounded;
@@ -114,12 +130,11 @@ public class PlayerController : MonoBehaviour
         float mouseX = lookDelta.x * mouseSensitivity;
         float mouseY = lookDelta.y * mouseSensitivity;
 
-        // Yaw: gira o corpo do player (afeta também a direção de movimento)
         transform.Rotate(Vector3.up * mouseX);
 
-        // Pitch: gira apenas o pivô que a Cinemachine segue/olha
         pitch -= mouseY;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+
         cameraTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
     }
 }
