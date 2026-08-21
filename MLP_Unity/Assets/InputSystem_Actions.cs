@@ -181,6 +181,33 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""fire1"",
+                    ""type"": ""Button"",
+                    ""id"": ""b54a9b48-1343-4ae3-885d-222e5c68c4ba"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""fire2"",
+                    ""type"": ""Button"",
+                    ""id"": ""eda02379-a2f0-4773-b06f-af439cf2713c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""fire3"",
+                    ""type"": ""Button"",
+                    ""id"": ""3fee31f2-347a-4874-bfd4-7abd054a41f4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -577,6 +604,39 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a127896-6468-448c-b0d1-64ba60a707ee"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""fire1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a47d9845-e099-482f-a908-502107b76f9b"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""fire2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c61e780c-3176-4a6f-b8ab-82a3436ffb04"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""fire3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1205,6 +1265,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Light = m_Player.FindAction("Light", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
+        m_Player_fire1 = m_Player.FindAction("fire1", throwIfNotFound: true);
+        m_Player_fire2 = m_Player.FindAction("fire2", throwIfNotFound: true);
+        m_Player_fire3 = m_Player.FindAction("fire3", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1309,6 +1372,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Light;
     private readonly InputAction m_Player_Select;
+    private readonly InputAction m_Player_fire1;
+    private readonly InputAction m_Player_fire2;
+    private readonly InputAction m_Player_fire3;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1360,6 +1426,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Select".
         /// </summary>
         public InputAction @Select => m_Wrapper.m_Player_Select;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/fire1".
+        /// </summary>
+        public InputAction @fire1 => m_Wrapper.m_Player_fire1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/fire2".
+        /// </summary>
+        public InputAction @fire2 => m_Wrapper.m_Player_fire2;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/fire3".
+        /// </summary>
+        public InputAction @fire3 => m_Wrapper.m_Player_fire3;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1416,6 +1494,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
+            @fire1.started += instance.OnFire1;
+            @fire1.performed += instance.OnFire1;
+            @fire1.canceled += instance.OnFire1;
+            @fire2.started += instance.OnFire2;
+            @fire2.performed += instance.OnFire2;
+            @fire2.canceled += instance.OnFire2;
+            @fire3.started += instance.OnFire3;
+            @fire3.performed += instance.OnFire3;
+            @fire3.canceled += instance.OnFire3;
         }
 
         /// <summary>
@@ -1457,6 +1544,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
+            @fire1.started -= instance.OnFire1;
+            @fire1.performed -= instance.OnFire1;
+            @fire1.canceled -= instance.OnFire1;
+            @fire2.started -= instance.OnFire2;
+            @fire2.performed -= instance.OnFire2;
+            @fire2.canceled -= instance.OnFire2;
+            @fire3.started -= instance.OnFire3;
+            @fire3.performed -= instance.OnFire3;
+            @fire3.canceled -= instance.OnFire3;
         }
 
         /// <summary>
@@ -1838,6 +1934,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSelect(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "fire1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFire1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "fire2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFire2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "fire3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFire3(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
