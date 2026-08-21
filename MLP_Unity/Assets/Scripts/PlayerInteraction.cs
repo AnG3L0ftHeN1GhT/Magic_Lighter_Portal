@@ -5,11 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public GameObject standardFlame;
-    public GameObject goldenFlame;
-    public GameObject purpleFlame;
-    public GameObject greenFlame;
-    public int activeFlame;
+    public bool fluidoDourado;
+    public bool fluidoRoxo;
+    public bool fluidoGreen;
+
 
     public float rayDistance;
     public float pickupSpeed;
@@ -107,13 +106,8 @@ public class PlayerInteraction : MonoBehaviour
 
                     currentInteract = interactable;
 
-                    if(currentInteract.item.papelDeOuro)
-                    {
-                        activeFlame = 1;
-                        MudarCorChama(activeFlame);
-                        return;
-                    }
 
+                    /*
                     inputActions.FindActionMap("Player").Disable();
                     OnView.Invoke();
                     currentInteract = interactable;
@@ -127,6 +121,7 @@ public class PlayerInteraction : MonoBehaviour
                         originRotation = currentInteract.transform.rotation;
                         StartCoroutine(MovingObject(currentInteract, objectViewer.position));
                     }
+                    */
                 }
             }
             else
@@ -293,36 +288,5 @@ public class PlayerInteraction : MonoBehaviour
         float y = Input.GetAxis("Mouse Y");
         currentInteract.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * x * rotateSpeed, Space.World);
         currentInteract.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * y * rotateSpeed, Space.World);
-    }
-
-    public void MudarCorChama(int corDesejada)
-    {
-        
-        if(corDesejada == 0)
-        {
-            standardFlame.SetActive(true);
-            goldenFlame.SetActive(false);
-            purpleFlame.SetActive(false);
-            greenFlame.SetActive(false);
-        } else if(corDesejada == 1)
-        {
-            standardFlame.SetActive(false);
-            goldenFlame.SetActive(true);
-            purpleFlame.SetActive(false);
-            greenFlame.SetActive(false);
-        } else if(corDesejada == 2)
-        {
-            standardFlame.SetActive(false);
-            goldenFlame.SetActive(false);
-            purpleFlame.SetActive(true);
-            greenFlame.SetActive(false);
-        } else if(corDesejada == 3)
-        {
-            standardFlame.SetActive(false);
-            goldenFlame.SetActive(false);
-            purpleFlame.SetActive(false);
-            greenFlame.SetActive(true);
-        }
-
     }
 }
