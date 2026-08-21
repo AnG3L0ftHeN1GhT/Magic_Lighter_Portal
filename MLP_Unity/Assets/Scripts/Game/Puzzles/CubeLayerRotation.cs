@@ -4,6 +4,10 @@ public class CubeLayerRotation : MonoBehaviour
 {
     public float rotationSpeed = 300f;
 
+    public GameObject down;
+    public GameObject mid;
+    public GameObject top;
+
     private Transform currentCube;
     private Quaternion targetRotation;
     private bool isRotating = false;
@@ -30,9 +34,9 @@ public class CubeLayerRotation : MonoBehaviour
 
             while (clickedObject != null)
             {
-                if (clickedObject.name == "Cube" ||
-                    clickedObject.name == "Cube.001" ||
-                    clickedObject.name == "Cube.002")
+                if (clickedObject.name == "Japa" ||
+                    clickedObject.name == "Japa-2" ||
+                    clickedObject.name == "Japa-3")
                 {
                     StartRotation(clickedObject);
                     return;
