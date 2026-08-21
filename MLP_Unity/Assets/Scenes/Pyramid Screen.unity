@@ -567,6 +567,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 570068257}
     m_Modifications:
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: mid
+      value: 
+      objectReference: {fileID: 526601977}
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: top
+      value: 
+      objectReference: {fileID: 1054529770}
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: down
+      value: 
+      objectReference: {fileID: 424437860}
     - target: {fileID: 1004658046886847657, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
       propertyPath: m_ProbeAnchor
       value: 
@@ -587,9 +599,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.0059
       objectReference: {fileID: 0}
+    - target: {fileID: 3645977941357818367, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: m_Name
+      value: Japa-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504713247547420682, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: m_Name
+      value: Japa-3
+      objectReference: {fileID: 0}
     - target: {fileID: 4728196893486647379, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738646162894979979, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: m_Name
+      value: Japa
       objectReference: {fileID: 0}
     - target: {fileID: 5084009592540662974, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
       propertyPath: m_Name

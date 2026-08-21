@@ -17,7 +17,7 @@ MonoBehaviour:
   vela: 0
   piramide: 0
   ouro: 0
-  verde: 0
+  verde: 1
   roxo: 0
   audioClip: {fileID: 0}
   text: 
