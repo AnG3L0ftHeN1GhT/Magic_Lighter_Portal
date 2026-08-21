@@ -1,4 +1,5 @@
 using System.Collections;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -152,6 +153,8 @@ public class PlayerInteraction : MonoBehaviour
 
         OnFinishView.Invoke();
     }
+
+
 
     IEnumerator MovingObject(Interactables obj, Vector3 position)
     {
