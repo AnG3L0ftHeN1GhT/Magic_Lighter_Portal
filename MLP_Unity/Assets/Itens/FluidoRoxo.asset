@@ -18,6 +18,6 @@ MonoBehaviour:
   piramide: 0
   ouro: 0
   verde: 0
-  roxo: 0
+  roxo: 1
   audioClip: {fileID: 0}
   text: 

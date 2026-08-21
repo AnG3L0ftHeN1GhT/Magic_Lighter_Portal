@@ -10,6 +10,7 @@ public class Item : ScriptableObject
     public bool ouro;
     public bool verde;
     public bool roxo;
+    public bool pesado;
     public AudioClip audioClip;
     public string text;
 }

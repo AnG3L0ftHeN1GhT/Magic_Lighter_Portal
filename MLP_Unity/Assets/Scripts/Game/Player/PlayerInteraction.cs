@@ -134,6 +134,16 @@ public class PlayerInteraction : MonoBehaviour
                     }
                     */
                 }
+
+                if (leftClick.action.WasPressedThisFrame() || leftClick.action.WasPerformedThisFrame())
+                {
+                    currentInteract = interactable;
+                    if (currentInteract.item.pesado)
+                    {
+                        currentInteract.transform.position = objectViewer.position; // arrumar essa porra pq não pode depender do raycast hit
+                    }
+                }
+                
             }
             else
             {
@@ -192,5 +202,10 @@ public class PlayerInteraction : MonoBehaviour
 
         currentInteract.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * x * rotateSpeed, Space.World);
         currentInteract.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * y * rotateSpeed, Space.World);
+    }
+
+    void HoldingHeavyObjects()
+    {
+        // fazer isso segurar o negócio mesmo sem estar olhando, isso é, se tiver segurando o ckick
     }
 }
