@@ -6,8 +6,10 @@ public class Item : ScriptableObject
     public bool grabbable;
     public bool stashable;
     public bool vela;
-    public bool papel;
     public bool piramide;
+    public bool ouro;
+    public bool verde;
+    public bool roxo;
     public AudioClip audioClip;
     public string text;
 }

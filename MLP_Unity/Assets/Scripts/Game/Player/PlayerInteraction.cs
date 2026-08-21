@@ -1,5 +1,6 @@
 using System.Collections;
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -97,6 +98,24 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.piramide)
                     {
                         SceneManager.LoadScene("Pyramid Screen");
+                    }
+
+                    if (currentInteract.item.ouro)
+                    {
+                        fluidoDourado = true;
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.verde)
+                    {
+                        fluidoGreen = true;
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.roxo)
+                    {
+                        fluidoRoxo = true;
+                        Destroy(currentInteract.gameObject);
                     }
 
                     /*
