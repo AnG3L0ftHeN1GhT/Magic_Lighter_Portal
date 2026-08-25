@@ -122,6 +122,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "kanji1",
+                    "type": "Button",
+                    "id": "ed317da0-e649-415f-b51a-46301364c618",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "kanji2",
+                    "type": "Button",
+                    "id": "9f7dc1a5-99f9-4c16-8db4-ee4e79dd76aa",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "kanji3",
+                    "type": "Button",
+                    "id": "dd7e1dd4-0b75-446d-b5c4-4296a4b7569b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "kanji4",
+                    "type": "Button",
+                    "id": "c4b3de7a-bf6c-4fcd-8515-15e9477d2535",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -551,6 +587,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "fire3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59590f0b-b73e-45c5-b337-7690c3146f53",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kanji1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bab7032-fec3-4353-b5a9-15b1fa11a92e",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kanji2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c06362ec-8be0-44bd-aa24-4676736672b8",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kanji3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c800ba6-3a5e-46f7-a48d-72d7a5698a58",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kanji4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

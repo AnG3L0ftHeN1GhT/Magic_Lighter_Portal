@@ -208,6 +208,42 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""kanji1"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed317da0-e649-415f-b51a-46301364c618"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""kanji2"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f7dc1a5-99f9-4c16-8db4-ee4e79dd76aa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""kanji3"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd7e1dd4-0b75-446d-b5c4-4296a4b7569b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""kanji4"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4b3de7a-bf6c-4fcd-8515-15e9477d2535"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -637,6 +673,50 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""fire3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59590f0b-b73e-45c5-b337-7690c3146f53"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kanji1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1bab7032-fec3-4353-b5a9-15b1fa11a92e"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kanji2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c06362ec-8be0-44bd-aa24-4676736672b8"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kanji3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c800ba6-3a5e-46f7-a48d-72d7a5698a58"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kanji4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1268,6 +1348,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_fire1 = m_Player.FindAction("fire1", throwIfNotFound: true);
         m_Player_fire2 = m_Player.FindAction("fire2", throwIfNotFound: true);
         m_Player_fire3 = m_Player.FindAction("fire3", throwIfNotFound: true);
+        m_Player_kanji1 = m_Player.FindAction("kanji1", throwIfNotFound: true);
+        m_Player_kanji2 = m_Player.FindAction("kanji2", throwIfNotFound: true);
+        m_Player_kanji3 = m_Player.FindAction("kanji3", throwIfNotFound: true);
+        m_Player_kanji4 = m_Player.FindAction("kanji4", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1375,6 +1459,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_fire1;
     private readonly InputAction m_Player_fire2;
     private readonly InputAction m_Player_fire3;
+    private readonly InputAction m_Player_kanji1;
+    private readonly InputAction m_Player_kanji2;
+    private readonly InputAction m_Player_kanji3;
+    private readonly InputAction m_Player_kanji4;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1438,6 +1526,22 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/fire3".
         /// </summary>
         public InputAction @fire3 => m_Wrapper.m_Player_fire3;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/kanji1".
+        /// </summary>
+        public InputAction @kanji1 => m_Wrapper.m_Player_kanji1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/kanji2".
+        /// </summary>
+        public InputAction @kanji2 => m_Wrapper.m_Player_kanji2;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/kanji3".
+        /// </summary>
+        public InputAction @kanji3 => m_Wrapper.m_Player_kanji3;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/kanji4".
+        /// </summary>
+        public InputAction @kanji4 => m_Wrapper.m_Player_kanji4;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1503,6 +1607,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @fire3.started += instance.OnFire3;
             @fire3.performed += instance.OnFire3;
             @fire3.canceled += instance.OnFire3;
+            @kanji1.started += instance.OnKanji1;
+            @kanji1.performed += instance.OnKanji1;
+            @kanji1.canceled += instance.OnKanji1;
+            @kanji2.started += instance.OnKanji2;
+            @kanji2.performed += instance.OnKanji2;
+            @kanji2.canceled += instance.OnKanji2;
+            @kanji3.started += instance.OnKanji3;
+            @kanji3.performed += instance.OnKanji3;
+            @kanji3.canceled += instance.OnKanji3;
+            @kanji4.started += instance.OnKanji4;
+            @kanji4.performed += instance.OnKanji4;
+            @kanji4.canceled += instance.OnKanji4;
         }
 
         /// <summary>
@@ -1553,6 +1669,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @fire3.started -= instance.OnFire3;
             @fire3.performed -= instance.OnFire3;
             @fire3.canceled -= instance.OnFire3;
+            @kanji1.started -= instance.OnKanji1;
+            @kanji1.performed -= instance.OnKanji1;
+            @kanji1.canceled -= instance.OnKanji1;
+            @kanji2.started -= instance.OnKanji2;
+            @kanji2.performed -= instance.OnKanji2;
+            @kanji2.canceled -= instance.OnKanji2;
+            @kanji3.started -= instance.OnKanji3;
+            @kanji3.performed -= instance.OnKanji3;
+            @kanji3.canceled -= instance.OnKanji3;
+            @kanji4.started -= instance.OnKanji4;
+            @kanji4.performed -= instance.OnKanji4;
+            @kanji4.canceled -= instance.OnKanji4;
         }
 
         /// <summary>
@@ -1955,6 +2083,34 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnFire3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "kanji1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnKanji1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "kanji2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnKanji2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "kanji3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnKanji3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "kanji4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnKanji4(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

@@ -8,6 +8,7 @@ public class ActivatePyramid : MonoBehaviour
     public static ActivatePyramid instance;
 
     private bool pyrActiv = false;
+    [SerializeField] private int hasKanjis;
     public int allDone;
 
     public GameObject inPyramid;
@@ -15,13 +16,11 @@ public class ActivatePyramid : MonoBehaviour
     private UIManager interactionCursor;
     public ParticleSystem fogo;
 
-    private Interactables currentInteract;
-    private Item kanji1;
-    private Item kanji2;
-    private Item kanji3;
-    private Item kanji4;
-
-    private int hasKanjis;
+    public InputActionReference kanji1;
+    public InputActionReference kanji2;
+    public InputActionReference kanji3;
+    public InputActionReference kanji4;
+    public InputActionAsset inputActions;
     private InputActionReference rightClick;
 
     private void Awake()
@@ -68,6 +67,12 @@ public class ActivatePyramid : MonoBehaviour
             transform.position,
             Quaternion.identity
         );
+
+        if ((hasKanjis > 0) && rightClick.action.WasPressedThisFrame())
+        {
+            Destroy(inPyramid);
+            GameObject newPiramide = Instantiate(cmPyramid, transform.position, Quaternion.identity);
+        }
 
         string sceneName = SceneManager.GetActiveScene().name;
 
