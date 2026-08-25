@@ -4401,16 +4401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad87378dc212ca5498e0260f50ae8d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivatePyramid
-<<<<<<< HEAD
-  hasKanjis: 2
-  allDone: 2
-  inPyramid: {fileID: 1486150614220172137, guid: 842682650152b8e4e85f591bb13d2055, type: 3}
-  cmPyramid: {fileID: 5084009592540662974, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
-=======
   allDone: 0
   inPyramid: {fileID: 0}
   cmPyramid: {fileID: 0}
->>>>>>> 7d1a4a0d9d0f13da11fdd94ac8496fcf3fa95c04
   fogo: {fileID: 1232162748334348575, guid: 86a0f2081387c1344990726973a98534, type: 3}
   kanji1: {fileID: -2645896432614233641, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   kanji2: {fileID: 7103207454086943112, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -5883,8 +5876,4 @@ SceneRoots:
   - {fileID: 1452131698}
   - {fileID: 1988883749}
   - {fileID: 1806065776}
-<<<<<<< HEAD
-  - {fileID: 364875054}
-=======
   - {fileID: 167317560}
->>>>>>> 7d1a4a0d9d0f13da11fdd94ac8496fcf3fa95c04
