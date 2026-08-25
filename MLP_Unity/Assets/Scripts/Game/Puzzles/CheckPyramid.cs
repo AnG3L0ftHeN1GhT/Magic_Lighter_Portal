@@ -40,9 +40,9 @@ public class CheckPyramid : MonoBehaviour
         string[] kanjis =
         {
             "Kanji-1",
-            "Kanji-2",
-            "Kanji-3",
-            "Kanji-4"
+            "Kanji 2",
+            "Kanji 3",
+            "Kanji  4"
         };
 
         foreach (string kanji in kanjis)

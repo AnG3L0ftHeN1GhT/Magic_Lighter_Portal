@@ -11,6 +11,10 @@ public class PlayerInteraction : MonoBehaviour
     public bool fluidoDourado;
     public bool fluidoRoxo;
     public bool fluidoGreen;
+    public bool kanji1;
+    public bool kanji2;
+    public bool kanji3;
+    public bool kanji4;
 
 
     public float rayDistance;
@@ -115,6 +119,30 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.roxo)
                     {
                         fluidoRoxo = true;
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.kanji1)
+                    {
+                        kanji1 = true;
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.kanji2)
+                    {
+                        kanji2 = true;
+                        Destroy(currentInteract.gameObject);
+                    }
+                    
+                    if (currentInteract.item.kanji3)
+                    {
+                        kanji3 = true;
+                        Destroy(currentInteract.gameObject);
+                    }
+                    
+                    if (currentInteract.item.kanji4)
+                    {
+                        kanji4 = true;
                         Destroy(currentInteract.gameObject);
                     }
 

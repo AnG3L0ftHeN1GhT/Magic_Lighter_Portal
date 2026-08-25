@@ -11,6 +11,10 @@ public class Item : ScriptableObject
     public bool verde;
     public bool roxo;
     public bool pesado;
+    public bool kanji1;
+    public bool kanji2;
+    public bool kanji3;
+    public bool kanji4;
     public AudioClip audioClip;
     public string text;
 }
