@@ -1418,7 +1418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ec3f0460247cee44f90f9413d1aecb4d, type: 3}
       propertyPath: m_Name
-      value: cubiramide
+      value: cubiramide completa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1483,6 +1483,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -3542852092398272455, guid: ec3f0460247cee44f90f9413d1aecb4d, type: 3}
   m_PrefabInstance: {fileID: 5354619531897450991}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3645977941357818367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: ec3f0460247cee44f90f9413d1aecb4d, type: 3}
+  m_PrefabInstance: {fileID: 5354619531897450991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4504713247547420682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8416272007918961125, guid: ec3f0460247cee44f90f9413d1aecb4d, type: 3}
+  m_PrefabInstance: {fileID: 5354619531897450991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4738646162894979979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: ec3f0460247cee44f90f9413d1aecb4d, type: 3}
+  m_PrefabInstance: {fileID: 5354619531897450991}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5084009592540662974 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ec3f0460247cee44f90f9413d1aecb4d, type: 3}
@@ -1514,6 +1529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CubeLayerRotation
   rotationSpeed: 300
+  down: {fileID: 4738646162894979979}
+  mid: {fileID: 3645977941357818367}
+  top: {fileID: 4504713247547420682}
 --- !u!114 &-8576248434251429932
 MonoBehaviour:
   m_ObjectHideFlags: 0

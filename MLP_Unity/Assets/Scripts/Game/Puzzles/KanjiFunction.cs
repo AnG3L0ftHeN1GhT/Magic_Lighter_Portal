@@ -9,9 +9,14 @@ public class KanjiFunction : MonoBehaviour
     public GameObject kanjiP;
     public GameObject pyramid;
 
-    public Item kanji;
+    public Item kanji1;
+    public Item kanji2;
+    public Item kanji3;
+    public Item kanji4;
 
-    public static KanjiFunction instance;
+    
+   
+   public static KanjiFunction instance;
    [SerializeField] private int pegouKanji1;
    [SerializeField] private int pegouKanji2;
    [SerializeField] private int pegouKanji3;

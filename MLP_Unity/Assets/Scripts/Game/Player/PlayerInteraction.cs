@@ -1,5 +1,6 @@
 using System.Collections;
 using NUnit.Framework;
+using Unity.Multiplayer.Center.Common;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,21 +26,28 @@ public class PlayerInteraction : MonoBehaviour
     public float rayDistance;
     public float pickupSpeed;
     public float rotateSpeed;
+    public int hasKanjis;
+
     public Transform objectViewer;
     public UnityEvent OnView;
     public UnityEvent OnFinishView;
+
     public Item lighter;
     private Camera cam;
+
     private bool isViewing;
     private bool canFinish;
+
     private Interactables currentInteract;
     private Vector3 originPosition;
     private Quaternion originRotation;
+
     public InputActionReference leftClick;
     public InputActionReference rightClick;
     public InputActionReference interactBttn;
     public InputActionReference look;
     public InputActionAsset inputActions;
+
 
     void OnEnable()
     {
@@ -171,6 +179,9 @@ public class PlayerInteraction : MonoBehaviour
                         kanji4 = true;
                         Destroy(currentInteract.gameObject);
                     }
+
+
+
 
                     /*
                     inputActions.FindActionMap("Player").Disable();
