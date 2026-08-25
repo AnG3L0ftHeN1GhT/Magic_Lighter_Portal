@@ -13,6 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     public bool fluidoDourado;
     public bool fluidoRoxo;
     public bool fluidoGreen;
+    public bool temIsqueiro;
     public bool kanji1;
     public bool kanji2;
     public bool kanji3;
@@ -141,6 +142,12 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.ouro)
                     {
                         fluidoDourado = true;
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.falsoIsqueiro)
+                    {
+                        temIsqueiro = true;
                         Destroy(currentInteract.gameObject);
                     }
 

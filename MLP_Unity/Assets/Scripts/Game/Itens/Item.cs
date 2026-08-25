@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public bool verde;
     public bool roxo;
     public bool pesado;
+    public bool falsoIsqueiro;
     public bool kanji1;
     public bool kanji2;
     public bool kanji3;
