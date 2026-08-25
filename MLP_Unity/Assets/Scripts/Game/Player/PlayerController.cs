@@ -137,4 +137,16 @@ public class PlayerController : MonoBehaviour
 
         cameraTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
     }
+
+    public void GrabbedBox()
+    {
+        playerSpeed = 1.25f;
+        jumpHeight = 0f;
+    }
+
+    public void ReleasedBox()
+    {
+        playerSpeed = 5f;
+        jumpHeight = 1.5f;
+    }
 }

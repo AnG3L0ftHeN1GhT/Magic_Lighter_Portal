@@ -20,6 +20,7 @@ public class PlayerInteraction : MonoBehaviour
     public bool clickIsPressed;
     private Vector3 playerBase;
     private Vector3 objetoBase;
+    public PlayerController playerMovements;
 
     public float rayDistance;
     public float pickupSpeed;
@@ -89,14 +90,16 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (currentInteract.item.pesado)
                 {
-                    Vector3 temp = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+                    Vector3 temp = new Vector3(this.transform.position.x, 0, this.transform.position.z);
                     currentInteract.transform.position = objetoBase + (-playerBase + temp);
                 }
+                playerMovements.GrabbedBox();
                 return;
             }
             else
             {
                 clickIsPressed = false;
+                playerMovements.ReleasedBox();
             }
         }
 
@@ -184,7 +187,7 @@ public class PlayerInteraction : MonoBehaviour
                         StartCoroutine(MovingObject(currentInteract, objectViewer.position));
                     } inutilizado e podre; não é nescessário por enquanto. Fica aqui só caso a mecância volte, o que é improvável
                     */
-                    playerBase = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+                    playerBase = new Vector3(this.transform.position.x, 0, this.transform.position.z);
                     objetoBase = new Vector3(currentInteract.transform.position.x, currentInteract.transform.position.y, currentInteract.transform.position.z);
                     clickIsPressed = PressedClickCheck();
                 }

@@ -834,6 +834,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124db4154e774be479f6767734199d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
+--- !u!114 &640863109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7840336603112675855, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+  m_PrefabInstance: {fileID: 843307502}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9602e1f1d2f303246ab2e2bec2eb5371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &719443967 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 525ff6a1b18961144a5b30417a43cc6c, type: 3}
@@ -1433,6 +1444,10 @@ PrefabInstance:
       propertyPath: standardFlame
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: playerMovements
+      value: 
+      objectReference: {fileID: 640863109}
     - target: {fileID: 6238210550633369032, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: FollowOffset.y
       value: 0.6
