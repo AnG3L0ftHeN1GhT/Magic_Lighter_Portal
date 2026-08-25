@@ -234,8 +234,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: "C:/Users/IFPR/Documents/abubl\xE9/abubl\xE9.fspro"
-  sourceBankPath: "C:/Users/IFPR/Documents/abubl\xE9/Build"
+  sourceProjectPath: "FMOD_MLP_Unity/abubl\xE9.fspro"
+  sourceBankPath: FMOD_MLP_Unity/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
