@@ -2113,6 +2113,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: objectViewer
+      value: 
+      objectReference: {fileID: 843307505}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: standardFlame
       value: 
       objectReference: {fileID: 0}
@@ -2120,6 +2124,30 @@ PrefabInstance:
       propertyPath: playerMovements
       value: 
       objectReference: {fileID: 922198637}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: OnView.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 640863106}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: OnView.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: OnFinishView.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 640863106}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: OnFinishView.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: OnView.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerInteraction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: OnFinishView.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerInteraction, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5955319765839578033, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: PanAxis.Value
       value: 45
@@ -2235,9 +2263,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2470028952603268777, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
     - {fileID: 879113244662045749, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+    - {fileID: 7645789062123452518, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5870189995257673843, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
     - {fileID: 8655519321741013466, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+    - {fileID: 1616519053277236239, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3153258669331996111, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       insertIndex: -1
@@ -2272,6 +2302,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
   nonRigidbodyVelocity: 0
   attenuationObject: {fileID: 0}
+--- !u!4 &843307505 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 591610996592122766, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+  m_PrefabInstance: {fileID: 843307502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &861090043 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6733177361254619370, guid: 3c5e30d914b1308408fdabb32c45c425, type: 3}
@@ -4401,15 +4436,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad87378dc212ca5498e0260f50ae8d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivatePyramid
-  allDone: 0
-  inPyramid: {fileID: 0}
-  cmPyramid: {fileID: 0}
+  hasKanjis: 1
+  allDone: 2
+  inPyramid: {fileID: 1486150614220172137, guid: 842682650152b8e4e85f591bb13d2055, type: 3}
+  cmPyramid: {fileID: 5084009592540662974, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
   fogo: {fileID: 1232162748334348575, guid: 86a0f2081387c1344990726973a98534, type: 3}
   kanji1: {fileID: -2645896432614233641, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   kanji2: {fileID: 7103207454086943112, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   kanji3: {fileID: -3039571994904016328, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   kanji4: {fileID: 3555953600340251078, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  leftClick: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!4 &1547118669
 Transform:
   m_ObjectHideFlags: 0
@@ -5877,3 +5914,4 @@ SceneRoots:
   - {fileID: 1988883749}
   - {fileID: 1806065776}
   - {fileID: 167317560}
+  - {fileID: 364875054}
