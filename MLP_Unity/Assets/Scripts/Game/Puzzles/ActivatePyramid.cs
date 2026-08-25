@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class ActivatePyramid : MonoBehaviour
@@ -9,9 +10,19 @@ public class ActivatePyramid : MonoBehaviour
     private bool pyrActiv = false;
     public int allDone;
 
-    public GameObject pyramid;
+    public GameObject inPyramid;
+    public GameObject cmPyramid;
     private UIManager interactionCursor;
     public ParticleSystem fogo;
+
+    private Interactables currentInteract;
+    private Item kanji1;
+    private Item kanji2;
+    private Item kanji3;
+    private Item kanji4;
+
+    private int hasKanjis;
+    private InputActionReference rightClick;
 
     private void Awake()
     {
@@ -53,7 +64,7 @@ public class ActivatePyramid : MonoBehaviour
 
         // Instancia a pirâmide
         GameObject newPyramid = Instantiate(
-            pyramid,
+            inPyramid,
             transform.position,
             Quaternion.identity
         );
