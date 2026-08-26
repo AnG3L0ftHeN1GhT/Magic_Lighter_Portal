@@ -136,7 +136,11 @@ public class PlayerInteraction : MonoBehaviour
 
                     if (currentInteract.item.piramide)
                     {
+                        UnityEngine.Cursor.lockState = CursorLockMode.None;
+                        UnityEngine.Cursor.visible = true;
+
                         SceneManager.LoadScene("Pyramid Screen");
+                        return;
                     }
 
                     if (currentInteract.item.ouro)

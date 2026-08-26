@@ -8,8 +8,6 @@ public class ActivatePyramid : MonoBehaviour
     public static ActivatePyramid instance;
 
     private bool pyrActiv = false;
-
-    [SerializeField] private int hasKanjis;
     public int allDone;
 
     public GameObject inPyramid;
@@ -26,11 +24,12 @@ public class ActivatePyramid : MonoBehaviour
 
     public InputActionAsset inputActions;
 
-    // Agora pode ser configurado pelo Inspector
     [SerializeField] private InputActionReference leftClick;
 
-    // Guarda a pirâmide que foi realmente instanciada
     private GameObject currentPyramid;
+
+    // Referência ao KanjiFunction
+    private KanjiFunction kanjiFunction;
 
     private void Awake()
     {
@@ -38,10 +37,19 @@ public class ActivatePyramid : MonoBehaviour
 
         interactionCursor = FindFirstObjectByType<UIManager>();
 
-        // Verifica se o botão direito foi configurado
+        // Procura o KanjiFunction na cena
+        kanjiFunction = FindFirstObjectByType<KanjiFunction>();
+
+        if (kanjiFunction == null)
+        {
+            Debug.LogError("ActivatePyramid: KanjiFunction não foi encontrado na cena.");
+        }
+
         if (leftClick == null)
         {
-            Debug.LogWarning("ActivatePyramid: leftClick não foi configurado no Inspector.");
+            Debug.LogWarning(
+                "ActivatePyramid: leftClick não foi configurado no Inspector."
+            );
         }
     }
 
@@ -90,7 +98,10 @@ public class ActivatePyramid : MonoBehaviour
         }
         else
         {
-            Debug.LogError("ActivatePyramid: inPyramid não foi configurada no Inspector.");
+            Debug.LogError(
+                "ActivatePyramid: inPyramid não foi configurada no Inspector."
+            );
+
             yield break;
         }
 
@@ -99,11 +110,13 @@ public class ActivatePyramid : MonoBehaviour
 
         if (sceneName == "gluh")
         {
-            currentPyramid.transform.localScale = new Vector3(1f, 1f, 1f);
+            currentPyramid.transform.localScale =
+                new Vector3(1f, 1f, 1f);
         }
         else if (sceneName == "Pyramid Screen")
         {
-            currentPyramid.transform.localScale = new Vector3(80f, 80f, 80f);
+            currentPyramid.transform.localScale =
+                new Vector3(80f, 80f, 80f);
 
             if (interactionCursor != null)
             {
@@ -117,18 +130,35 @@ public class ActivatePyramid : MonoBehaviour
 
     private void CheckLeftClick()
     {
-        // Evita NullReferenceException
         if (leftClick == null)
             return;
 
         if (leftClick.action == null)
             return;
 
-        // Só permite trocar a pirâmide se:
-        // 1. A pirâmide inicial existir
-        // 2. hasKanjis for maior que 0
-        // 3. O botão direito for pressionado
-        if (currentPyramid != null && hasKanjis > 0 && leftClick.action.WasPressedThisFrame() && inPyramid.CompareTag("Pirâmide"))
+        if (!leftClick.action.WasPressedThisFrame())
+            return;
+
+        // Verifica se o KanjiFunction existe
+        if (kanjiFunction == null)
+        {
+            Debug.LogError(
+                "ActivatePyramid: KanjiFunction não foi encontrado."
+            );
+
+            return;
+        }
+
+        // Verifica se a pirâmide inicial existe
+        if (currentPyramid == null)
+            return;
+
+        // Verifica se o objeto é realmente uma pirâmide
+        if (!currentPyramid.CompareTag("Pirâmide"))
+            return;
+
+        // Verifica os Kanjis
+        if (kanjiFunction.HasKanjis > 0)
         {
             // Destrói a pirâmide inicial
             Destroy(currentPyramid);
@@ -142,21 +172,32 @@ public class ActivatePyramid : MonoBehaviour
                     Quaternion.identity
                 );
 
-                string sceneName = SceneManager.GetActiveScene().name;
+                string sceneName =
+                    SceneManager.GetActiveScene().name;
 
                 if (sceneName == "gluh")
                 {
-                    currentPyramid.transform.localScale = new Vector3(1f, 1f, 1f);
+                    currentPyramid.transform.localScale =
+                        new Vector3(1f, 1f, 1f);
                 }
                 else if (sceneName == "Pyramid Screen")
                 {
-                    currentPyramid.transform.localScale = new Vector3(80f, 80f, 80f);
+                    currentPyramid.transform.localScale =
+                        new Vector3(80f, 80f, 80f);
                 }
             }
             else
             {
-                Debug.LogError("ActivatePyramid: cmPyramid não foi configurada no Inspector.");
+                Debug.LogError(
+                    "ActivatePyramid: cmPyramid não foi configurada no Inspector."
+                );
             }
+        }
+        else
+        {
+            Debug.Log(
+                "Você não achou nenhum Kanji. Continue procurando!"
+            );
         }
     }
 }
