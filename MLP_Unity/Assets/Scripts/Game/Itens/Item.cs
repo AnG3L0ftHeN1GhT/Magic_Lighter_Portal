@@ -17,6 +17,7 @@ public class Item : ScriptableObject
     public bool kanji2;
     public bool kanji3;
     public bool kanji4;
+    public bool statua;
     public AudioClip audioClip;
     public string text;
 }
