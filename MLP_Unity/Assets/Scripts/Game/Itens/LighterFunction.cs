@@ -48,6 +48,15 @@ public class LighterFunction : MonoBehaviour
         {
             MudarCorChama(3);
         }
+
+        if(playerCollections.temIsqueiro && hasLighter == 0)
+        {
+            hasLighter = 1;
+        }
+        else
+        {
+            return;
+        }
     } 
 
     private void handleLighter()

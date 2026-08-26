@@ -1,40 +1,54 @@
 using System.Collections;
 using NUnit.Framework;
+using Unity.Multiplayer.Center.Common;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public bool fluidoDourado;
     public bool fluidoRoxo;
     public bool fluidoGreen;
+    public bool temIsqueiro;
     public bool kanji1;
     public bool kanji2;
     public bool kanji3;
     public bool kanji4;
 
+    public bool clickIsPressed;
+    private Vector3 playerBase;
+    private Vector3 objetoBase;
+    public PlayerController playerMovements;
 
     public float rayDistance;
     public float pickupSpeed;
     public float rotateSpeed;
+    public int hasKanjis;
+
     public Transform objectViewer;
     public UnityEvent OnView;
     public UnityEvent OnFinishView;
+
     public Item lighter;
     private Camera cam;
+
     private bool isViewing;
     private bool canFinish;
+
     private Interactables currentInteract;
     private Vector3 originPosition;
     private Quaternion originRotation;
+
     public InputActionReference leftClick;
     public InputActionReference rightClick;
     public InputActionReference interactBttn;
     public InputActionReference look;
     public InputActionAsset inputActions;
+
 
     void OnEnable()
     {
@@ -79,6 +93,25 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
+        if (clickIsPressed)
+        {
+            if (PressedClickCheck())
+            {
+                if (currentInteract.item.pesado)
+                {
+                    Vector3 temp = new Vector3(this.transform.position.x, 0, this.transform.position.z);
+                    currentInteract.transform.position = objetoBase + (-playerBase + temp);
+                }
+                playerMovements.GrabbedBox();
+                return;
+            }
+            else
+            {
+                clickIsPressed = false;
+                playerMovements.ReleasedBox();
+            }
+        }
+
         RaycastHit hit;
         Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
 
@@ -89,6 +122,8 @@ public class PlayerInteraction : MonoBehaviour
             if (interactable != null)
             {
                 UIManager.instance.SetInteractionCursor(true);
+
+                
 
                 if (leftClick.action.WasPressedThisFrame())
                 {
@@ -107,6 +142,12 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.ouro)
                     {
                         fluidoDourado = true;
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.falsoIsqueiro)
+                    {
+                        temIsqueiro = true;
                         Destroy(currentInteract.gameObject);
                     }
 
@@ -146,6 +187,9 @@ public class PlayerInteraction : MonoBehaviour
                         Destroy(currentInteract.gameObject);
                     }
 
+
+
+
                     /*
                     inputActions.FindActionMap("Player").Disable();
                     OnView.Invoke();
@@ -159,17 +203,11 @@ public class PlayerInteraction : MonoBehaviour
                         originPosition = currentInteract.transform.position;
                         originRotation = currentInteract.transform.rotation;
                         StartCoroutine(MovingObject(currentInteract, objectViewer.position));
-                    }
+                    } inutilizado e podre; não é nescessário por enquanto. Fica aqui só caso a mecância volte, o que é improvável
                     */
-                }
-
-                if (leftClick.action.WasPressedThisFrame() || leftClick.action.WasPerformedThisFrame())
-                {
-                    currentInteract = interactable;
-                    if (currentInteract.item.pesado)
-                    {
-                        currentInteract.transform.position = objectViewer.position; // arrumar essa porra pq não pode depender do raycast hit
-                    }
+                    playerBase = new Vector3(this.transform.position.x, 0, this.transform.position.z);
+                    objetoBase = new Vector3(currentInteract.transform.position.x, currentInteract.transform.position.y, currentInteract.transform.position.z);
+                    clickIsPressed = PressedClickCheck();
                 }
                 
             }
@@ -235,5 +273,17 @@ public class PlayerInteraction : MonoBehaviour
     void HoldingHeavyObjects()
     {
         // fazer isso segurar o negócio mesmo sem estar olhando, isso é, se tiver segurando o ckick
+    }
+
+    bool PressedClickCheck()
+    {
+        if (leftClick.action.IsPressed())
+        {
+            return true;   
+        }
+        else
+        {
+            return false;
+        }
     }
 }

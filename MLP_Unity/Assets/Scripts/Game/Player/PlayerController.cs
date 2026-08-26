@@ -14,10 +14,6 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     private Transform cameraTransform;
 
-    [Header("Cinemachine")]
-    [Tooltip("Transform vazio, filho do player, usado como Follow/Look At da Virtual Camera")]
-    public Transform cameraTarget;
-
     [Header("Input Actions")]
     public InputActionReference moveAction;
     public InputActionReference jumpAction;
@@ -101,8 +97,12 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector2 input = moveAction.action.ReadValue<Vector2>();
+
         Vector3 move = new Vector3(input.x, 0, input.y);
+
         move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+
+        // Impede a câmera de fazer o jogador andar para cima/baixo
         move.y = 0f;
 
         if (groundedPlayer && jumpAction.action.WasPressedThisFrame())
@@ -113,13 +113,18 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
 
         Vector3 finalMove = move * playerSpeed + Vector3.up * playerVelocity.y;
+
         controller.Move(finalMove * Time.deltaTime);
     }
 
     private void SetCursorLocked(bool locked)
     {
         cursorLocked = locked;
-        Cursor.lockState = locked ? CursorLockMode.Locked : CursorLockMode.None;
+
+        Cursor.lockState = locked
+            ? CursorLockMode.Locked
+            : CursorLockMode.None;
+
         Cursor.visible = !locked;
     }
 
@@ -130,11 +135,25 @@ public class PlayerController : MonoBehaviour
         float mouseX = lookDelta.x * mouseSensitivity;
         float mouseY = lookDelta.y * mouseSensitivity;
 
+        // Rotação horizontal do jogador
         transform.Rotate(Vector3.up * mouseX);
 
+        // Rotação vertical da câmera
         pitch -= mouseY;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        cameraTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+        cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+    }
+
+    public void GrabbedBox()
+    {
+        playerSpeed = 1.25f;
+        jumpHeight = 0f;
+    }
+
+    public void ReleasedBox()
+    {
+        playerSpeed = 5f;
+        jumpHeight = 1.5f;
     }
 }
