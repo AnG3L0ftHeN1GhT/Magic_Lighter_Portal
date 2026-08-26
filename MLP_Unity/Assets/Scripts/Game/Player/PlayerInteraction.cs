@@ -18,6 +18,9 @@ public class PlayerInteraction : MonoBehaviour
     public bool kanji2;
     public bool kanji3;
     public bool kanji4;
+    public bool statua1;
+    public bool statua2;
+    public bool statua3;
 
     public bool clickIsPressed;
     private Vector3 playerBase;
@@ -187,7 +190,25 @@ public class PlayerInteraction : MonoBehaviour
                         Destroy(currentInteract.gameObject);
                     }
 
-
+                    if (currentInteract.item.statua)
+                    {
+                        Debug.Log(currentInteract.gameObject.ToSafeString());
+                        switch (currentInteract.gameObject.ToSafeString())
+                        {
+                            case "Feliz":
+                                statua1 = true;
+                                Destroy(currentInteract.gameObject);
+                                break;
+                            case "Neutra":
+                                statua2 = true;
+                                Destroy(currentInteract.gameObject);
+                                break;
+                            case "Triste":
+                                statua3 = true;
+                                Destroy(currentInteract.gameObject);
+                                break;
+                        }
+                    }
 
 
                     /*
