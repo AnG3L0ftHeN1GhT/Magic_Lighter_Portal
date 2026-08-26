@@ -15,11 +15,16 @@ MonoBehaviour:
   grabbable: 0
   stashable: 0
   vela: 0
+  inPiramide: 0
   piramide: 0
   ouro: 0
   verde: 0
   roxo: 0
   pesado: 0
-  kanji: 0
+  falsoIsqueiro: 0
+  kanji1: 0
+  kanji2: 0
+  kanji3: 1
+  kanji4: 0
   audioClip: {fileID: 0}
   text: 

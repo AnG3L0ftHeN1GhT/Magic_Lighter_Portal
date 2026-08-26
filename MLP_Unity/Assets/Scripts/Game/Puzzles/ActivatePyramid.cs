@@ -128,9 +128,7 @@ public class ActivatePyramid : MonoBehaviour
         // 1. A pirâmide inicial existir
         // 2. hasKanjis for maior que 0
         // 3. O botão direito for pressionado
-        if (currentPyramid != null &&
-            hasKanjis > 0 &&
-            leftClick.action.WasPressedThisFrame())
+        if (currentPyramid != null && hasKanjis > 0 && leftClick.action.WasPressedThisFrame() && inPyramid.CompareTag("Pirâmide"))
         {
             // Destrói a pirâmide inicial
             Destroy(currentPyramid);

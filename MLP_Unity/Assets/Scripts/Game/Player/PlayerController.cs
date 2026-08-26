@@ -30,14 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        cameraTransform = Camera.main.transform;
-
-        if (SceneManager.GetActiveScene().name == "Pyramid Screen")
-        {
-            cursorLocked = false;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        
     }
 
     private void OnEnable()
@@ -86,6 +79,8 @@ public class PlayerController : MonoBehaviour
             {
                 HandleMouseLook();
             }
+
+            DesativarCamera();
         }
 
         groundedPlayer = controller.isGrounded;
@@ -155,5 +150,17 @@ public class PlayerController : MonoBehaviour
     {
         playerSpeed = 5f;
         jumpHeight = 1.5f;
+    }
+
+    public void DesativarCamera()
+    {
+        cameraTransform = Camera.main.transform;
+
+        if (SceneManager.GetActiveScene().name == "Pyramid Screen")
+        {
+            cursorLocked = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }
