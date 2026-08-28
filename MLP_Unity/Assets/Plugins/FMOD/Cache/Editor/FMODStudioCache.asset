@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 1172270090642393446}
   cacheVersion: 131860
   cacheTime: 639235153571592736
+  cacheTime: 639235138766666179
   SerializableEventsDict:
   - key: event:/Dragging
     index: 0
@@ -69,6 +70,11 @@ MonoBehaviour:
     index: 4
   - key: event:/Scree
     index: 5
+  - key: event:/Basement Storage Room  Lights, Creaking, Wind  15 Minutes of Ambience
+      - Rose's Ambience (youtube)
+    index: 2
+  - key: event:/Whoosh
+    index: 3
 --- !u!114 &1172270090642393446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,11 +91,13 @@ MonoBehaviour:
   Name: Master.strings
   StudioPath: bank:/Master.strings
   lastModified: 639235153571592736
+  lastModified: 639235138766666179
   FileSizes:
   - Name: Desktop
     Value: 990
   Exists: 1
 --- !u!114 &4858308767060614265
+--- !u!114 &5189395803547662555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,6 +118,17 @@ MonoBehaviour:
   Banks:
   - {fileID: 6758641969680194797}
   IsStream: 0
+  m_Name: event:/Whoosh
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Whoosh
+  Guid:
+    Data1: 1414413965
+    Data2: 1248255450
+    Data3: 1386836915
+    Data4: -356130517
+  Banks:
+  - {fileID: 6758641969680194797}
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -158,10 +177,10 @@ MonoBehaviour:
   Path: FMOD_MLP_Unity/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639235153571567644
+  lastModified: 639235138766646127
   FileSizes:
   - Name: Desktop
-    Value: 12213344
+    Value: 12176416
   Exists: 1
 --- !u!114 &7225558104548110070
 MonoBehaviour:
