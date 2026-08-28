@@ -2758,6 +2758,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactables
   item: {fileID: 11400000, guid: 0ee72ff3c538f9f4789fa3742cfe21ae, type: 2}
   isMoving: 0
+--- !u!114 &896829139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896829127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdbec100c91b6745884519a40a1b582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DraggingSound
+  arrastando:
+    Guid:
+      Data1: -354423225
+      Data2: 1258614751
+      Data3: 1468456882
+      Data4: -1369184718
+    Path: event:/Dragging
+  playerReference: {fileID: 640863106}
 --- !u!1 &910338864
 GameObject:
   m_ObjectHideFlags: 0
@@ -3108,6 +3128,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 896829135}
+    - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 896829139}
   m_SourcePrefab: {fileID: 100100000, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
 --- !u!1 &990560415
 GameObject:
