@@ -124,6 +124,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5604122141678163460, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
   m_PrefabInstance: {fileID: 1058076501}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &291881201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5084009592540662974, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+  m_PrefabInstance: {fileID: 1058076501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &424437860 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4738646162894979979, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
@@ -150,6 +155,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.013584559, y: 0.013584557, z: 0.007063652}
   m_Center: {x: 0.0000000018626451, y: 3.901521e-17, z: -0.005490902}
+--- !u!114 &424437866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424437860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c05f090b475764da62f109a7b3bfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CubesRotationSound
+  whoosh:
+    Guid:
+      Data1: 1414413965
+      Data2: 1248255450
+      Data3: 1386836915
+      Data4: -356130517
+    Path: event:/Whoosh
+  anguloMinimo: 10
 --- !u!1 &454362893
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +280,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.008572808, y: 0.008572807, z: 0.0041610706}
   m_Center: {x: 0.0000000018626451, y: 1.6544906e-17, z: -0.0023284873}
+--- !u!114 &526601983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526601977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c05f090b475764da62f109a7b3bfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CubesRotationSound
+  whoosh:
+    Guid:
+      Data1: 1414413965
+      Data2: 1248255450
+      Data3: 1386836915
+      Data4: -356130517
+    Path: event:/Whoosh
+  anguloMinimo: 10
 --- !u!1 &570068256
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +604,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0072144857, y: 0.0063901995, z: 0.0030000024}
   m_Center: {x: -0.00016553892, y: 0.00027876638, z: -0.0033896053}
+--- !u!114 &1054529776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054529770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c05f090b475764da62f109a7b3bfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CubesRotationSound
+  whoosh:
+    Guid:
+      Data1: 1414413965
+      Data2: 1248255450
+      Data3: 1386836915
+      Data4: -356130517
+    Path: event:/Whoosh
+  anguloMinimo: 10
 --- !u!1001 &1058076501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -579,6 +644,26 @@ PrefabInstance:
       propertyPath: down
       value: 
       objectReference: {fileID: 424437860}
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: whoosh.Path
+      value: event:/Whoosh
+      objectReference: {fileID: 0}
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: whoosh.Guid.Data1
+      value: 1414413965
+      objectReference: {fileID: 0}
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: whoosh.Guid.Data2
+      value: 1248255450
+      objectReference: {fileID: 0}
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: whoosh.Guid.Data3
+      value: 1386836915
+      objectReference: {fileID: 0}
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: whoosh.Guid.Data4
+      value: -356130517
+      objectReference: {fileID: 0}
     - target: {fileID: 1004658046886847657, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
       propertyPath: m_ProbeAnchor
       value: 
@@ -692,12 +777,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4738646162894979979, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 424437862}
+    - targetCorrespondingSourceObject: {fileID: 4738646162894979979, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 424437866}
     - targetCorrespondingSourceObject: {fileID: 3645977941357818367, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 526601979}
+    - targetCorrespondingSourceObject: {fileID: 3645977941357818367, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 526601983}
     - targetCorrespondingSourceObject: {fileID: 4504713247547420682, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1054529772}
+    - targetCorrespondingSourceObject: {fileID: 4504713247547420682, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1054529776}
   m_SourcePrefab: {fileID: 100100000, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
 --- !u!1 &1339447656
 GameObject:
@@ -899,6 +993,7 @@ GameObject:
   - component: {fileID: 1616351593}
   - component: {fileID: 1616351592}
   - component: {fileID: 1616351595}
+  - component: {fileID: 1616351596}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1024,6 +1119,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1616351596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616351591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 291881201}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
