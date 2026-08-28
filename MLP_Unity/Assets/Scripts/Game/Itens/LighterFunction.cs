@@ -10,7 +10,13 @@ public class LighterFunction : MonoBehaviour
     public int activeFlame;
 
     [SerializeField] EventReference acendendo;
-    private FMOD.Studio.EventInstance instancia;
+    [SerializeField] EventReference fire;
+    [SerializeField] EventReference snap;
+    [SerializeField] EventReference scree;
+    private FMOD.Studio.EventInstance instanciaIsqueiro;
+    private FMOD.Studio.EventInstance instanciaOuro;
+    private FMOD.Studio.EventInstance instanciaRoxa;
+    private FMOD.Studio.EventInstance instanciaVerde;
 
     public static LighterFunction instance;
     private bool holdingLight;
@@ -29,7 +35,10 @@ public class LighterFunction : MonoBehaviour
 
     private void Awake()
     {
-        instancia = RuntimeManager.CreateInstance(acendendo);
+        instanciaIsqueiro = RuntimeManager.CreateInstance(acendendo);
+        instanciaOuro = RuntimeManager.CreateInstance(fire);
+        instanciaVerde = RuntimeManager.CreateInstance(snap);
+        instanciaRoxa = RuntimeManager.CreateInstance(scree);
         instance = this;
     }
 
@@ -66,7 +75,7 @@ public class LighterFunction : MonoBehaviour
     {
         if (holdingLight)
         {
-            instancia.start();
+            instanciaIsqueiro.start();
         }
         lighter.SetActive(holdingLight);
     }
@@ -86,6 +95,7 @@ public class LighterFunction : MonoBehaviour
                 goldenFlame.SetActive(true);
                 purpleFlame.SetActive(false);
                 greenFlame.SetActive(false);
+                instanciaOuro.start();
             }
         } else if(corDesejada == 2)
         {
@@ -94,6 +104,7 @@ public class LighterFunction : MonoBehaviour
                 goldenFlame.SetActive(false);
                 purpleFlame.SetActive(true);
                 greenFlame.SetActive(false);
+                instanciaRoxa.start();
             }
         } else if(corDesejada == 3)
         {
@@ -102,6 +113,7 @@ public class LighterFunction : MonoBehaviour
                 goldenFlame.SetActive(false);
                 purpleFlame.SetActive(false);
                 greenFlame.SetActive(true);
+                instanciaVerde.start();
             }
         }
 

@@ -1516,8 +1516,7 @@ MonoBehaviour:
       Data2: 1178339719
       Data3: -96828779
       Data4: 23772978
-    Path: event:/Basement Storage Room  Lights, Creaking, Wind  15 Minutes of Ambience
-      - Rose's Ambience (youtube)
+    Path: event:/Bedroom Ambiance
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 2
@@ -2233,12 +2232,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7699725990400303735, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: fire.Path
+      value: event:/Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: snap.Path
+      value: event:/Snap
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: greenFlame
       value: 
       objectReference: {fileID: 1497793475730580449}
     - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: hasLighter
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: scree.Path
+      value: event:/Scree
       objectReference: {fileID: 0}
     - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: goldenFlame
@@ -2255,6 +2266,54 @@ PrefabInstance:
     - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: acendendo.Path
       value: event:/Lighter Flick
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: fire.Guid.Data1
+      value: -1320211190
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: fire.Guid.Data2
+      value: 1265745617
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: fire.Guid.Data3
+      value: 260246168
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: fire.Guid.Data4
+      value: -414578537
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: snap.Guid.Data1
+      value: -2018924126
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: snap.Guid.Data2
+      value: 1156219911
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: snap.Guid.Data3
+      value: -1021272145
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: snap.Guid.Data4
+      value: 1936150754
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: scree.Guid.Data1
+      value: 1617432313
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: scree.Guid.Data2
+      value: 1192223127
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: scree.Guid.Data3
+      value: 2122641853
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: scree.Guid.Data4
+      value: -2099538657
       objectReference: {fileID: 0}
     - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: PlayerCollections
