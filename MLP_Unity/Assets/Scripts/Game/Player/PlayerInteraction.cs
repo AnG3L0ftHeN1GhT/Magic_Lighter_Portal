@@ -304,7 +304,11 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (leftClick.action.IsPressed())
         {
-            return true;   
+            if(currentInteract.item.pesado)
+            {
+                return true;
+            }
+            return false;
         }
         else
         {

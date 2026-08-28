@@ -12,21 +12,24 @@ public class DraggingSound : MonoBehaviour
     void Start()
     {
         instancia = RuntimeManager.CreateInstance(arrastando);
+        instancia.start();
+        instancia.setPaused(true);
     }
 
     void Update()
     {
         if (playerReference.clickIsPressed)
         {
-            if (playerReference.transform.position == pastMovement)
+            if (playerReference.transform.position != pastMovement)
             {
-                instancia.start();
+                instancia.setPaused(false);
+            }
+            else
+            {
+                instancia.setPaused(true);
             }
         }
-        else
-        {
-            instancia.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        }
+        
         pastMovement = new Vector3(playerReference.transform.position.x, playerReference.transform.position.y, playerReference.transform.position.z);
     }
 }
