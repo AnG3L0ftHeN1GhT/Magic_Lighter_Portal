@@ -1,6 +1,5 @@
 using UnityEngine;
 using FMODUnity;
-using System;
 
 public class DraggingSound : MonoBehaviour
 {
@@ -28,6 +27,10 @@ public class DraggingSound : MonoBehaviour
             {
                 instancia.setPaused(true);
             }
+        }
+        else
+        {
+            instancia.setPaused(true);
         }
         
         pastMovement = new Vector3(playerReference.transform.position.x, playerReference.transform.position.y, playerReference.transform.position.z);

@@ -1380,6 +1380,7 @@ GameObject:
   - component: {fileID: 457568468}
   - component: {fileID: 457568467}
   - component: {fileID: 457568466}
+  - component: {fileID: 457568469}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -1496,6 +1497,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 350571723}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &457568469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457568465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -777475427
+      Data2: 1178339719
+      Data3: -96828779
+      Data4: 23772978
+    Path: event:/Basement Storage Room  Lights, Creaking, Wind  15 Minutes of Ambience
+      - Rose's Ambience (youtube)
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &479306998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2220,6 +2253,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: acendendo.Path
+      value: event:/Lighter Flick
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: PlayerCollections
       value: 
       objectReference: {fileID: 640863106}
@@ -2227,6 +2264,22 @@ PrefabInstance:
       propertyPath: playerCollections
       value: 
       objectReference: {fileID: 640863106}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: acendendo.Guid.Data1
+      value: 1895833808
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: acendendo.Guid.Data2
+      value: 1079420566
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: acendendo.Guid.Data3
+      value: -582714963
+      objectReference: {fileID: 0}
+    - target: {fileID: 670386250075732994, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: acendendo.Guid.Data4
+      value: 997546844
+      objectReference: {fileID: 0}
     - target: {fileID: 861495298209355536, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: m_Name
       value: Player & Stuff
@@ -3054,16 +3107,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 350571723}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6461575
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6461575
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6461575
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.228
+      value: 3.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.08
+      value: -1.97
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.019
+      value: 7.95
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalRotation.w

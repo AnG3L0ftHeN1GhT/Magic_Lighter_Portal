@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 public class LighterFunction : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class LighterFunction : MonoBehaviour
     public GameObject greenFlame;
     public int activeFlame;
 
-
+    [SerializeField] EventReference acendendo;
+    private FMOD.Studio.EventInstance instancia;
 
     public static LighterFunction instance;
     private bool holdingLight;
@@ -27,6 +29,7 @@ public class LighterFunction : MonoBehaviour
 
     private void Awake()
     {
+        instancia = RuntimeManager.CreateInstance(acendendo);
         instance = this;
     }
 
@@ -61,6 +64,10 @@ public class LighterFunction : MonoBehaviour
 
     private void handleLighter()
     {
+        if (holdingLight)
+        {
+            instancia.start();
+        }
         lighter.SetActive(holdingLight);
     }
 
