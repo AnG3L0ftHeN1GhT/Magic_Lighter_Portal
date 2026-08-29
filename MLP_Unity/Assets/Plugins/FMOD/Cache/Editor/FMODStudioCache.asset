@@ -18,8 +18,7 @@ MonoBehaviour:
     Data2: 1258614751
     Data3: 1468456882
     Data4: -1369184718
-  Banks:
-  - {fileID: 6758641969680194797}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -55,8 +54,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 1172270090642393446}
   cacheVersion: 131860
-  cacheTime: 639235153571592736
-  cacheTime: 639235138766666179
+  cacheTime: 639236052304260510
   SerializableEventsDict:
   - key: event:/Dragging
     index: 0
@@ -90,13 +88,49 @@ MonoBehaviour:
   Path: FMOD_MLP_Unity/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639235153571592736
-  lastModified: 639235138766666179
+  lastModified: 639236052304260510
   FileSizes:
   - Name: Desktop
-    Value: 990
+    Value: 1026
   Exists: 1
 --- !u!114 &4858308767060614265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5128393282954380300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Bedroom Ambiance
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Bedroom Ambiance
+  Guid:
+    Data1: -777475427
+    Data2: 1178339719
+    Data3: -96828779
+    Data4: 23772978
+  Banks: []
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1170000
 --- !u!114 &5189395803547662555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,50 +152,12 @@ MonoBehaviour:
   Banks:
   - {fileID: 6758641969680194797}
   IsStream: 0
-  m_Name: event:/Whoosh
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Whoosh
-  Guid:
-    Data1: 1414413965
-    Data2: 1248255450
-    Data3: 1386836915
-    Data4: -356130517
-  Banks:
-  - {fileID: 6758641969680194797}
-  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 1700
---- !u!114 &5128393282954380300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Bedroom Ambiance
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Bedroom Ambiance
-  Guid:
-    Data1: -777475427
-    Data2: 1178339719
-    Data3: -96828779
-    Data4: 23772978
-  Banks:
-  - {fileID: 6758641969680194797}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1170000
 --- !u!114 &6758641969680194797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +173,7 @@ MonoBehaviour:
   Path: FMOD_MLP_Unity/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639235138766646127
+  lastModified: 639236052304245458
   FileSizes:
   - Name: Desktop
     Value: 12176416
@@ -227,8 +223,7 @@ MonoBehaviour:
     Data2: 1079420566
     Data3: -582714963
     Data4: 997546844
-  Banks:
-  - {fileID: 6758641969680194797}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
