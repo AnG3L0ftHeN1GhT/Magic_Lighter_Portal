@@ -8,7 +8,7 @@ public class ActivatePyramid : MonoBehaviour
     public static ActivatePyramid instance;
 
     private bool pyrActiv = false;
-    public int allDone;
+    public bool allDone;
 
     public GameObject inPyramid;
     public GameObject cmPyramid;
@@ -61,7 +61,7 @@ public class ActivatePyramid : MonoBehaviour
 
     private void ActivatedPyramid()
     {
-        if (allDone > 1 && !pyrActiv)
+        if (allDone = true && !pyrActiv)
         {
             pyrActiv = true;
 
