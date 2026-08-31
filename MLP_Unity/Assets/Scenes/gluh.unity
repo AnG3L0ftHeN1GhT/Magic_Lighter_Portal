@@ -2367,6 +2367,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2344686809745024112, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344686809745024112, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344686809745024112, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4cbc5be114aba1d449f294f712aa903c, type: 2}
     - target: {fileID: 2672768842402332787, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0000009536743
@@ -2495,6 +2507,10 @@ PrefabInstance:
       propertyPath: TiltAxis.Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6194228019182489905, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 8211372540250625004, guid: 179c977cca5d6ee42acaa6f8ac4e796c, type: 3}
     - target: {fileID: 6238210550633369032, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: FollowOffset.y
       value: 0.6
@@ -2509,7 +2525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6603510170235960985, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044318767260776078, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: m_LocalScale.x
