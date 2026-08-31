@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{c0708578-2301-44f8-af41-5912c39198c9}">
+		<property name="assetPath">
+			<value>FREE Transition Sound Effects [Swoosh Pack] (Sam Kolder  Taylor Cut Films  JR Alli ) - Haseeb Ahsan (youtube).mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>28.055510204081632</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ae2166cc-cff7-4242-a078-561676842a3b}</destination>
+		</relationship>
+	</object>
+</objects>

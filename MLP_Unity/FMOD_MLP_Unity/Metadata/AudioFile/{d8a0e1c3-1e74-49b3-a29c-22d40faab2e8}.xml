@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{d8a0e1c3-1e74-49b3-a29c-22d40faab2e8}">
+		<property name="assetPath">
+			<value>Minecraft - Cave 10 - Gaming Sound Effect Minecraft (HD)  Sound Effects - Sound Effects (youtube).mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.1795918367346943</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ae2166cc-cff7-4242-a078-561676842a3b}</destination>
+		</relationship>
+	</object>
+</objects>

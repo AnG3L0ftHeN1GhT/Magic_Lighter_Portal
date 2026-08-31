@@ -295,16 +295,15 @@ public class PlayerInteraction : MonoBehaviour
         currentInteract.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * y * rotateSpeed, Space.World);
     }
 
-    void HoldingHeavyObjects()
-    {
-        // fazer isso segurar o negócio mesmo sem estar olhando, isso é, se tiver segurando o ckick
-    }
-
     bool PressedClickCheck()
     {
         if (leftClick.action.IsPressed())
         {
-            return true;   
+            if(currentInteract.item.pesado)
+            {
+                return true;
+            }
+            return false;
         }
         else
         {
