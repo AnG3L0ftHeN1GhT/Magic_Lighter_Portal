@@ -10,6 +10,8 @@ using UnityEngine.UIElements;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    [SerializeField] GameProcess processo;
+
     public bool fluidoDourado;
     public bool fluidoRoxo;
     public bool fluidoGreen;
@@ -129,8 +131,6 @@ public class PlayerInteraction : MonoBehaviour
             {
                 UIManager.instance.SetInteractionCursor(true);
 
-                
-
                 if (leftClick.action.WasPressedThisFrame())
                 {
                     if (interactable.isMoving)
@@ -143,7 +143,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (currentInteract.item.piramide)
                 {
                     // Se a pirâmide já foi resolvida, não abre novamente
-                    if (GameProgress.Instance != null && GameProgress.Instance.IsPyramidSolved())
+                    if (processo != null && processo.IsPyramidSolved())
                     {
                         Debug.Log("A pirâmide já foi resolvida.");
 
@@ -161,7 +161,7 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.ouro)
                     {
                         fluidoDourado = true;
-                        GameProgress.Instance.SetFluidoDourado();
+                        processo.SetFluidoDourado();
 
                         Destroy(currentInteract.gameObject);
                     }
@@ -169,7 +169,7 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.falsoIsqueiro)
                     {
                         temIsqueiro = true;
-                        GameProgress.Instance.SetIsqueiro();
+                        processo.SetIsqueiro();
 
                         Destroy(currentInteract.gameObject);
                     }
@@ -177,7 +177,7 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.verde)
                     {
                         fluidoGreen = true;
-                        GameProgress.Instance.SetFluidoGreen();
+                        processo.SetFluidoGreen();
 
                         Destroy(currentInteract.gameObject);
                     }
@@ -185,7 +185,7 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.roxo)
                     {
                         fluidoRoxo = true;
-                        GameProgress.Instance.SetFluidoRoxo();
+                        processo.SetFluidoRoxo();
 
                         Destroy(currentInteract.gameObject);
                     }
@@ -193,7 +193,7 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.kanji1)
                     {
                         kanji1 = true;
-                        GameProgress.Instance.SetKanji1();
+                        processo.SetKanji1();
 
                         Destroy(currentInteract.gameObject);
                     }
@@ -201,7 +201,7 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.kanji2)
                     {
                         kanji2 = true;
-                        GameProgress.Instance.SetKanji2();
+                        processo.SetKanji2();
 
                         Destroy(currentInteract.gameObject);
                     }
@@ -209,7 +209,7 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.kanji3)
                     {
                         kanji3 = true;
-                        GameProgress.Instance.SetKanji3();
+                        processo.SetKanji3();
 
                         Destroy(currentInteract.gameObject);
                     }
@@ -217,7 +217,7 @@ public class PlayerInteraction : MonoBehaviour
                     if (currentInteract.item.kanji4)
                     {
                         kanji4 = true;
-                        GameProgress.Instance.SetKanji4();
+                        processo.SetKanji4();
 
                         Destroy(currentInteract.gameObject);
                     }
@@ -229,19 +229,19 @@ public class PlayerInteraction : MonoBehaviour
                         {
                             case "Feliz":
                                 statua1 = true;
-                                GameProgress.Instance.SetStatua1();
+                                processo.SetStatua1();
 
                                 Destroy(currentInteract.gameObject);
                                 break;
                             case "Neutra":
                                 statua2 = true;
-                                GameProgress.Instance.SetStatua2();
+                                processo.SetStatua2();
 
                                 Destroy(currentInteract.gameObject);
                                 break;
                             case "Triste":
                                 statua3 = true;
-                                GameProgress.Instance.SetStatua3();
+                                processo.SetStatua3();
 
                                 Destroy(currentInteract.gameObject);
                                 break;
@@ -346,24 +346,24 @@ public class PlayerInteraction : MonoBehaviour
     }
     void LoadProgress()
 {
-    if (GameProgress.Instance == null)
+    if (processo == null)
     {
         Debug.LogWarning("GameProgress não encontrado!");
         return;
     }
 
-    fluidoDourado = GameProgress.Instance.fluidoDourado;
-    fluidoRoxo = GameProgress.Instance.fluidoRoxo;
-    fluidoGreen = GameProgress.Instance.fluidoGreen;
-    temIsqueiro = GameProgress.Instance.temIsqueiro;
+    fluidoDourado = processo.fluidoDourado;
+    fluidoRoxo = processo.fluidoRoxo;
+    fluidoGreen = processo.fluidoGreen;
+    temIsqueiro = processo.temIsqueiro;
 
-    kanji1 = GameProgress.Instance.kanji1;
-    kanji2 = GameProgress.Instance.kanji2;
-    kanji3 = GameProgress.Instance.kanji3;
-    kanji4 = GameProgress.Instance.kanji4;
+    kanji1 = processo.kanji1;
+    kanji2 = processo.kanji2;
+    kanji3 = processo.kanji3;
+    kanji4 = processo.kanji4;
 
-    statua1 = GameProgress.Instance.statua1;
-    statua2 = GameProgress.Instance.statua2;
-    statua3 = GameProgress.Instance.statua3;
+    statua1 = processo.statua1;
+    statua2 = processo.statua2;
+    statua3 = processo.statua3;
 }
 }

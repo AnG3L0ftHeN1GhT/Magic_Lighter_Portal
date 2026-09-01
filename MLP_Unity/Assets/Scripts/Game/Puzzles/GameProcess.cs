@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class GameProgress : MonoBehaviour
+public class GameProcess : MonoBehaviour
 {
-    public static GameProgress Instance;
+    public static GameProcess Instance;
 
     public bool pyramidSolved;
 

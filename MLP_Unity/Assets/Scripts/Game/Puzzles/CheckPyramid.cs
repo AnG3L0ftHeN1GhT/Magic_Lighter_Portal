@@ -52,7 +52,7 @@ void CheckFaces()
             Debug.Log("Face completa com " + kanji + "!");
 
             // SALVA O PUZZLE
-            GameProgress.Instance.SolvePyramid();
+            GameProcess.Instance.SolvePyramid();
 
             // Volta para o jogo principal
             SceneManager.LoadScene("gluh");

@@ -2715,6 +2715,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2679386449057688249, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: processo
+      value: 
+      objectReference: {fileID: 865366688}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: greenFlame
       value: 
       objectReference: {fileID: 1497793475730580449}
@@ -2896,7 +2900,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2470028952603268777, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
-    - {fileID: 879113244662045749, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
     - {fileID: 7645789062123452518, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5870189995257673843, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
@@ -2912,30 +2915,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3153258669331996111, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1497793475730580448}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5382938487663539936, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 843307504}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
---- !u!1 &843307503 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5382938487663539936, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
-  m_PrefabInstance: {fileID: 843307502}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &843307504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843307503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
-  nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 0}
 --- !u!4 &843307505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 591610996592122766, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
@@ -2968,6 +2949,62 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8691780276856062721, guid: 3c5e30d914b1308408fdabb32c45c425, type: 3}
+--- !u!1 &865366687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 865366689}
+  - component: {fileID: 865366688}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &865366688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865366687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7152b0787fec4314e84c41afe28b45c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameProcess
+  pyramidSolved: 0
+  fluidoDourado: 0
+  fluidoRoxo: 0
+  fluidoGreen: 0
+  temIsqueiro: 0
+  kanji1: 0
+  kanji2: 0
+  kanji3: 0
+  kanji4: 0
+  statua1: 0
+  statua2: 0
+  statua3: 0
+--- !u!4 &865366689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865366687}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &877245524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7681318849259106783, guid: 3c5e30d914b1308408fdabb32c45c425, type: 3}
@@ -6458,3 +6495,4 @@ SceneRoots:
   - {fileID: 167317560}
   - {fileID: 364875054}
   - {fileID: 1624873414}
+  - {fileID: 865366689}
