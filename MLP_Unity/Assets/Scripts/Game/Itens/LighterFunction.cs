@@ -19,7 +19,7 @@ public class LighterFunction : MonoBehaviour
     private FMOD.Studio.EventInstance instanciaVerde;
 
     public static LighterFunction instance;
-    private bool holdingLight;
+    public bool holdingLight;
     public int hasLighter;
     public GameObject lighter;
     public InputActionReference lightBttn;
@@ -52,13 +52,16 @@ public class LighterFunction : MonoBehaviour
 
         if(fogo1.action.WasPressedThisFrame())
         {
-            MudarCorChama(1);
+            activeFlame = 1;
+            MudarCorChama(activeFlame);
         } else if(fogo2.action.WasPressedThisFrame())
         {
-            MudarCorChama(2);
+            activeFlame = 2;
+            MudarCorChama(activeFlame);
         } else if(fogo3.action.WasPressedThisFrame())
         {
-            MudarCorChama(3);
+            activeFlame = 3;
+            MudarCorChama(activeFlame);
         }
 
         if(playerCollections.temIsqueiro && hasLighter == 0)
@@ -118,13 +121,4 @@ public class LighterFunction : MonoBehaviour
         }
 
     }
-    
-    /*
-    if(currentInteract.item.papelDeOuro)
-                    {
-                        activeFlame = 1;
-                        MudarCorChama(activeFlame);
-                        return;
-                    }
-                    */
 }

@@ -5,7 +5,9 @@ public class Item : ScriptableObject
 {
     public bool grabbable;
     public bool stashable;
-    public bool vela;
+    public bool velaDourada;
+    public bool velaRoxa;
+    public bool velaVerde;
     public bool inPiramide;
     public bool piramide;
     public bool ouro;

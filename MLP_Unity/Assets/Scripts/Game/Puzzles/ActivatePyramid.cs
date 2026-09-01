@@ -55,7 +55,7 @@ public class ActivatePyramid : MonoBehaviour
 
     private void Update()
     {
-        ActivatedPyramid();
+        //ActivatedPyramid();
         CheckLeftClick();
     }
 

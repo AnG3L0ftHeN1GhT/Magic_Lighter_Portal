@@ -54,7 +54,7 @@ public class PlayerInteraction : MonoBehaviour
     public InputActionReference look;
     public InputActionAsset inputActions;
     
-
+    public GerenteDeVela candleManager;
 
     void OnEnable()
     {
@@ -140,7 +140,7 @@ public class PlayerInteraction : MonoBehaviour
 
                     currentInteract = interactable;
 
-                if (currentInteract.item.piramide)
+                if (currentInteract.item.inPiramide)
                 {
                     // Se a pirâmide já foi resolvida, não abre novamente
                     if (processo != null && processo.IsPyramidSolved())
@@ -158,18 +158,18 @@ public class PlayerInteraction : MonoBehaviour
              return;
                 }
 
-                    if (currentInteract.item.ouro)
-                    {
-                        fluidoDourado = true;
-                        processo.SetFluidoDourado();
-
-                        Destroy(currentInteract.gameObject);
-                    }
-
                     if (currentInteract.item.falsoIsqueiro)
                     {
                         temIsqueiro = true;
                         processo.SetIsqueiro();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.ouro)
+                    {
+                        fluidoDourado = true;
+                        processo.SetFluidoDourado();
 
                         Destroy(currentInteract.gameObject);
                     }
@@ -188,6 +188,12 @@ public class PlayerInteraction : MonoBehaviour
                         processo.SetFluidoRoxo();
 
                         Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.velaDourada || currentInteract.item.velaRoxa || currentInteract.item.velaVerde)
+                    {
+                        candleManager = hit.collider.GetComponent<GerenteDeVela>();
+                        candleManager.AcenderVela();
                     }
 
                     if (currentInteract.item.kanji1)
