@@ -25,8 +25,6 @@ public class PlayerInteraction : MonoBehaviour
     public bool statua3;
 
     public bool clickIsPressed;
-    private Vector3 playerBase;
-    private Vector3 objetoBase;
     public PlayerController playerMovements;
 
     public float rayDistance;
@@ -107,8 +105,8 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (currentInteract.item.pesado)
                 {
-                    Vector3 temp = new Vector3(this.transform.position.x, 0, this.transform.position.z);
-                    currentInteract.transform.position = objetoBase + (-playerBase + temp);
+                    currentInteract.transform.SetParent(transform);
+
                 }
                 playerMovements.GrabbedBox();
                 return;
@@ -116,6 +114,7 @@ public class PlayerInteraction : MonoBehaviour
             else
             {
                 clickIsPressed = false;
+                currentInteract.transform.SetParent(null);
                 playerMovements.ReleasedBox();
             }
         }
@@ -270,8 +269,6 @@ public class PlayerInteraction : MonoBehaviour
                         StartCoroutine(MovingObject(currentInteract, objectViewer.position));
                     } inutilizado e podre; não é nescessário por enquanto. Fica aqui só caso a mecância volte, o que é improvável
                     */
-                    playerBase = new Vector3(this.transform.position.x, 0, this.transform.position.z);
-                    objetoBase = new Vector3(currentInteract.transform.position.x, currentInteract.transform.position.y, currentInteract.transform.position.z);
                     clickIsPressed = PressedClickCheck();
                 }
                 

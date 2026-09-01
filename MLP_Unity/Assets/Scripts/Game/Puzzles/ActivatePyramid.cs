@@ -55,13 +55,13 @@ public class ActivatePyramid : MonoBehaviour
 
     private void Update()
     {
-        //ActivatedPyramid();
+        ActivatedPyramid();
         CheckLeftClick();
     }
 
     private void ActivatedPyramid()
     {
-        if (allDone = true && !pyrActiv)
+        if (allDone == true && !pyrActiv)
         {
             pyrActiv = true;
 

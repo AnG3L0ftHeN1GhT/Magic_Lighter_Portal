@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Transform cameraTransform;
+    private bool grabbing;
 
     [Header("Input Actions")]
     public InputActionReference moveAction;
@@ -27,11 +28,6 @@ public class PlayerController : MonoBehaviour
 
     private float pitch = 0f;
     private bool cursorLocked = false;
-
-    private void Start()
-    {
-        
-    }
 
     private void OnEnable()
     {
@@ -75,7 +71,7 @@ public class PlayerController : MonoBehaviour
                 SetCursorLocked(false);
             }
 
-            if (cursorLocked)
+            if (cursorLocked && !grabbing)
             {
                 HandleMouseLook();
             }
@@ -144,12 +140,14 @@ public class PlayerController : MonoBehaviour
     {
         playerSpeed = 1.25f;
         jumpHeight = 0f;
+        grabbing = true;
     }
 
     public void ReleasedBox()
     {
         playerSpeed = 5f;
         jumpHeight = 1.5f;
+        grabbing = false;
     }
 
     public void DesativarCamera()
