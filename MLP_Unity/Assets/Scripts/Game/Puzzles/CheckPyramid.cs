@@ -18,47 +18,49 @@ public class CheckPyramid : MonoBehaviour
         CheckFaces();
     }
 
-    void CheckFaces()
+void CheckFaces()
+{
+    Renderer[] allRenderers = GetComponentsInChildren<Renderer>();
+
+    List<Renderer> planes = new List<Renderer>();
+
+    foreach (Renderer renderer in allRenderers)
     {
-        // Procura todos os Planes dentro da pirâmide
-        Renderer[] allRenderers = GetComponentsInChildren<Renderer>();
-
-        List<Renderer> planes = new List<Renderer>();
-
-        foreach (Renderer renderer in allRenderers)
+        if (renderer.gameObject.name.Contains("Plane"))
         {
-            if (renderer.gameObject.name.Contains("Plane"))
-            {
-                planes.Add(renderer);
-            }
-        }
-
-        if (planes.Count == 0)
-            return;
-
-        // Verifica cada material de Kanji
-        string[] kanjis =
-        {
-            "Kanji-1",
-            "Kanji 2",
-            "Kanji 3",
-            "Kanji 4"
-        };
-
-        foreach (string kanji in kanjis)
-        {
-            if (CheckKanji(planes, kanji))
-            {
-                puzzleSolved = true;
-
-                Debug.Log("Face completa com " + kanji + "!");
-
-                SceneManager.LoadScene("gluh");
-
-                return;
-            }
+            planes.Add(renderer);
         }
     }
+
+    if (planes.Count == 0)
+        return;
+
+    string[] kanjis =
+    {
+        "Kanji-1",
+        "Kanji 2",
+        "Kanji 3",
+        "Kanji 4"
+    };
+
+    foreach (string kanji in kanjis)
+    {
+        if (CheckKanji(planes, kanji))
+        {
+            puzzleSolved = true;
+
+            Debug.Log("Face completa com " + kanji + "!");
+
+            // SALVA O PUZZLE
+            GameProgress.Instance.SolvePyramid();
+
+            // Volta para o jogo principal
+            SceneManager.LoadScene("gluh");
+
+            return;
+        }
+    }
+}
 
     bool CheckKanji(List<Renderer> planes, string kanji)
     {

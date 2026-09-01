@@ -51,6 +51,7 @@ public class PlayerInteraction : MonoBehaviour
     public InputActionReference interactBttn;
     public InputActionReference look;
     public InputActionAsset inputActions;
+    
 
 
     void OnEnable()
@@ -61,6 +62,8 @@ public class PlayerInteraction : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+
+        LoadProgress();
     }
 
     void Update()
@@ -137,60 +140,85 @@ public class PlayerInteraction : MonoBehaviour
 
                     currentInteract = interactable;
 
-                    if (currentInteract.item.piramide)
+                if (currentInteract.item.piramide)
+                {
+                    // Se a pirâmide já foi resolvida, não abre novamente
+                    if (GameProgress.Instance != null && GameProgress.Instance.IsPyramidSolved())
                     {
-                        UnityEngine.Cursor.lockState = CursorLockMode.None;
-                        UnityEngine.Cursor.visible = true;
+                        Debug.Log("A pirâmide já foi resolvida.");
 
-                        SceneManager.LoadScene("Pyramid Screen");
                         return;
                     }
+
+                 UnityEngine.Cursor.lockState = CursorLockMode.None;
+                 UnityEngine.Cursor.visible = true;
+
+                 SceneManager.LoadScene("Pyramid Screen");
+
+             return;
+                }
 
                     if (currentInteract.item.ouro)
                     {
                         fluidoDourado = true;
+                        GameProgress.Instance.SetFluidoDourado();
+
                         Destroy(currentInteract.gameObject);
                     }
 
                     if (currentInteract.item.falsoIsqueiro)
                     {
                         temIsqueiro = true;
+                        GameProgress.Instance.SetIsqueiro();
+
                         Destroy(currentInteract.gameObject);
                     }
 
                     if (currentInteract.item.verde)
                     {
                         fluidoGreen = true;
+                        GameProgress.Instance.SetFluidoGreen();
+
                         Destroy(currentInteract.gameObject);
                     }
 
                     if (currentInteract.item.roxo)
                     {
                         fluidoRoxo = true;
+                        GameProgress.Instance.SetFluidoRoxo();
+
                         Destroy(currentInteract.gameObject);
                     }
 
                     if (currentInteract.item.kanji1)
                     {
                         kanji1 = true;
+                        GameProgress.Instance.SetKanji1();
+
                         Destroy(currentInteract.gameObject);
                     }
 
                     if (currentInteract.item.kanji2)
                     {
                         kanji2 = true;
+                        GameProgress.Instance.SetKanji2();
+
                         Destroy(currentInteract.gameObject);
                     }
                     
                     if (currentInteract.item.kanji3)
                     {
                         kanji3 = true;
+                        GameProgress.Instance.SetKanji3();
+
                         Destroy(currentInteract.gameObject);
                     }
                     
                     if (currentInteract.item.kanji4)
                     {
                         kanji4 = true;
+                        GameProgress.Instance.SetKanji4();
+
                         Destroy(currentInteract.gameObject);
                     }
 
@@ -201,14 +229,20 @@ public class PlayerInteraction : MonoBehaviour
                         {
                             case "Feliz":
                                 statua1 = true;
+                                GameProgress.Instance.SetStatua1();
+
                                 Destroy(currentInteract.gameObject);
                                 break;
                             case "Neutra":
                                 statua2 = true;
+                                GameProgress.Instance.SetStatua2();
+
                                 Destroy(currentInteract.gameObject);
                                 break;
                             case "Triste":
                                 statua3 = true;
+                                GameProgress.Instance.SetStatua3();
+
                                 Destroy(currentInteract.gameObject);
                                 break;
                         }
@@ -310,4 +344,26 @@ public class PlayerInteraction : MonoBehaviour
             return false;
         }
     }
+    void LoadProgress()
+{
+    if (GameProgress.Instance == null)
+    {
+        Debug.LogWarning("GameProgress não encontrado!");
+        return;
+    }
+
+    fluidoDourado = GameProgress.Instance.fluidoDourado;
+    fluidoRoxo = GameProgress.Instance.fluidoRoxo;
+    fluidoGreen = GameProgress.Instance.fluidoGreen;
+    temIsqueiro = GameProgress.Instance.temIsqueiro;
+
+    kanji1 = GameProgress.Instance.kanji1;
+    kanji2 = GameProgress.Instance.kanji2;
+    kanji3 = GameProgress.Instance.kanji3;
+    kanji4 = GameProgress.Instance.kanji4;
+
+    statua1 = GameProgress.Instance.statua1;
+    statua2 = GameProgress.Instance.statua2;
+    statua3 = GameProgress.Instance.statua3;
+}
 }
