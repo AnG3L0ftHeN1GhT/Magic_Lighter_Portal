@@ -16,6 +16,13 @@ public class GameProcess : MonoBehaviour
     public bool kanji3;
     public bool kanji4;
 
+    public bool velaV1;
+    public bool velaV2;
+    public bool velaR1;
+    public bool velaR2;
+    public bool velaG1;
+    public bool velaG2;
+
     public bool statua1;
     public bool statua2;
     public bool statua3;
@@ -97,4 +104,35 @@ public class GameProcess : MonoBehaviour
     {
         statua3 = true;
     }
+
+    public void LightVelaV1()
+    {
+        velaV1 = true;
+    }
+
+    public void LightVelaV2()
+    {
+        velaV2 = true;
+    }
+
+    public void LightVelaR1()
+    {
+        velaR1 = true;
+    }
+
+    public void LightVelaR2()
+    {
+        velaR2 = true;
+    }
+
+    public void LightVelaG1()
+    {
+        velaG1 = true;
+    }
+
+    public void LightVelaG2()
+    {
+        velaG2 = true;
+    }
+
 }
