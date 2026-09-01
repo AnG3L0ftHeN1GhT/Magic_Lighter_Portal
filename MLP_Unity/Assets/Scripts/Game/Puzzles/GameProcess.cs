@@ -15,13 +15,9 @@ public class GameProcess : MonoBehaviour
     public bool kanji2;
     public bool kanji3;
     public bool kanji4;
-
-    public bool velaV1;
-    public bool velaV2;
-    public bool velaR1;
-    public bool velaR2;
-    public bool velaG1;
-    public bool velaG2;
+    public int velaV;
+    public int velaR;
+    public int velaG;
 
     public bool statua1;
     public bool statua2;
@@ -49,6 +45,8 @@ public class GameProcess : MonoBehaviour
     {
         return pyramidSolved;
     }
+
+
 
     public void SetFluidoDourado()
     {
@@ -105,34 +103,19 @@ public class GameProcess : MonoBehaviour
         statua3 = true;
     }
 
-    public void LightVelaV1()
+    public void LightVelaV()
     {
-        velaV1 = true;
+        velaV += 1;
     }
 
-    public void LightVelaV2()
+    public void LightVelaR()
     {
-        velaV2 = true;
+        velaR += 1;
     }
 
-    public void LightVelaR1()
+    public void LightVelaG()
     {
-        velaR1 = true;
-    }
-
-    public void LightVelaR2()
-    {
-        velaR2 = true;
-    }
-
-    public void LightVelaG1()
-    {
-        velaG1 = true;
-    }
-
-    public void LightVelaG2()
-    {
-        velaG2 = true;
+        velaG += 1;
     }
 
 }
