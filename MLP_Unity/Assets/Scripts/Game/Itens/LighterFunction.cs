@@ -52,16 +52,27 @@ public class LighterFunction : MonoBehaviour
 
         if(fogo1.action.WasPressedThisFrame())
         {
-            activeFlame = 1;
-            MudarCorChama(activeFlame);
-        } else if(fogo2.action.WasPressedThisFrame())
+            if (activeFlame != 1)
+            {
+                activeFlame = 1;
+                MudarCorChama(activeFlame);
+            }
+        } 
+        else if(fogo2.action.WasPressedThisFrame())
         {
-            activeFlame = 2;
-            MudarCorChama(activeFlame);
-        } else if(fogo3.action.WasPressedThisFrame())
+            if (activeFlame != 2)
+            {
+                activeFlame = 2;
+                MudarCorChama(activeFlame);
+            }
+        } 
+        else if(fogo3.action.WasPressedThisFrame())
         {
-            activeFlame = 3;
-            MudarCorChama(activeFlame);
+            if (activeFlame != 3)
+            {
+                activeFlame = 3;
+                MudarCorChama(activeFlame);
+            }
         }
 
         if(playerCollections.temIsqueiro && hasLighter == 0)

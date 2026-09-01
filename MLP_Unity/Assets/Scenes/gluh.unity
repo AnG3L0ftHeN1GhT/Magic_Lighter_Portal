@@ -1072,6 +1072,27 @@ MonoBehaviour:
   isqueiroAceso: {fileID: 922198640}
   progress: {fileID: 865366688}
   tipoDeVela: {fileID: 303746657}
+  fire:
+    Guid:
+      Data1: -1320211190
+      Data2: 1265745617
+      Data3: 260246168
+      Data4: -414578537
+    Path: event:/Fire
+  snap:
+    Guid:
+      Data1: -2018924126
+      Data2: 1156219911
+      Data3: -1021272145
+      Data4: 1936150754
+    Path: event:/Snap
+  scree:
+    Guid:
+      Data1: 1617432313
+      Data2: 1192223127
+      Data3: 2122641853
+      Data4: -2099538657
+    Path: event:/Scree
 --- !u!1 &350571722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,6 +2624,27 @@ MonoBehaviour:
   isqueiroAceso: {fileID: 922198640}
   progress: {fileID: 865366688}
   tipoDeVela: {fileID: 739722180}
+  fire:
+    Guid:
+      Data1: -1320211190
+      Data2: 1265745617
+      Data3: 260246168
+      Data4: -414578537
+    Path: event:/Fire
+  snap:
+    Guid:
+      Data1: -2018924126
+      Data2: 1156219911
+      Data3: -1021272145
+      Data4: 1936150754
+    Path: event:/Snap
+  scree:
+    Guid:
+      Data1: 1617432313
+      Data2: 1192223127
+      Data3: 2122641853
+      Data4: -2099538657
+    Path: event:/Scree
 --- !u!1001 &742082249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3467,6 +3509,27 @@ MonoBehaviour:
   isqueiroAceso: {fileID: 922198640}
   progress: {fileID: 865366688}
   tipoDeVela: {fileID: 860569410}
+  fire:
+    Guid:
+      Data1: -1320211190
+      Data2: 1265745617
+      Data3: 260246168
+      Data4: -414578537
+    Path: event:/Fire
+  snap:
+    Guid:
+      Data1: -2018924126
+      Data2: 1156219911
+      Data3: -1021272145
+      Data4: 1936150754
+    Path: event:/Snap
+  scree:
+    Guid:
+      Data1: 1617432313
+      Data2: 1192223127
+      Data3: 2122641853
+      Data4: -2099538657
+    Path: event:/Scree
 --- !u!1 &861090043 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6733177361254619370, guid: 3c5e30d914b1308408fdabb32c45c425, type: 3}
@@ -3532,12 +3595,9 @@ MonoBehaviour:
   kanji2: 0
   kanji3: 0
   kanji4: 0
-  velaV1: 0
-  velaV2: 0
-  velaR1: 0
-  velaR2: 0
-  velaG1: 0
-  velaG2: 0
+  velaV: 0
+  velaR: 0
+  velaG: 0
   statua1: 0
   statua2: 0
   statua3: 0
@@ -6221,6 +6281,27 @@ MonoBehaviour:
   isqueiroAceso: {fileID: 922198640}
   progress: {fileID: 865366688}
   tipoDeVela: {fileID: 1609049970}
+  fire:
+    Guid:
+      Data1: -1320211190
+      Data2: 1265745617
+      Data3: 260246168
+      Data4: -414578537
+    Path: event:/Fire
+  snap:
+    Guid:
+      Data1: -2018924126
+      Data2: 1156219911
+      Data3: -1021272145
+      Data4: 1936150754
+    Path: event:/Snap
+  scree:
+    Guid:
+      Data1: 1617432313
+      Data2: 1192223127
+      Data3: 2122641853
+      Data4: -2099538657
+    Path: event:/Scree
 --- !u!65 &1609049972
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6987,6 +7068,27 @@ MonoBehaviour:
   isqueiroAceso: {fileID: 922198640}
   progress: {fileID: 865366688}
   tipoDeVela: {fileID: 1951096618}
+  fire:
+    Guid:
+      Data1: -1320211190
+      Data2: 1265745617
+      Data3: 260246168
+      Data4: -414578537
+    Path: event:/Fire
+  snap:
+    Guid:
+      Data1: -2018924126
+      Data2: 1156219911
+      Data3: -1021272145
+      Data4: 1936150754
+    Path: event:/Snap
+  scree:
+    Guid:
+      Data1: 1617432313
+      Data2: 1192223127
+      Data3: 2122641853
+      Data4: -2099538657
+    Path: event:/Scree
 --- !u!1 &1978573950 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8700725330082129686, guid: 3c5e30d914b1308408fdabb32c45c425, type: 3}
@@ -7153,6 +7255,27 @@ MonoBehaviour:
   isqueiroAceso: {fileID: 922198640}
   progress: {fileID: 865366688}
   tipoDeVela: {fileID: 2063878630}
+  fire:
+    Guid:
+      Data1: -1320211190
+      Data2: 1265745617
+      Data3: 260246168
+      Data4: -414578537
+    Path: event:/Fire
+  snap:
+    Guid:
+      Data1: -2018924126
+      Data2: 1156219911
+      Data3: -1021272145
+      Data4: 1936150754
+    Path: event:/Snap
+  scree:
+    Guid:
+      Data1: 1617432313
+      Data2: 1192223127
+      Data3: 2122641853
+      Data4: -2099538657
+    Path: event:/Scree
 --- !u!65 &2063878632
 BoxCollider:
   m_ObjectHideFlags: 0
