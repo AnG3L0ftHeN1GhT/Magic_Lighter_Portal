@@ -27,6 +27,10 @@ public class MainMenuManager : MonoBehaviour
     public void Sair()
     {
         Debug.Log("Saindo dessa joça");
-        Application.Quit();    
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;        
+        #else
+        Application.Quit();
+        #endif   
     }
 }

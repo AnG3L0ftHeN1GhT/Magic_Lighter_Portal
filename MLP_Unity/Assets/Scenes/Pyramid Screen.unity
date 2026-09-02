@@ -363,7 +363,7 @@ Light:
   m_Type: 1
   m_Color: {r: 0.64705884, g: 0.24313727, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 195.92934
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -425,7 +425,7 @@ Transform:
   m_GameObject: {fileID: 620012201}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 133.3, y: 147.8, z: -60.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -645,9 +645,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 424437860}
     - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: leftClick
+      value: 
+      objectReference: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
       propertyPath: whoosh.Path
       value: event:/Whoosh
       objectReference: {fileID: 0}
+    - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
+      propertyPath: inputActions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: -3986799203382786004, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
       propertyPath: whoosh.Guid.Data1
       value: 1414413965
