@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CubeLayerRotation : MonoBehaviour
 {
@@ -12,6 +13,14 @@ public class CubeLayerRotation : MonoBehaviour
     private Quaternion targetRotation;
     private bool isRotating = false;
 
+    public InputActionReference leftClick;
+    public InputActionAsset inputActions;
+
+    void OnEnable()
+    {
+        inputActions.FindActionMap("Player").Enable();
+    }
+
     void Update()
     {
         DetectClick();
@@ -20,7 +29,7 @@ public class CubeLayerRotation : MonoBehaviour
 
     void DetectClick()
     {
-        if (!Input.GetMouseButtonDown(0))
+        if (!leftClick.action.WasPressedThisFrame())
             return;
 
         if (isRotating)

@@ -139,7 +139,7 @@ public class PlayerInteraction : MonoBehaviour
 
                     currentInteract = interactable;
 
-                if (currentInteract.item.inPiramide)
+                if (currentInteract.item.piramide)
                 {
                     // Se a pirâmide já foi resolvida, não abre novamente
                     if (processo != null && processo.IsPyramidSolved())

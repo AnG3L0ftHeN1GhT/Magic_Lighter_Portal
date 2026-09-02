@@ -47,15 +47,13 @@ void CheckFaces()
     {
         if (CheckKanji(planes, kanji))
         {
+            SceneManager.LoadScene("gluh");
             puzzleSolved = true;
 
             Debug.Log("Face completa com " + kanji + "!");
 
             // SALVA O PUZZLE
             GameProcess.Instance.SolvePyramid();
-
-            // Volta para o jogo principal
-            SceneManager.LoadScene("gluh");
 
             return;
         }
