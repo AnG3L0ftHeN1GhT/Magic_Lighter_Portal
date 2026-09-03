@@ -1532,6 +1532,8 @@ MonoBehaviour:
   down: {fileID: 4738646162894979979}
   mid: {fileID: 3645977941357818367}
   top: {fileID: 4504713247547420682}
+  leftClick: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  inputActions: {fileID: 0}
 --- !u!114 &-8576248434251429932
 MonoBehaviour:
   m_ObjectHideFlags: 0

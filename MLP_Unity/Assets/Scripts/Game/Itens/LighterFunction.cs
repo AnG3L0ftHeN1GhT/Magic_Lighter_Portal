@@ -47,12 +47,12 @@ public class LighterFunction : MonoBehaviour
         if ((hasLighter > 0) && lightBttn.action.WasPressedThisFrame())
         {
             holdingLight = !holdingLight;
-            handleLighter();
+            HandleLighter();
         }
 
         if(fogo1.action.WasPressedThisFrame())
         {
-            if (activeFlame != 1)
+            if (activeFlame != 1 && holdingLight)
             {
                 activeFlame = 1;
                 MudarCorChama(activeFlame);
@@ -60,7 +60,7 @@ public class LighterFunction : MonoBehaviour
         } 
         else if(fogo2.action.WasPressedThisFrame())
         {
-            if (activeFlame != 2)
+            if (activeFlame != 2 && holdingLight)
             {
                 activeFlame = 2;
                 MudarCorChama(activeFlame);
@@ -68,7 +68,7 @@ public class LighterFunction : MonoBehaviour
         } 
         else if(fogo3.action.WasPressedThisFrame())
         {
-            if (activeFlame != 3)
+            if (activeFlame != 3 && holdingLight)
             {
                 activeFlame = 3;
                 MudarCorChama(activeFlame);
@@ -85,7 +85,7 @@ public class LighterFunction : MonoBehaviour
         }
     } 
 
-    private void handleLighter()
+    private void HandleLighter()
     {
         if (holdingLight)
         {
