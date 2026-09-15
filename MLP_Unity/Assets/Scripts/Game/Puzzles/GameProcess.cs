@@ -18,6 +18,7 @@ public class GameProcess : MonoBehaviour
     public int velaV;
     public int velaR;
     public int velaG;
+    public bool velasProntas;
     public bool portal;
 
     public bool statua1;
@@ -34,6 +35,14 @@ public class GameProcess : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    void Update()
+    {
+        if (velaG == 2 && velaR == 2 && velaV == 2)
+        {
+            velasProntas = true;
+        }
     }
 
     public void SolvePyramid()

@@ -40,7 +40,7 @@ public class GerenteDeVela : MonoBehaviour
                 Destroy(this);
                 progress.LightVelaG();
             }
-            else if (tipoDeVela.item.velaRoxa && isqueiroAceso.activeFlame == 2)
+            else if (tipoDeVela.item.velaRoxa && isqueiroAceso.activeFlame == 2 && progress.velaG == 2)
             {
                 fogo.SetActive(true);
                 instanciaRoxa.start();
@@ -48,7 +48,7 @@ public class GerenteDeVela : MonoBehaviour
                 Destroy(this);
                 progress.LightVelaR();
             }
-            else if (tipoDeVela.item.velaVerde && isqueiroAceso.activeFlame == 3)
+            else if (tipoDeVela.item.velaVerde && isqueiroAceso.activeFlame == 3 && progress.velaR == 2)
             {
                 fogo.SetActive(true);
                 instanciaVerde.start();

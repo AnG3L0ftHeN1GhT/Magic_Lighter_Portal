@@ -70,6 +70,11 @@ public class PlayerInteraction : MonoBehaviour   // :)
     void Update()
     {
         CheckInteractables();
+
+        if (setBox)
+        {
+            processo.SetPortal();
+        }
     }
 
     void CheckInteractables()
@@ -104,11 +109,11 @@ public class PlayerInteraction : MonoBehaviour   // :)
         {
             if (PressedClickCheck())
             {
-                if (currentInteract.item.pesado && !setBox && playerMovements.GroundedCheck())
+                if (currentInteract.item.pesado && !setBox && playerMovements.GroundedCheck() && processo.velasProntas)
                 {
                     currentInteract.transform.SetParent(transform);
+                    playerMovements.GrabbedBox();
                 }
-                playerMovements.GrabbedBox();
                 return;
             }
             else
@@ -154,7 +159,7 @@ public class PlayerInteraction : MonoBehaviour   // :)
 
                  SceneManager.LoadScene("Pyramid Screen");
 
-             return;
+                return;
                 }
 
                     if (currentInteract.item.falsoIsqueiro)
@@ -165,7 +170,7 @@ public class PlayerInteraction : MonoBehaviour   // :)
                         Destroy(currentInteract.gameObject);
                     }
 
-                    if (currentInteract.item.ouro)
+                    if (currentInteract.item.ouro && temIsqueiro)
                     {
                         fluidoDourado = true;
                         processo.SetFluidoDourado();
@@ -173,7 +178,15 @@ public class PlayerInteraction : MonoBehaviour   // :)
                         Destroy(currentInteract.gameObject);
                     }
 
-                    if (currentInteract.item.verde)
+                    if (currentInteract.item.roxo && temIsqueiro && processo.velaG == 2)
+                    {
+                        fluidoRoxo = true;
+                        processo.SetFluidoRoxo();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.verde && temIsqueiro && processo.velaR == 2)
                     {
                         fluidoGreen = true;
                         processo.SetFluidoGreen();
@@ -181,13 +194,7 @@ public class PlayerInteraction : MonoBehaviour   // :)
                         Destroy(currentInteract.gameObject);
                     }
 
-                    if (currentInteract.item.roxo)
-                    {
-                        fluidoRoxo = true;
-                        processo.SetFluidoRoxo();
-
-                        Destroy(currentInteract.gameObject);
-                    }
+                    
 
                     if (currentInteract.item.velaDourada || currentInteract.item.velaRoxa || currentInteract.item.velaVerde)
                     {
@@ -255,10 +262,7 @@ public class PlayerInteraction : MonoBehaviour   // :)
                     }
                     */
 
-                    if (setBox)
-                    {
-                        processo.SetPortal();
-                    }
+                    
 
                     /*
                     inputActions.FindActionMap("Player").Disable();
@@ -342,7 +346,7 @@ public class PlayerInteraction : MonoBehaviour   // :)
     {
         if (leftClick.action.IsPressed())
         {
-            if(currentInteract.item.pesado && !setBox)
+            if(currentInteract.item.pesado && !setBox && processo.velasProntas)
             {
                 return true;
             }
