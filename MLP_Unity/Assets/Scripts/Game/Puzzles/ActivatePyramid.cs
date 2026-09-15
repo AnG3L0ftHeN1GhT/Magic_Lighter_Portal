@@ -10,6 +10,8 @@ public class ActivatePyramid : MonoBehaviour
     private bool pyrActiv = false;
     public bool allDone;
 
+    public GameProcess score;
+
     public GameObject inPyramid;
     public GameObject cmPyramid;
 
@@ -55,8 +57,17 @@ public class ActivatePyramid : MonoBehaviour
 
     private void Update()
     {
+        StepsCheck();
         ActivatedPyramid();
         CheckLeftClick();
+    }
+
+    private void StepsCheck()
+    {
+        if (score.velaG == 2 && score.velaR == 2 && score.velaV == 2)
+        {
+            allDone = true;
+        }
     }
 
     private void ActivatedPyramid()

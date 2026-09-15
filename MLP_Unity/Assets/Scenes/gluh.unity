@@ -6022,7 +6022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad87378dc212ca5498e0260f50ae8d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivatePyramid
-  allDone: 1
+  allDone: 0
+  score: {fileID: 865366688}
   inPyramid: {fileID: 1486150614220172137, guid: 842682650152b8e4e85f591bb13d2055, type: 3}
   cmPyramid: {fileID: 5084009592540662974, guid: 6f552fef32ca162468712266fd4ddcf2, type: 3}
   fogo: {fileID: 1232162748334348575, guid: 86a0f2081387c1344990726973a98534, type: 3}
