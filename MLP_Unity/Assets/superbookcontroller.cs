@@ -7,17 +7,25 @@ public class superbookcontroller : MonoBehaviour
     public GameObject slam;
     public GameObject cuneiforme;
     public GameObject buxavideo;
+    public GameObject livropick;
+    public GameObject livrocam;
+    public GameObject pagina;
     private Animator animator;
+    public bool spinlock = true;
     
+ 
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        pagina = GameObject.Find("olhudo");
+        animator = pagina.GetComponent<Animator>();
+        livrocam.SetActive(false);
 
     }
 
     void Update()
     {
+
         if (canalTV == 1)
         {
             slam.SetActive(true);
@@ -44,15 +52,17 @@ public class superbookcontroller : MonoBehaviour
             canalTV = 1;
         }
 
-        if (Input.GetKeyDown(Keycode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
-
+            
+            Debug.Log(spinlock);
             if (spinlock==true)
             {
-                spinlock = true;
+                spinlock = false;
             }else if (spinlock == false)
             {
-                spinlock = false;
+                spinlock = true;
+                
             }
         }
         Girapajinas();
@@ -60,6 +70,7 @@ public class superbookcontroller : MonoBehaviour
 
     void OnTriggerEnter(Collider bgl)
     {
+        if(Input.GetMouseButtonDown(0)||Input.GetMouseButton(0)){
         if (bgl.CompareTag("xbox"))
         {
             canalTV = canalTV + 1;
@@ -70,11 +81,12 @@ public class superbookcontroller : MonoBehaviour
             livropick.SetActive(false);
             livrocam.SetActive(true);
         }
+        }
     }
 
     void Girapajinas()
     {
-        animator.SetBool("Grounded",groundedState);
+        animator.SetBool("girar",spinlock);
     }
 
 }
