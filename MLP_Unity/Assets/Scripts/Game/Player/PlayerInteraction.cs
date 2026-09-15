@@ -1,15 +1,17 @@
 using System.Collections;
+using NUnit.Framework;
+using Unity.Multiplayer.Center.Common;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [Header("Processo de Jogo")]
-    public GameProcess processo;
+    [SerializeField] GameProcess processo;
 
-    [Header("Estados do Jogador & Inventário")]
     public bool fluidoDourado;
     public bool fluidoRoxo;
     public bool fluidoGreen;
@@ -23,150 +25,45 @@ public class PlayerInteraction : MonoBehaviour
     public bool statua2;
     public bool statua3;
 
-    [Header("Configurações de Raycast e Interação")]
-    public float rayDistance = 3.0f;
-    public float pickupSpeed = 5.0f;
-    public float rotateSpeed = 100.0f;
+    public bool clickIsPressed;
+    public PlayerController playerMovements;
+
+    public float rayDistance;
+    public float pickupSpeed;
+    public float rotateSpeed;
     public int hasKanjis;
 
-    [Header("Referências da Cena")]
-    public PlayerController playerMovements;
     public Transform objectViewer;
-    public Item lighter;
-    public Camera cam;
-    public GerenteDeVela candleManager;
-
-    [Header("Eventos")]
     public UnityEvent OnView;
     public UnityEvent OnFinishView;
 
-    [Header("Input Actions")]
+    public Item lighter;
+    private Camera cam;
+
+    private bool isViewing;
+    private bool canFinish;
+
+    private Interactables currentInteract;
+    private Vector3 originPosition;
+    private Quaternion originRotation;
+
     public InputActionReference leftClick;
     public InputActionReference rightClick;
     public InputActionReference interactBttn;
     public InputActionReference look;
     public InputActionAsset inputActions;
-
-    [Header("Estados Internos (Visualização)")]
-    public bool clickIsPressed;
-    public bool isViewing;
-    public bool canFinish;
-    public Interactables currentInteract;
-    public Vector3 originPosition;
-    public Quaternion originRotation;
-    public Vector2 lookInput;
+    
+    public GerenteDeVela candleManager;
 
     void OnEnable()
     {
-        if (inputActions != null)
-        {
-            inputActions.FindActionMap("Player").Enable();
-        }
-
-        if (leftClick != null) leftClick.action.Enable();
-        if (rightClick != null) rightClick.action.Enable();
-        if (interactBttn != null) interactBttn.action.Enable();
-        if (look != null) look.action.Enable();
-
-        if (leftClick != null)
-        {
-            leftClick.action.performed += OnLeftClickPerformed;
-            leftClick.action.canceled += OnLeftClickCanceled;
-        }
-
-        if (rightClick != null) rightClick.action.performed += OnRightClickPerformed;
-        if (interactBttn != null) interactBttn.action.performed += OnInteractPerformed;
-
-        if (look != null)
-        {
-            look.action.performed += OnLookPerformed;
-            look.action.canceled += OnLookCanceled;
-        }
+        inputActions.FindActionMap("Player").Enable();
     }
-
-    void OnDisable()
-    {
-        if (leftClick != null)
-        {
-            leftClick.action.performed -= OnLeftClickPerformed;
-            leftClick.action.canceled -= OnLeftClickCanceled;
-        }
-
-        if (rightClick != null) rightClick.action.performed -= OnRightClickPerformed;
-        if (interactBttn != null) interactBttn.action.performed -= OnInteractPerformed;
-
-        if (look != null)
-        {
-            look.action.performed -= OnLookPerformed;
-            look.action.canceled -= OnLookCanceled;
-        }
-
-        if (leftClick != null) leftClick.action.Disable();
-        if (rightClick != null) rightClick.action.Disable();
-        if (interactBttn != null) interactBttn.action.Disable();
-        if (look != null) look.action.Disable();
-    }
-
-    #region Input Callbacks
-
-    public void OnLeftClickPerformed(InputAction.CallbackContext ctx) => HandleLeftClick();
-
-    public void OnLeftClickCanceled(InputAction.CallbackContext ctx)
-    {
-        if (clickIsPressed)
-        {
-            clickIsPressed = false;
-            if (currentInteract != null)
-            {
-                currentInteract.transform.SetParent(null);
-            }
-            if (playerMovements != null)
-            {
-                playerMovements.ReleasedBox();
-            }
-        }
-    }
-
-    public void OnRightClickPerformed(InputAction.CallbackContext ctx)
-    {
-        if (isViewing && canFinish)
-        {
-            FinishView();
-            if (inputActions != null)
-            {
-                inputActions.FindActionMap("Player").Enable();
-            }
-        }
-    }
-
-    public void OnInteractPerformed(InputAction.CallbackContext ctx)
-    {
-        if (isViewing && canFinish && currentInteract != null && currentInteract.item.stashable)
-        {
-            FinishView();
-            if (inputActions != null)
-            {
-                inputActions.FindActionMap("Player").Enable();
-            }
-
-            if (currentInteract.item == lighter)
-            {
-                LighterFunction.instance.SetLighter(1);
-            }
-        }
-    }
-
-    private void OnLookPerformed(InputAction.CallbackContext ctx) => lookInput = ctx.ReadValue<Vector2>();
-    private void OnLookCanceled(InputAction.CallbackContext ctx) => lookInput = Vector2.zero;
-
-    #endregion
 
     void Start()
     {
-        if (cam == null)
-        {
-            cam = Camera.main;
-        }
+        cam = Camera.main;
+
         LoadProgress();
     }
 
@@ -179,27 +76,48 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (isViewing)
         {
-            if (currentInteract != null && currentInteract.item.grabbable)
+            if (currentInteract.item.grabbable)
             {
                 RotateObject();
             }
+
+            if (canFinish && currentInteract.item.stashable && interactBttn.action.WasPressedThisFrame())
+            {
+                FinishView();
+                inputActions.FindActionMap("Player").Enable();
+
+                if (currentInteract.item == lighter)
+                {
+                    LighterFunction.instance.SetLighter(1);
+                }
+            }
+            else if (canFinish && rightClick.action.WasPressedThisFrame())
+            {
+                FinishView();
+                inputActions.FindActionMap("Player").Enable();
+            }
+
             return;
         }
 
         if (clickIsPressed)
         {
-            if (currentInteract != null && currentInteract.item.pesado)
+            if (PressedClickCheck())
             {
-                currentInteract.transform.SetParent(transform);
-                if (playerMovements != null)
+                if (currentInteract.item.pesado && !setBox)
                 {
-                    playerMovements.GrabbedBox();
+                    currentInteract.transform.SetParent(transform);
                 }
+                playerMovements.GrabbedBox();
+                return;
             }
-            return;
+            else
+            {
+                clickIsPressed = false;
+                currentInteract.transform.SetParent(null);
+                playerMovements.ReleasedBox();
+            }
         }
-
-        if (cam == null) return;
 
         RaycastHit hit;
         Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
@@ -207,7 +125,163 @@ public class PlayerInteraction : MonoBehaviour
         if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, rayDistance))
         {
             Interactables interactable = hit.collider.GetComponent<Interactables>();
-            UIManager.instance.SetInteractionCursor(interactable != null);
+
+            if (interactable != null)
+            {
+                UIManager.instance.SetInteractionCursor(true);
+
+                if (leftClick.action.WasPressedThisFrame())
+                {
+                    if (interactable.isMoving)
+                    {
+                        return;
+                    }
+
+                    currentInteract = interactable;
+
+                if (currentInteract.item.piramide)
+                {
+                    // Se a pirâmide já foi resolvida, não abre novamente
+                    if (processo != null && processo.IsPyramidSolved())
+                    {
+                        Debug.Log("A pirâmide já foi resolvida.");
+
+                        return;
+                    }
+
+                 UnityEngine.Cursor.lockState = CursorLockMode.None;
+                 UnityEngine.Cursor.visible = true;
+
+                 SceneManager.LoadScene("Pyramid Screen");
+
+             return;
+                }
+
+                    if (currentInteract.item.falsoIsqueiro)
+                    {
+                        temIsqueiro = true;
+                        processo.SetIsqueiro();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.ouro)
+                    {
+                        fluidoDourado = true;
+                        processo.SetFluidoDourado();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.verde)
+                    {
+                        fluidoGreen = true;
+                        processo.SetFluidoGreen();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.roxo)
+                    {
+                        fluidoRoxo = true;
+                        processo.SetFluidoRoxo();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.velaDourada || currentInteract.item.velaRoxa || currentInteract.item.velaVerde)
+                    {
+                        candleManager = hit.collider.GetComponent<GerenteDeVela>();
+                        candleManager.AcenderVela();
+                    }
+
+                    if (currentInteract.item.kanji1)
+                    {
+                        kanji1 = true;
+                        processo.SetKanji1();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.kanji2)
+                    {
+                        kanji2 = true;
+                        processo.SetKanji2();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+                    
+                    if (currentInteract.item.kanji3)
+                    {
+                        kanji3 = true;
+                        processo.SetKanji3();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+                    
+                    if (currentInteract.item.kanji4)
+                    {
+                        kanji4 = true;
+                        processo.SetKanji4();
+
+                        Destroy(currentInteract.gameObject);
+                    }
+
+                    if (currentInteract.item.statua)
+                    {
+                        Debug.Log(currentInteract.gameObject.ToSafeString());
+                        switch (currentInteract.gameObject.ToSafeString())
+                        {
+                            case "Feliz":
+                                statua1 = true;
+                                processo.SetStatua1();
+
+                                Destroy(currentInteract.gameObject);
+                                break;
+                            case "Neutra":
+                                statua2 = true;
+                                processo.SetStatua2();
+
+                                Destroy(currentInteract.gameObject);
+                                break;
+                            case "Triste":
+                                statua3 = true;
+                                processo.SetStatua3();
+
+                                Destroy(currentInteract.gameObject);
+                                break;
+                        }
+                    }
+
+                    if (setBox)
+                    {
+                        processo.SetPortal();
+                    }
+
+
+                    /*
+                    inputActions.FindActionMap("Player").Disable();
+                    OnView.Invoke();
+                    currentInteract = interactable;
+                    isViewing = true;
+
+                    Invoke("CanFinish", 1f);
+
+                    if (currentInteract.item.grabbable)
+                    {
+                        originPosition = currentInteract.transform.position;
+                        originRotation = currentInteract.transform.rotation;
+                        StartCoroutine(MovingObject(currentInteract, objectViewer.position));
+                    } inutilizado e podre; não é nescessário por enquanto. Fica aqui só caso a mecância volte, o que é improvável
+                    */
+                    clickIsPressed = PressedClickCheck();
+                }
+                
+            }
+            else
+            {
+                UIManager.instance.SetInteractionCursor(false);
+            }
         }
         else
         {
@@ -215,154 +289,30 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    private void HandleLeftClick()
-    {
-        if (isViewing || cam == null) return;
-
-        RaycastHit hit;
-        Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
-
-        if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, rayDistance))
-        {
-            Interactables interactable = hit.collider.GetComponent<Interactables>();
-
-            if (interactable == null || interactable.isMoving)
-            {
-                return;
-            }
-
-            currentInteract = interactable;
-
-            if (currentInteract.item.piramide)
-            {
-                if (processo != null && processo.IsPyramidSolved())
-                {
-                    Debug.Log("A pirâmide já foi resolvida.");
-                    return;
-                }
-
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                SceneManager.LoadScene("Pyramid Screen");
-                return;
-            }
-
-            if (currentInteract.item.falsoIsqueiro)
-            {
-                temIsqueiro = true;
-                if (processo != null) processo.SetIsqueiro();
-                Destroy(currentInteract.gameObject);
-            }
-
-            if (currentInteract.item.ouro)
-            {
-                fluidoDourado = true;
-                if (processo != null) processo.SetFluidoDourado();
-                Destroy(currentInteract.gameObject);
-            }
-
-            if (currentInteract.item.verde)
-            {
-                fluidoGreen = true;
-                if (processo != null) processo.SetFluidoGreen();
-                Destroy(currentInteract.gameObject);
-            }
-
-            if (currentInteract.item.roxo)
-            {
-                fluidoRoxo = true;
-                if (processo != null) processo.SetFluidoRoxo();
-                Destroy(currentInteract.gameObject);
-            }
-
-            if (currentInteract.item.velaDourada || currentInteract.item.velaRoxa || currentInteract.item.velaVerde)
-            {
-                candleManager = hit.collider.GetComponent<GerenteDeVela>();
-                if (candleManager != null)
-                {
-                    candleManager.AcenderVela();
-                }
-            }
-
-            if (currentInteract.item.kanji1)
-            {
-                kanji1 = true;
-                if (processo != null) processo.SetKanji1();
-                Destroy(currentInteract.gameObject);
-            }
-
-            if (currentInteract.item.kanji2)
-            {
-                kanji2 = true;
-                if (processo != null) processo.SetKanji2();
-                Destroy(currentInteract.gameObject);
-            }
-
-            if (currentInteract.item.kanji3)
-            {
-                kanji3 = true;
-                if (processo != null) processo.SetKanji3();
-                Destroy(currentInteract.gameObject);
-            }
-
-            if (currentInteract.item.kanji4)
-            {
-                kanji4 = true;
-                if (processo != null) processo.SetKanji4();
-                Destroy(currentInteract.gameObject);
-            }
-
-            if (currentInteract.item.statua)
-            {
-                switch (currentInteract.gameObject.name)
-                {
-                    case "Feliz":
-                        statua1 = true;
-                        if (processo != null) processo.SetStatua1();
-                        Destroy(currentInteract.gameObject);
-                        break;
-                    case "Neutra":
-                        statua2 = true;
-                        if (processo != null) processo.SetStatua2();
-                        Destroy(currentInteract.gameObject);
-                        break;
-                    case "Triste":
-                        statua3 = true;
-                        if (processo != null) processo.SetStatua3();
-                        Destroy(currentInteract.gameObject);
-                        break;
-                }
-            }
-
-            if (currentInteract != null && currentInteract.item.pesado)
-            {
-                clickIsPressed = true;
-            }
-        }
-    }
-
-    public void CanFinish()
+    void CanFinish()
     {
         canFinish = true;
         UIManager.instance.SetBackImage(true);
     }
 
-    public void FinishView()
+    void FinishView()
     {
         canFinish = false;
         isViewing = false;
         UIManager.instance.SetBackImage(false);
 
-        if (currentInteract != null && currentInteract.item.grabbable)
+        if (currentInteract.item.grabbable)
         {
             currentInteract.transform.rotation = originRotation;
             StartCoroutine(MovingObject(currentInteract, originPosition));
         }
 
-        if (OnFinishView != null) OnFinishView.Invoke();
+        OnFinishView.Invoke();
     }
 
-    public IEnumerator MovingObject(Interactables obj, Vector3 position)
+
+
+    IEnumerator MovingObject(Interactables obj, Vector3 position)
     {
         obj.isMoving = true;
         float timer = 0;
@@ -378,36 +328,50 @@ public class PlayerInteraction : MonoBehaviour
         obj.isMoving = false;
     }
 
-    public void RotateObject()
+    void RotateObject()
     {
-        if (currentInteract == null || cam == null) return;
+        float x = Input.GetAxis("Mouse X");
+        float y = Input.GetAxis("Mouse Y");
 
-        currentInteract.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * lookInput.x * rotateSpeed, Space.World);
-        currentInteract.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * lookInput.y * rotateSpeed, Space.World);
-
-        lookInput = Vector2.zero;
+        currentInteract.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * x * rotateSpeed, Space.World);
+        currentInteract.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * y * rotateSpeed, Space.World);
     }
 
-    public void LoadProgress()
+    bool PressedClickCheck()
     {
-        if (processo == null)
+        if (leftClick.action.IsPressed())
         {
-            Debug.LogWarning("GameProgress não encontrado!");
-            return;
+            if(currentInteract.item.pesado && !setBox)
+            {
+                return true;
+            }
+            return false;
         }
-
-        fluidoDourado = processo.fluidoDourado;
-        fluidoRoxo = processo.fluidoRoxo;
-        fluidoGreen = processo.fluidoGreen;
-        temIsqueiro = processo.temIsqueiro;
-
-        kanji1 = processo.kanji1;
-        kanji2 = processo.kanji2;
-        kanji3 = processo.kanji3;
-        kanji4 = processo.kanji4;
-
-        statua1 = processo.statua1;
-        statua2 = processo.statua2;
-        statua3 = processo.statua3;
+        else
+        {
+            return false;
+        }
     }
+    void LoadProgress()
+{
+    if (processo == null)
+    {
+        Debug.LogWarning("GameProgress não encontrado!");
+        return;
+    }
+
+    fluidoDourado = processo.fluidoDourado;
+    fluidoRoxo = processo.fluidoRoxo;
+    fluidoGreen = processo.fluidoGreen;
+    temIsqueiro = processo.temIsqueiro;
+
+    kanji1 = processo.kanji1;
+    kanji2 = processo.kanji2;
+    kanji3 = processo.kanji3;
+    kanji4 = processo.kanji4;
+
+    statua1 = processo.statua1;
+    statua2 = processo.statua2;
+    statua3 = processo.statua3;
+}
 }

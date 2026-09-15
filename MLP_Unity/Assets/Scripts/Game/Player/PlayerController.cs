@@ -21,93 +21,32 @@ public class PlayerController : MonoBehaviour
     public InputActionReference lookAction;
     public InputActionReference clickAction;
 
-    [Header("Look")]
+    [Header("Mouse Look")]
     public float mouseSensitivity = 0.1f;
-    public float controllerSensitivity = 120f;
     public float minPitch = -80f;
     public float maxPitch = 80f;
 
     private float pitch = 0f;
     private bool cursorLocked = false;
 
-    // Variáveis para guardar os valores dos Callbacks
-    private Vector2 moveInput;
-    private Vector2 lookInput;
-
-    private void Start()
-    {
-        if (Camera.main != null)
-        {
-            cameraTransform = Camera.main.transform;
-        }
-    }
-
     private void OnEnable()
     {
-        // Habilita as ações
         moveAction.action.Enable();
         jumpAction.action.Enable();
         lookAction.action.Enable();
         clickAction.action.Enable();
-
-        // Inscreve os Callbacks de cada ação
-        moveAction.action.performed += OnMovePerformed;
-        moveAction.action.canceled += OnMoveCanceled;
-
-        lookAction.action.performed += OnLookPerformed;
-
-        jumpAction.action.performed += OnJumpPerformed;
 
         clickAction.action.performed += OnClickPerformed;
     }
 
     private void OnDisable()
     {
-        // Cancela a inscrição dos Callbacks
-        moveAction.action.performed -= OnMovePerformed;
-        moveAction.action.canceled -= OnMoveCanceled;
-
-        lookAction.action.performed -= OnLookPerformed;
-
-        jumpAction.action.performed -= OnJumpPerformed;
-
-        clickAction.action.performed -= OnClickPerformed;
-
-        // Desabilita as ações
         moveAction.action.Disable();
         jumpAction.action.Disable();
         lookAction.action.Disable();
         clickAction.action.Disable();
-    }
 
-    #region Input Callbacks
-
-    public void OnMovePerformed(InputAction.CallbackContext ctx)
-    {
-        moveInput = ctx.ReadValue<Vector2>();
-    }
-
-    public void OnMoveCanceled(InputAction.CallbackContext ctx)
-    {
-        moveInput = Vector2.zero;
-    }
-
-public void OnLookPerformed(InputAction.CallbackContext ctx)
-{
-    lookInput = ctx.ReadValue<Vector2>();
-}
-
-public void OnLookCanceled(InputAction.CallbackContext ctx)
-{
-    lookInput = Vector2.zero;
-}
-    public void OnJumpPerformed(InputAction.CallbackContext ctx)
-    {
-        // Realiza o pulo apenas se estiver no chão
-        if (groundedPlayer)
-        {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
-        }
+        clickAction.action.performed -= OnClickPerformed;
     }
 
     private void OnClickPerformed(InputAction.CallbackContext ctx)
@@ -119,57 +58,84 @@ public void OnLookCanceled(InputAction.CallbackContext ctx)
 
         if (!cursorLocked)
         {
-            // SetCursorLocked(true);
+            SetCursorLocked(true);
         }
     }
 
-    #endregion
-
-private void Update()
-{
-    if (!grabbing)
+    private void Update()
     {
-        HandleMouseLook();
-    }
+        if (SceneManager.GetActiveScene().name != "Pyramid Screen")
+        {
+            if (cursorLocked && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                SetCursorLocked(false);
+            }
 
-    groundedPlayer = controller.isGrounded;
+            if (cursorLocked && !grabbing)
+            {
+                HandleMouseLook();
+            }
 
-    if (groundedPlayer && playerVelocity.y < -2f)
-    {
-        playerVelocity.y = -2f;
-    }
+            DesativarCamera();
+        }
 
-    Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
+        groundedPlayer = controller.isGrounded;
 
-    if (cameraTransform != null)
-    {
-        move = cameraTransform.forward * move.z
-             + cameraTransform.right * move.x;
+        if (groundedPlayer)
+        {
+            if (playerVelocity.y < -2f)
+                playerVelocity.y = -2f;
+        }
 
+        Vector2 input = moveAction.action.ReadValue<Vector2>();
+
+        Vector3 move = new Vector3(input.x, 0, input.y);
+
+        move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+
+        // Impede a câmera de fazer o jogador andar para cima/baixo
         move.y = 0f;
+
+        if (groundedPlayer && jumpAction.action.WasPressedThisFrame())
+        {
+            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+
+        Vector3 finalMove = move * playerSpeed + Vector3.up * playerVelocity.y;
+
+        controller.Move(finalMove * Time.deltaTime);
     }
 
-    playerVelocity.y += gravityValue * Time.deltaTime;
-
-    Vector3 finalMove =
-        move * playerSpeed + Vector3.up * playerVelocity.y;
-
-    controller.Move(finalMove * Time.deltaTime);
-}
-
-private void HandleMouseLook()
-{
-    transform.Rotate(
-        Vector3.up * lookInput.x * 100f * Time.deltaTime
-    );
-
-    if (cameraTransform != null)
+    private void SetCursorLocked(bool locked)
     {
-        cameraTransform.Rotate(
-            Vector3.right * -lookInput.y * 100f * Time.deltaTime
-        );
+        cursorLocked = locked;
+
+        Cursor.lockState = locked
+            ? CursorLockMode.Locked
+            : CursorLockMode.None;
+
+        Cursor.visible = !locked;
     }
-}
+
+    private void HandleMouseLook()
+    {
+        Vector2 lookDelta = lookAction.action.ReadValue<Vector2>();
+
+        float mouseX = lookDelta.x * mouseSensitivity;
+        float mouseY = lookDelta.y * mouseSensitivity;
+
+        // Rotação horizontal do jogador
+        transform.Rotate(Vector3.up * mouseX);
+
+        // Rotação vertical da câmera
+        pitch -= mouseY;
+        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+
+        cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+    }
+
     public void GrabbedBox()
     {
         playerSpeed = 1.25f;
@@ -186,10 +152,7 @@ private void HandleMouseLook()
 
     public void DesativarCamera()
     {
-        if (cameraTransform == null)
-        {
-            cameraTransform = Camera.main.transform;
-        }
+        cameraTransform = Camera.main.transform;
 
         if (SceneManager.GetActiveScene().name == "Pyramid Screen")
         {
