@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CubeLayerRotation : MonoBehaviour
 {
@@ -13,14 +12,6 @@ public class CubeLayerRotation : MonoBehaviour
     private Quaternion targetRotation;
     private bool isRotating = false;
 
-    public InputActionReference leftClick;
-    public InputActionAsset inputActions;
-
-    void OnEnable()
-    {
-        inputActions.FindActionMap("Player").Enable();
-    }
-
     void Update()
     {
         DetectClick();
@@ -29,10 +20,16 @@ public class CubeLayerRotation : MonoBehaviour
 
     void DetectClick()
     {
-        if (!leftClick.action.WasPressedThisFrame())
+        // Clique esquerdo do mouse
+        if (!Input.GetMouseButtonDown(0))
             return;
 
+        // Não permite outra rotação enquanto uma estiver acontecendo
         if (isRotating)
+            return;
+
+        // Garante que existe uma câmera principal
+        if (Camera.main == null)
             return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -60,7 +57,7 @@ public class CubeLayerRotation : MonoBehaviour
     {
         currentCube = cube;
 
-        // Rotação horizontal no eixo Y GLOBAL
+        // Rotação horizontal de 90 graus no eixo Y global
         targetRotation = Quaternion.AngleAxis(
             90f,
             Vector3.up
