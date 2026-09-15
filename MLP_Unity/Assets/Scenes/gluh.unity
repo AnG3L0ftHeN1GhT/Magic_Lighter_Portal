@@ -1073,6 +1073,10 @@ PrefabInstance:
       value: livroPickUp
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 849ffa231d9181241823097ef297b1fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 849ffa231d9181241823097ef297b1fe, type: 3}
       propertyPath: m_TagString
       value: livro
       objectReference: {fileID: 0}
@@ -1456,6 +1460,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1e1ad97174c088546be449b2a7934852, type: 3}
       propertyPath: m_Name
       value: livrocamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1e1ad97174c088546be449b2a7934852, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1e1ad97174c088546be449b2a7934852, type: 3}
       propertyPath: m_TagString
@@ -4336,6 +4344,7 @@ MonoBehaviour:
   velaV: 0
   velaR: 0
   velaG: 0
+  portal: 0
   statua1: 0
   statua2: 0
   statua3: 0
@@ -6262,6 +6271,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fa02ed702adf64aa3ea701b9fff10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::superbookcontroller
+  canalTV: 1
+  slam: {fileID: 214052967}
+  cuneiforme: {fileID: 453485753}
+  buxavideo: {fileID: 1657528549}
+  livropick: {fileID: 1296755845}
+  livrocam: {fileID: 468855325}
+  pagina: {fileID: 140389736}
+  spinlock: 1
 --- !u!1 &1434059909
 GameObject:
   m_ObjectHideFlags: 0

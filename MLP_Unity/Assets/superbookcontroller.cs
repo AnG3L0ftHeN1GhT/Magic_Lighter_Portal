@@ -1,4 +1,4 @@
-/*sing UnityEngine;
+using UnityEngine;
 
 public class superbookcontroller : MonoBehaviour
 {
@@ -17,7 +17,6 @@ public class superbookcontroller : MonoBehaviour
 
     void Start()
     {
-        pagina = GameObject.Find("olhudo");
         animator = pagina.GetComponent<Animator>();
         livrocam.SetActive(false);
 
@@ -90,4 +89,3 @@ public class superbookcontroller : MonoBehaviour
     }
 
 }
-*/
