@@ -18,6 +18,7 @@ public class GameProcess : MonoBehaviour
     public int velaV;
     public int velaR;
     public int velaG;
+    public bool portal;
 
     public bool statua1;
     public bool statua2;
@@ -66,6 +67,11 @@ public class GameProcess : MonoBehaviour
     public void SetIsqueiro()
     {
         temIsqueiro = true;
+    }
+
+    public void SetPortal()
+    {
+        portal = true;
     }
 
     public void SetKanji1()

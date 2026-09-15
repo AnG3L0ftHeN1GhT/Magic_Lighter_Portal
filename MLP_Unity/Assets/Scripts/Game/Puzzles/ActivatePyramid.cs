@@ -64,7 +64,7 @@ public class ActivatePyramid : MonoBehaviour
 
     private void StepsCheck()
     {
-        if (score.velaG == 2 && score.velaR == 2 && score.velaV == 2)
+        if (score.velaG == 2 && score.velaR == 2 && score.velaV == 2 && score.portal)
         {
             allDone = true;
         }

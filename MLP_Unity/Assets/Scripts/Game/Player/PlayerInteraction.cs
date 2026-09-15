@@ -16,6 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     public bool fluidoRoxo;
     public bool fluidoGreen;
     public bool temIsqueiro;
+    public bool setBox;
     public bool kanji1;
     public bool kanji2;
     public bool kanji3;
@@ -103,10 +104,9 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (PressedClickCheck())
             {
-                if (currentInteract.item.pesado)
+                if (currentInteract.item.pesado && !setBox)
                 {
                     currentInteract.transform.SetParent(transform);
-
                 }
                 playerMovements.GrabbedBox();
                 return;
@@ -253,6 +253,11 @@ public class PlayerInteraction : MonoBehaviour
                         }
                     }
 
+                    if (setBox)
+                    {
+                        processo.SetPortal();
+                    }
+
 
                     /*
                     inputActions.FindActionMap("Player").Disable();
@@ -336,7 +341,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (leftClick.action.IsPressed())
         {
-            if(currentInteract.item.pesado)
+            if(currentInteract.item.pesado && !setBox)
             {
                 return true;
             }

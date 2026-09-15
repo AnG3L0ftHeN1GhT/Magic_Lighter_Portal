@@ -3950,6 +3950,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
+      propertyPath: rayDistance
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325136964315534640, guid: 0bfc8e81391062b4b9e71765873db53c, type: 3}
       propertyPath: handPosition
       value: 
       objectReference: {fileID: 0}
@@ -4940,15 +4944,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.11
+      value: 1.561
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.97
+      value: -2.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.09
+      value: 2.405
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4988,15 +4992,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2577548232221058511, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.36
       objectReference: {fileID: 0}
     - target: {fileID: -2577548232221058511, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2577548232221058511, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 13.32
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_Name
@@ -6216,10 +6220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fa02ed702adf64aa3ea701b9fff10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::superbookcontroller
-  canalTV: 2
-  slam: {fileID: 214052967}
-  cuneiforme: {fileID: 453485753}
-  buxavideo: {fileID: 1657528549}
 --- !u!1 &1434059909
 GameObject:
   m_ObjectHideFlags: 0
@@ -6825,8 +6825,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1489374, y: 1.3882303, z: 0.13861465}
-  m_Center: {x: -0.16123196, y: 0.7788625, z: 1.2291734}
+  m_Size: {x: 0.01, y: 0.1, z: 0.01}
+  m_Center: {x: -0.16123196, y: 0.39, z: 1.2291734}
 --- !u!114 &1544911164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6839,6 +6839,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb590fa59bfc9944886b44c60898baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPlacingCheck
+  soltaissodaimeufi: {fileID: 640863106}
+  movement: {fileID: 922198637}
+  positionX: -1.038
+  positionY: 14.53
+  positionZ: -1.111
 --- !u!1 &1547118667
 GameObject:
   m_ObjectHideFlags: 0
