@@ -17,7 +17,7 @@ public class DraggingSound : MonoBehaviour
 
     void Update()
     {
-        if (playerReference.clickIsPressed)
+        if (playerReference.clickIsPressed && !playerReference.setBox)
         {
             if (playerReference.transform.position != pastMovement)
             {
