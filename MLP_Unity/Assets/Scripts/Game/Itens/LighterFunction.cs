@@ -13,24 +13,25 @@ public class LighterFunction : MonoBehaviour
     [SerializeField] EventReference fire;
     [SerializeField] EventReference snap;
     [SerializeField] EventReference scree;
-
     private FMOD.Studio.EventInstance instanciaIsqueiro;
     private FMOD.Studio.EventInstance instanciaOuro;
     private FMOD.Studio.EventInstance instanciaRoxa;
     private FMOD.Studio.EventInstance instanciaVerde;
 
     public static LighterFunction instance;
-
     public bool holdingLight;
     public int hasLighter;
     public GameObject lighter;
-
     public InputActionReference lightBttn;
-    public InputActionReference fogo;
-
+    public InputActionReference fogo1;
+    public InputActionReference fogo2;
+    public InputActionReference fogo3;
     public InputActionAsset inputActions;
 
+
     public PlayerInteraction playerCollections;
+
+
 
     private void Awake()
     {
@@ -38,34 +39,43 @@ public class LighterFunction : MonoBehaviour
         instanciaOuro = RuntimeManager.CreateInstance(fire);
         instanciaVerde = RuntimeManager.CreateInstance(snap);
         instanciaRoxa = RuntimeManager.CreateInstance(scree);
-
         instance = this;
     }
 
     void Update()
     {
-        // Pegar/guardar o isqueiro
         if ((hasLighter > 0) && lightBttn.action.WasPressedThisFrame())
         {
             holdingLight = !holdingLight;
             HandleLighter();
         }
 
-        // Trocar a chama usando o Button North
-        if (fogo.action.WasPressedThisFrame() && holdingLight)
+        if(fogo1.action.WasPressedThisFrame())
         {
-            activeFlame++;
-
-            if (activeFlame > 3)
+            if (activeFlame != 1 && holdingLight)
             {
                 activeFlame = 1;
+                MudarCorChama(activeFlame);
             }
-
-            MudarCorChama(activeFlame);
+        } 
+        else if(fogo2.action.WasPressedThisFrame())
+        {
+            if (activeFlame != 2 && holdingLight)
+            {
+                activeFlame = 2;
+                MudarCorChama(activeFlame);
+            }
+        } 
+        else if(fogo3.action.WasPressedThisFrame())
+        {
+            if (activeFlame != 3 && holdingLight)
+            {
+                activeFlame = 3;
+                MudarCorChama(activeFlame);
+            }
         }
 
-        // Verifica se o jogador possui o isqueiro
-        if (playerCollections.temIsqueiro && hasLighter == 0)
+        if(playerCollections.temIsqueiro && hasLighter == 0)
         {
             hasLighter = 1;
         }
@@ -73,7 +83,7 @@ public class LighterFunction : MonoBehaviour
         {
             return;
         }
-    }
+    } 
 
     private void HandleLighter()
     {
@@ -81,7 +91,6 @@ public class LighterFunction : MonoBehaviour
         {
             instanciaIsqueiro.start();
         }
-
         lighter.SetActive(holdingLight);
     }
 
@@ -90,40 +99,37 @@ public class LighterFunction : MonoBehaviour
         hasLighter = l;
     }
 
+    
     public void MudarCorChama(int corDesejada)
     {
-        if (corDesejada == 1)
+        if(corDesejada == 1)
         {
-            if (playerCollections.fluidoDourado)
+            if(playerCollections.fluidoDourado)
             {
                 goldenFlame.SetActive(true);
                 purpleFlame.SetActive(false);
                 greenFlame.SetActive(false);
-
                 instanciaOuro.start();
             }
-        }
-        else if (corDesejada == 2)
+        } else if(corDesejada == 2)
         {
-            if (playerCollections.fluidoRoxo)
+            if(playerCollections.fluidoRoxo)
             {
                 goldenFlame.SetActive(false);
                 purpleFlame.SetActive(true);
                 greenFlame.SetActive(false);
-
                 instanciaRoxa.start();
             }
-        }
-        else if (corDesejada == 3)
+        } else if(corDesejada == 3)
         {
-            if (playerCollections.fluidoGreen)
+            if(playerCollections.fluidoGreen)
             {
                 goldenFlame.SetActive(false);
                 purpleFlame.SetActive(false);
                 greenFlame.SetActive(true);
-
                 instanciaVerde.start();
             }
         }
+
     }
 }
