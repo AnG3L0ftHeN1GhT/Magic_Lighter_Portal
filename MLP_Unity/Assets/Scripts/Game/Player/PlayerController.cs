@@ -161,4 +161,9 @@ public class PlayerController : MonoBehaviour
             Cursor.visible = true;
         }
     }
+
+    public bool GroundedCheck()
+    {
+        return groundedPlayer;
+    }
 }

@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class PlayerInteraction : MonoBehaviour
+public class PlayerInteraction : MonoBehaviour   // :) 
 {
     [SerializeField] GameProcess processo;
 
@@ -104,7 +104,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (PressedClickCheck())
             {
-                if (currentInteract.item.pesado && !setBox)
+                if (currentInteract.item.pesado && !setBox && playerMovements.GroundedCheck())
                 {
                     currentInteract.transform.SetParent(transform);
                 }
@@ -227,6 +227,7 @@ public class PlayerInteraction : MonoBehaviour
                         Destroy(currentInteract.gameObject);
                     }
 
+                    /*
                     if (currentInteract.item.statua)
                     {
                         Debug.Log(currentInteract.gameObject.ToSafeString());
@@ -252,12 +253,12 @@ public class PlayerInteraction : MonoBehaviour
                                 break;
                         }
                     }
+                    */
 
                     if (setBox)
                     {
                         processo.SetPortal();
                     }
-
 
                     /*
                     inputActions.FindActionMap("Player").Disable();
