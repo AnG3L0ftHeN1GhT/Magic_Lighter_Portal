@@ -1603,7 +1603,6 @@ Transform:
   - {fileID: 719443970}
   - {fileID: 457568468}
   - {fileID: 1201886574}
-  - {fileID: 2104131261}
   - {fileID: 520796470}
   - {fileID: 448396618}
   - {fileID: 1176561876}
@@ -4974,15 +4973,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 350571723}
+    m_TransformParent: {fileID: 1538160810}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.46000004
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.46000004
+      value: 0.4600001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalScale.z
@@ -4990,15 +4989,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.561
+      value: 1.8932
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.13
+      value: -2.1290293
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.405
+      value: 2.0735
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f379c0933730284cb24cf316235cff0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6824,6 +6823,7 @@ Transform:
   - {fileID: 2058706389}
   - {fileID: 1463976082}
   - {fileID: 1547118669}
+  - {fileID: 2104131261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1544911158
@@ -6933,6 +6933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad87378dc212ca5498e0260f50ae8d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivatePyramid
+  portal: {fileID: 896829127}
   allDone: 0
   score: {fileID: 865366688}
   inPyramid: {fileID: 1486150614220172137, guid: 842682650152b8e4e85f591bb13d2055, type: 3}

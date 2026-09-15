@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ActivatePyramid : MonoBehaviour
 {
     public static ActivatePyramid instance;
+    public GameObject portal;
 
     private bool pyrActiv = false;
     public bool allDone;
@@ -101,6 +102,7 @@ public class ActivatePyramid : MonoBehaviour
         // Instancia a pirâmide inicial
         if (inPyramid != null)
         {
+            portal.SetActive(false);
             currentPyramid = Instantiate(
                 inPyramid,
                 transform.position,
