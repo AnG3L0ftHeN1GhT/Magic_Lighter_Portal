@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pyramid Screen.unity
     guid: 5972b2017b786484bbeabfb3bef67037
+  - enabled: 1
+    path: Assets/Scenes/fimdejogo.unity
+    guid: c5528c7d5a76431449cc9bc683566d30
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

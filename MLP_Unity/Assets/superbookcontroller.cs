@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class superbookcontroller : MonoBehaviour
 {
     public int canalTV = 1;
@@ -12,6 +13,8 @@ public class superbookcontroller : MonoBehaviour
     public GameObject pagina;
     private Animator animator;
     public bool spinlock = true;
+
+     
     
  
 
@@ -67,7 +70,7 @@ public class superbookcontroller : MonoBehaviour
         Girapajinas();
     }
 
-    void OnTriggerEnter(Collider bgl)
+    void OnTriggerStay(Collider bgl)
     {
         if(Input.GetMouseButtonDown(0)||Input.GetMouseButton(0)){
         if (bgl.CompareTag("xbox"))
