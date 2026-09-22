@@ -13,6 +13,8 @@ public class PlayerInteraction : MonoBehaviour   // :)
     [SerializeField] GameProcess processo;
 
     public GameObject errorText;
+    public GameObject isqueiroText;
+    public GameObject fluidoText;
     private float timer;
 
     public bool fluidoDourado;
@@ -84,6 +86,8 @@ public class PlayerInteraction : MonoBehaviour   // :)
         if (timer >= 2.5f)
         {
             errorText.SetActive(false);
+            isqueiroText.SetActive(false);
+            fluidoText.SetActive(false);
         }
     }
 
@@ -123,11 +127,6 @@ public class PlayerInteraction : MonoBehaviour   // :)
                 {
                     currentInteract.transform.SetParent(transform);
                     playerMovements.GrabbedBox();
-                }
-                else if (currentInteract.item.pesado && !processo.velasProntas)
-                {
-                    timer = 0f;
-                    errorText.SetActive(true);
                 }
                 return;
             }
@@ -183,6 +182,11 @@ public class PlayerInteraction : MonoBehaviour   // :)
                         processo.SetIsqueiro();
 
                         Destroy(currentInteract.gameObject);
+                        errorText.SetActive(false);
+                        isqueiroText.SetActive(false);
+                        fluidoText.SetActive(false);
+                        isqueiroText.SetActive(true);
+                        timer = 0f;
                     }
 
                     if (currentInteract.item.ouro && temIsqueiro)
@@ -191,6 +195,11 @@ public class PlayerInteraction : MonoBehaviour   // :)
                         processo.SetFluidoDourado();
 
                         Destroy(currentInteract.gameObject);
+                        errorText.SetActive(false);
+                        isqueiroText.SetActive(false);
+                        fluidoText.SetActive(false);
+                        fluidoText.SetActive(true);
+                        timer = 0f;
                     }
                     else if (currentInteract.item.ouro && !temIsqueiro)
                     {
@@ -378,6 +387,12 @@ public class PlayerInteraction : MonoBehaviour   // :)
             if(currentInteract.item.pesado && !setBox && processo.velasProntas)
             {
                 return true;
+            }
+            else if (currentInteract.item.pesado && !processo.velasProntas)
+            {
+                timer = 0f;
+                errorText.SetActive(true);
+                return false;
             }
             return false;
         }

@@ -6,21 +6,13 @@ public class PortalActivation : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameProcess verificacao;
-    [SerializeField] private string fimdejogo;
+    public GameObject realPortal;
 
     void Update()
     {
         if (verificacao.velasProntas && verificacao.pyramidSolved)
         {
-            gameObject.SetActive(true);
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            SceneManager.LoadScene(fimdejogo);
+            realPortal.SetActive(true);
         }
     }
 }
