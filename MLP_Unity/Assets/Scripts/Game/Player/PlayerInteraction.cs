@@ -373,8 +373,9 @@ public class PlayerInteraction : MonoBehaviour   // :)
 
     void RotateObject()
     {
-        float x = Input.GetAxis("Mouse X");
-        float y = Input.GetAxis("Mouse Y");
+        Vector2 lookDelta = look.action.ReadValue<Vector2>();
+        float x = lookDelta.x;
+        float y = lookDelta.y;
 
         currentInteract.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * x * rotateSpeed, Space.World);
         currentInteract.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * y * rotateSpeed, Space.World);

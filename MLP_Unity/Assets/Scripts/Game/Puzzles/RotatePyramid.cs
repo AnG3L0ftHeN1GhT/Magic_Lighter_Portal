@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RotatePyramid : MonoBehaviour
 {
@@ -23,14 +24,14 @@ public class RotatePyramid : MonoBehaviour
 
     void Swipe()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
         {
-            firstPressPos = Input.mousePosition;
+            firstPressPos = Mouse.current.position.ReadValue();
         }
 
-        if (Input.GetMouseButtonUp(1))
+        if (Mouse.current != null && Mouse.current.rightButton.wasReleasedThisFrame)
         {
-            secondPressPos = Input.mousePosition;
+            secondPressPos = Mouse.current.position.ReadValue();
 
             Vector2 swipe = secondPressPos - firstPressPos;
 

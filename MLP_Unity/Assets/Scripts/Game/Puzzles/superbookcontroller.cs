@@ -75,7 +75,9 @@ public class superbookcontroller : MonoBehaviour
 
     void OnTriggerStay(Collider bgl)
     {
-        if(Input.GetMouseButtonDown(0)||Input.GetMouseButton(0)){
+        if (Mouse.current != null &&
+            (Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.leftButton.isPressed))
+        {
         if (bgl.CompareTag("xbox"))
         {
             canalTV = canalTV + 1;
