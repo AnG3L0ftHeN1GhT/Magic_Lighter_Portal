@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class CheckPyramid : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CheckPyramid : MonoBehaviour
     public float positionTolerance = 0.05f;
 
     private bool puzzleSolved = false;
+    public bool teste;
 
     public GameObject flortal;
 
@@ -19,7 +21,6 @@ public class CheckPyramid : MonoBehaviour
 
         CheckFaces();
 
-       
     }
 
 void CheckFaces()
@@ -53,8 +54,13 @@ void CheckFaces()
         {
             SceneManager.LoadScene("gluh");
             puzzleSolved = true;
+            teste =  true;
+            if(teste){
+             flortal.SetActive(true);
+            }
+            
             Debug.Log("Face completa com " + kanji + "!");
-            Instantiate(flortal);
+            
 
             // SALVA O PUZZLE
             GameProcess.Instance.SolvePyramid();
