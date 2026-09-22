@@ -10,12 +10,16 @@ public class CheckPyramid : MonoBehaviour
 
     private bool puzzleSolved = false;
 
+    public GameObject flortal;
+
     void Update()
     {
         if (puzzleSolved)
             return;
 
         CheckFaces();
+
+       
     }
 
 void CheckFaces()
@@ -49,8 +53,8 @@ void CheckFaces()
         {
             SceneManager.LoadScene("gluh");
             puzzleSolved = true;
-
             Debug.Log("Face completa com " + kanji + "!");
+            Instantiate(flortal);
 
             // SALVA O PUZZLE
             GameProcess.Instance.SolvePyramid();
