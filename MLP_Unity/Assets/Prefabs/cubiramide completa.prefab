@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: -5674866294269473982}
   m_Layer: 0
   m_Name: cubiramide completa
-  m_TagString: Untagged
+  m_TagString: cubolegal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1155,7 +1155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheckPyramid
   normalTolerance: 0.95
   positionTolerance: 0.05
+  teste: 0
   flortal: {fileID: 8208336589585590029, guid: cff26d4fd13faf446814274672d5d83d, type: 3}
+  portalkeeper: {fileID: 2136496250718891186, guid: bef29f13f8d01da4db9bd61940ed5f39, type: 3}
 --- !u!114 &-1751249837493036869
 MonoBehaviour:
   m_ObjectHideFlags: 0

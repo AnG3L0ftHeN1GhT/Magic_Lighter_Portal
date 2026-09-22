@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CubeLayerRotation : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class CubeLayerRotation : MonoBehaviour
     void DetectClick()
     {
         // Clique esquerdo do mouse
-        if (!Input.GetMouseButtonDown(0))
+        if (Mouse.current == null || !Mouse.current.leftButton.wasPressedThisFrame)
             return;
 
         // Não permite outra rotação enquanto uma estiver acontecendo
@@ -32,7 +33,7 @@ public class CubeLayerRotation : MonoBehaviour
         if (Camera.main == null)
             return;
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
