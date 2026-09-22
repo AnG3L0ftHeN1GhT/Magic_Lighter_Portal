@@ -45,18 +45,20 @@ void CheckFaces()
 
     foreach (string kanji in kanjis)
     {
-        if (CheckKanji(planes, kanji))
-        {
-            SceneManager.LoadScene("gluh");
-            puzzleSolved = true;
+if (CheckKanji(planes, kanji))
+{
+    puzzleSolved = true;
 
-            Debug.Log("Face completa com " + kanji + "!");
+    Debug.Log("Face completa com " + kanji + "!");
 
-            // SALVA O PUZZLE
-            GameProcess.Instance.SolvePyramid();
+    // Salva a resolução da pirâmide
+    GameProcess.Instance.SolvePyramid();
 
-            return;
-        }
+    // Agora troca de cena
+    SceneManager.LoadScene("gluh");
+
+    return;
+}
     }
 }
 
@@ -110,7 +112,7 @@ void CheckFaces()
             // voltados para a mesma face, temos uma face completa.
             if (alignedPlanes.Count == kanjiPlanes.Count)
             {
-                return true;
+                    return true;
             }
         }
 

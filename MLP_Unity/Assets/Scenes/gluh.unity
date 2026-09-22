@@ -7384,10 +7384,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4baa3685fdb7d44b5e2263a3c9daa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KanjiFunction
-  kanjiD: {fileID: 0}
-  kanjiA: {fileID: 0}
-  kanjiC: {fileID: 0}
-  kanjiP: {fileID: 0}
+  kanjiD: {fileID: 455251391}
+  kanjiA: {fileID: 453359281}
+  kanjiC: {fileID: 1928209477}
+  kanjiP: {fileID: 1688454658}
   kanji1: {fileID: 11400000, guid: dd839365d856a824184a956214615e2c, type: 2}
   kanji2: {fileID: 11400000, guid: c1411024af4b73442baf3c08c72f7197, type: 2}
   kanji3: {fileID: 11400000, guid: 528bf4f036f866e4480beef9d41e91d5, type: 2}
@@ -8079,7 +8079,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1618321942
 Transform:
@@ -9647,3 +9647,4 @@ SceneRoots:
   - {fileID: 865366689}
   - {fileID: 219093901}
   - {fileID: 2137064493}
+  - {fileID: 313064261}
