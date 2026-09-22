@@ -97,7 +97,7 @@ public class ActivatePyramid : MonoBehaviour
         }
 
         // Espera 5 segundos
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 
         // Instancia a pirâmide inicial
         if (inPyramid != null)

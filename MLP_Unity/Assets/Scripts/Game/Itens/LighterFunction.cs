@@ -31,8 +31,6 @@ public class LighterFunction : MonoBehaviour
 
     public PlayerInteraction playerCollections;
 
-
-
     private void Awake()
     {
         instanciaIsqueiro = RuntimeManager.CreateInstance(acendendo);
@@ -40,6 +38,11 @@ public class LighterFunction : MonoBehaviour
         instanciaVerde = RuntimeManager.CreateInstance(snap);
         instanciaRoxa = RuntimeManager.CreateInstance(scree);
         instance = this;
+    }
+
+    void Start()
+    {
+        activeFlame = 0;
     }
 
     void Update()
@@ -52,7 +55,7 @@ public class LighterFunction : MonoBehaviour
 
         if(fogo1.action.WasPressedThisFrame())
         {
-            if (activeFlame != 1 && holdingLight)
+            if (activeFlame != 1 && holdingLight && playerCollections.fluidoDourado)
             {
                 activeFlame = 1;
                 MudarCorChama(activeFlame);
@@ -60,7 +63,7 @@ public class LighterFunction : MonoBehaviour
         } 
         else if(fogo2.action.WasPressedThisFrame())
         {
-            if (activeFlame != 2 && holdingLight)
+            if (activeFlame != 2 && holdingLight && playerCollections.fluidoRoxo)
             {
                 activeFlame = 2;
                 MudarCorChama(activeFlame);
@@ -68,7 +71,7 @@ public class LighterFunction : MonoBehaviour
         } 
         else if(fogo3.action.WasPressedThisFrame())
         {
-            if (activeFlame != 3 && holdingLight)
+            if (activeFlame != 3 && holdingLight && playerCollections.fluidoGreen)
             {
                 activeFlame = 3;
                 MudarCorChama(activeFlame);
@@ -78,10 +81,6 @@ public class LighterFunction : MonoBehaviour
         if(playerCollections.temIsqueiro && hasLighter == 0)
         {
             hasLighter = 1;
-        }
-        else
-        {
-            return;
         }
     } 
 
