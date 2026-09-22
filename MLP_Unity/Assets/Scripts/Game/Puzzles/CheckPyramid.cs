@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class CheckPyramid : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class CheckPyramid : MonoBehaviour
     public float positionTolerance = 0.05f;
 
     private bool puzzleSolved = false;
+    public bool teste;
+
+    public GameObject flortal;
 
     void Update()
     {
@@ -16,6 +20,7 @@ public class CheckPyramid : MonoBehaviour
             return;
 
         CheckFaces();
+
     }
 
 void CheckFaces()
@@ -49,14 +54,22 @@ void CheckFaces()
         {
             SceneManager.LoadScene("gluh");
             puzzleSolved = true;
-
+            teste =  true;
+            if(teste){
+             flortal.SetActive(true);
+            }
+            
             Debug.Log("Face completa com " + kanji + "!");
+            
 
-            // SALVA O PUZZLE
-            GameProcess.Instance.SolvePyramid();
+    // Salva a resolução da pirâmide
+    GameProcess.Instance.SolvePyramid();
 
-            return;
-        }
+    // Agora troca de cena
+    SceneManager.LoadScene("gluh");
+
+    return;
+}
     }
 }
 
@@ -110,7 +123,7 @@ void CheckFaces()
             // voltados para a mesma face, temos uma face completa.
             if (alignedPlanes.Count == kanjiPlanes.Count)
             {
-                return true;
+                    return true;
             }
         }
 

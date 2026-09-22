@@ -11,6 +11,7 @@ public class superbookcontroller : MonoBehaviour
     public GameObject livropick;
     public GameObject livrocam;
     public GameObject pagina;
+    public GameObject roxinhho;
     private Animator animator;
     public bool spinlock = true;
 
@@ -22,6 +23,7 @@ public class superbookcontroller : MonoBehaviour
     {
         animator = pagina.GetComponent<Animator>();
         livrocam.SetActive(false);
+        roxinhho.SetActive(false);
 
     }
 
@@ -82,6 +84,7 @@ public class superbookcontroller : MonoBehaviour
         {
             livropick.SetActive(false);
             livrocam.SetActive(true);
+            roxinhho.SetActive(true);
         }
         }
     }
