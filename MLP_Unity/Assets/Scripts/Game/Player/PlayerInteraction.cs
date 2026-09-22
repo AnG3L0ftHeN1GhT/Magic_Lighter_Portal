@@ -12,6 +12,9 @@ public class PlayerInteraction : MonoBehaviour   // :)
 {
     [SerializeField] GameProcess processo;
 
+    public GameObject errorText;
+    private float timer;
+
     public bool fluidoDourado;
     public bool fluidoRoxo;
     public bool fluidoGreen;
@@ -75,6 +78,13 @@ public class PlayerInteraction : MonoBehaviour   // :)
         {
             processo.SetPortal();
         }
+
+        timer += Time.deltaTime;
+
+        if (timer >= 2.5f)
+        {
+            errorText.SetActive(false);
+        }
     }
 
     void CheckInteractables()
@@ -113,6 +123,11 @@ public class PlayerInteraction : MonoBehaviour   // :)
                 {
                     currentInteract.transform.SetParent(transform);
                     playerMovements.GrabbedBox();
+                }
+                else if (currentInteract.item.pesado && !processo.velasProntas)
+                {
+                    timer = 0f;
+                    errorText.SetActive(true);
                 }
                 return;
             }
@@ -177,6 +192,11 @@ public class PlayerInteraction : MonoBehaviour   // :)
 
                         Destroy(currentInteract.gameObject);
                     }
+                    else if (currentInteract.item.ouro && !temIsqueiro)
+                    {
+                        timer = 0f;
+                        errorText.SetActive(true);
+                    }
 
                     if (currentInteract.item.roxo && temIsqueiro && processo.velaG == 2)
                     {
@@ -184,6 +204,11 @@ public class PlayerInteraction : MonoBehaviour   // :)
                         processo.SetFluidoRoxo();
 
                         Destroy(currentInteract.gameObject);
+                    }
+                    else if (currentInteract.item.roxo && processo.velaG != 2)
+                    {
+                        timer = 0f;
+                        errorText.SetActive(true);
                     }
 
                     if (currentInteract.item.verde && temIsqueiro && processo.velaR == 2)
@@ -193,8 +218,12 @@ public class PlayerInteraction : MonoBehaviour   // :)
 
                         Destroy(currentInteract.gameObject);
                     }
+                    else if (currentInteract.item.verde && processo.velaR != 2)
+                    {
+                        timer = 0f;
+                        errorText.SetActive(true);
+                    }
 
-                    
 
                     if (currentInteract.item.velaDourada || currentInteract.item.velaRoxa || currentInteract.item.velaVerde)
                     {
