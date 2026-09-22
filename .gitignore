@@ -1,3 +1,15 @@
 MLP_Unity/Assets/Imagens/Materials/CU.mat.meta
 MLP_Unity/Assets/Scenes/gluh.unity
 MLP_Unity/Assets/Scenes/gluh.unity
+MLP_Unity/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+MLP_Unity/Assets/Scenes/Créditos.unity
+MLP_Unity/Assets/Scenes/gluh.unity
+MLP_Unity/Assets/Scenes/MenuPrincipal.unity
+MLP_Unity/Assets/Scripts/Game/Itens/LighterFunction.cs
+MLP_Unity/Assets/Scripts/Game/Player/PlayerController.cs
+MLP_Unity/Assets/Scripts/Game/Player/PlayerInteraction.cs
+MLP_Unity/Assets/Scripts/Game/Puzzles/ActivatePyramid.cs
+MLP_Unity/Assets/Scripts/Game/Puzzles/CubeLayerRotation.cs
+MLP_Unity/Assets/Scripts/Game/Puzzles/GameProcess.cs
+MLP_Unity/Assets/Scripts/Game/Puzzles/GerenteDeVela.cs
+MLP_Unity/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
