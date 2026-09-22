@@ -4,11 +4,9 @@ using UnityEngine.InputSystem;
 
 public class superbookcontroller : MonoBehaviour
 {
-    public int canalTV = 1;
+    public int canalTV = 0;
 
-    public GameObject slam;
-    public GameObject cuneiforme;
-    public GameObject buxavideo;
+    public GameObject[] videos;
     public GameObject livropick;
     public GameObject livrocam;
     public GameObject pagina;
@@ -17,9 +15,9 @@ public class superbookcontroller : MonoBehaviour
     private Animator animator;
     public bool spinlock = true;
 
-     
-    
- 
+
+
+
 
     void Start()
     {
@@ -31,77 +29,65 @@ public class superbookcontroller : MonoBehaviour
 
     void Update()
     {
+        for (int i = 0; i < videos.Length; i++)
+        {
+            if (canalTV == i)
+            {
+                videos[i].SetActive(true);
+            }
+            else
+            {
+                videos[i].SetActive(false);
+            }
 
-        if (canalTV == 1)
-        {
-            slam.SetActive(true);
-            cuneiforme.SetActive(false);
-            buxavideo.SetActive(false);
-        }
-        
-        if (canalTV == 2)
-        {
-            slam.SetActive(false);
-            cuneiforme.SetActive(true);
-            buxavideo.SetActive(false);
-        }
-        
-        if (canalTV == 3)
-        {
-            slam.SetActive(false);
-            cuneiforme.SetActive(false);
-            buxavideo.SetActive(true);
-        }
-
-        if (canalTV > 3)
-        {
-            canalTV = 1;
         }
 
         if (Keyboard.current != null && Keyboard.current.lKey.wasPressedThisFrame)
         {
             Debug.Log(spinlock);
-            if (spinlock==true)
+            if (spinlock)
             {
                 spinlock = false;
-            }else if (spinlock == false)
+            }
+            else
             {
                 spinlock = true;
-                
+
             }
+            animator.SetBool("girar", spinlock);
         }
-        Girapajinas();
+
     }
 
     void OnTriggerStay(Collider bgl)
     {
-        if (Mouse.current != null &&
-            (Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.leftButton.isPressed))
+        if (Mouse.current != null && Mouse.current.leftButton.isPressed)
         {
-        if (bgl.CompareTag("xbox"))
-        {
-            canalTV = canalTV + 1;
-        }
-
-        if (bgl.CompareTag("livro"))
-        {
-            livropick.SetActive(false);
-            livrocam.SetActive(true);
-            roxinhho.SetActive(true);
-        }
-        if (bgl.CompareTag("cubolegal"))
-        {
-            if (GameProcess.Instance != null)
+            if (bgl.CompareTag("xbox"))
             {
-                GameProcess.Instance.SetPortal();
+                canalTV = canalTV + 1;
+                if (canalTV >= videos.Length)
+                {
+                    canalTV = 0;
+                }
+            }
+
+            if (bgl.CompareTag("livro"))
+            {
+                livropick.SetActive(false);
+                livrocam.SetActive(true);
+                roxinhho.SetActive(true);
+            }
+            if (bgl.CompareTag("cubolegal"))
+            {
+                if (GameProcess.Instance != null)
+                {
+                    GameProcess.Instance.SetPortal();
+                }
             }
         }
-        }
     }
 
-    void Girapajinas()
-    {
-        animator.SetBool("girar",spinlock);
-    }
+
 
 }
