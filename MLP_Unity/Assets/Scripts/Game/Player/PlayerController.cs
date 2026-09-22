@@ -71,12 +71,12 @@ public class PlayerController : MonoBehaviour
                 SetCursorLocked(false);
             }
 
-            if (cursorLocked && !grabbing)
-            {
-                HandleMouseLook();
-            }
-
             DesativarCamera();
+        }
+
+        if (!grabbing)
+        {
+            HandleMouseLook();
         }
 
         groundedPlayer = controller.isGrounded;
