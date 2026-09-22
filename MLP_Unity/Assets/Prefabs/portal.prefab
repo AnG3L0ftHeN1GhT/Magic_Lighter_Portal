@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 1776746719347408928}
   - component: {fileID: 4144183582501952987}
   - component: {fileID: 3843769596331121823}
+  - component: {fileID: 7161885381816673041}
   m_Layer: 0
   m_Name: portal
   m_TagString: Portal
@@ -220,7 +221,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1776746719347408928
 MonoBehaviour:
@@ -278,3 +279,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7161885381816673041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8208336589585590029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef688579428914e489948464fbb312bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PortalController
+  portalVisual: {fileID: 8208336589585590029}
+  portalCollider: {fileID: 4144183582501952987}

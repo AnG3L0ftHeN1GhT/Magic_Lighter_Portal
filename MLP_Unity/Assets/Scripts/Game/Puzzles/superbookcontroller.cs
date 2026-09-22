@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class superbookcontroller : MonoBehaviour
@@ -12,6 +13,7 @@ public class superbookcontroller : MonoBehaviour
     public GameObject livrocam;
     public GameObject pagina;
     public GameObject roxinhho;
+
     private Animator animator;
     public bool spinlock = true;
 
@@ -56,9 +58,8 @@ public class superbookcontroller : MonoBehaviour
             canalTV = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Keyboard.current != null && Keyboard.current.lKey.wasPressedThisFrame)
         {
-            
             Debug.Log(spinlock);
             if (spinlock==true)
             {
@@ -85,6 +86,13 @@ public class superbookcontroller : MonoBehaviour
             livropick.SetActive(false);
             livrocam.SetActive(true);
             roxinhho.SetActive(true);
+        }
+        if (bgl.CompareTag("cubolegal"))
+        {
+            if (GameProcess.Instance != null)
+            {
+                GameProcess.Instance.SetPortal();
+            }
         }
         }
     }
