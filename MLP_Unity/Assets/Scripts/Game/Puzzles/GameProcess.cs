@@ -28,10 +28,7 @@ public class GameProcess : MonoBehaviour
     [Header("Portal")]
     public bool portal;
 
-    [Header("Estátuas")]
-    public bool statua1;
-    public bool statua2;
-    public bool statua3;
+
 
     private void Awake()
     {
@@ -138,25 +135,6 @@ public class GameProcess : MonoBehaviour
     public void SetKanji4()
     {
         kanji4 = true;
-    }
-
-    // =========================
-    // ESTÁTUAS
-    // =========================
-
-    public void SetStatua1()
-    {
-        statua1 = true;
-    }
-
-    public void SetStatua2()
-    {
-        statua2 = true;
-    }
-
-    public void SetStatua3()
-    {
-        statua3 = true;
     }
 
     // =========================

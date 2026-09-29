@@ -420,8 +420,6 @@ public class PlayerInteraction : MonoBehaviour   // :)
     kanji3 = processo.kanji3;
     kanji4 = processo.kanji4;
 
-    statua1 = processo.statua1;
-    statua2 = processo.statua2;
-    statua3 = processo.statua3;
+
 }
 }
