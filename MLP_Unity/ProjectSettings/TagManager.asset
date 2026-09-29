@@ -12,7 +12,6 @@ TagManager:
   - xbox
   - livro
   - cambook
-  - cubolegal
   layers:
   - Default
   - TransparentFX
